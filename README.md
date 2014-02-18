@@ -3,20 +3,23 @@ jdr
 TODO
 * Rule Set
     * Group of Abilities
+        * Extendable or not extendable
     * Required abilities (must be filled)
     * Visible abilities (abilities visibles to everyone)
     * Hidden abilities (abilities hidden from everyone exept DM)
-    * "Spendable" abilities (used for action "costing" something)
+    * Computed abilities (provided calculation, can always be manually modified using bonus/malus)
+    * "Spendable" abilities (used for action "costing" something, will be presented when creating an action)
     * Types or rolls (and their modifiers)
     * Base value for abilities + modifiers
     * Can register the rolls used to create characters (could be provided by the DM: for creation, 6x D20 rolled, with a custom explanation).
         * Could be proposed in the ruleset
-        * Ruleset could have "variations" you can choose from for different steps (Char creations etc...)
+        * Ruleset could have "variations" you can choose from for different steps (Char creations mode, char start at level X, char has specifics attributes, etc...)
         * Ruleset can have references: books or websites urls
     * Can be made a public ruleset (superadmin only)
 * Player sheets (& NPCs)
     * Can be modified by DM
     * Can be modified by the player
+    * Is PC / NPC reserved feature
     * All modification registered and easily searchable (by DM or player)
     * Outside appearance description
     * Token system (Poker chips of Deadlands)
@@ -28,11 +31,24 @@ TODO
     * Can have images
     * Can have ambient sounds/music
     * Can have maps (= image with placeable points)
+    * Player can split and be in different setups
+    * Can have linked NPC for easier retrieval
 * Maps
-    * Optionnal
+    * Optionnal (but cool)
     * Managed by the DM to provide information
     * Image were you can locate different pointers
     * Use leaflet
+* Campaign (DM reserved)
+    * Group of Scenarios (of the same rule set)
+    * Rule set
+    * Storyboard
+    * Description, min/max of players, required level
+* Scenario (DM reserved)
+    * Rule set
+    * Storyboard
+    * Description, min/max of players, required level
+    * Setups
+    * NPCs
 * Helps
     * NPC for different rulesets
         * NPC Library provided by other users
@@ -61,6 +77,13 @@ TODO
     * Game types
         * Asynchronous (Turn based, DM launches turns where player have to declare actions. Depends on ruleset?)
         * Live (same as asynchronous, but players must be connected to the game together to run it, skype+chat to help for this mode)
+    * Session
+        * States
+            * Open: everyone can act (DM & Players), the DM can choose to ignore some action (mark them as such)
+            * Waiting for DM: DM turns to act
+            * Waiting for Player X: Player X turn to act
+            * Waiting for Player: waiting for any player to act
+            * Paused
 * Action
     * Player describe action and rolls required (could be no rolls)
     * DM can add a roll, and/or modifiers to the roll and then declares if it is a success, miss or something else
