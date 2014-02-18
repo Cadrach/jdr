@@ -16,6 +16,8 @@ TODO
         * Ruleset could have "variations" you can choose from for different steps (Char creations mode, char start at level X, char has specifics attributes, etc...)
         * Ruleset can have references: books or websites urls
     * Can be made a public ruleset (superadmin only)
+    * Classic Items characs
+    * Weapons characs
 * Player sheets (& NPCs)
     * Can be modified by DM
     * Can be modified by the player
@@ -33,6 +35,7 @@ TODO
     * Can have maps (= image with placeable points)
     * Player can split and be in different setups
     * Can have linked NPC for easier retrieval
+    * Can have clues
 * Maps
     * Optionnal (but cool)
     * Managed by the DM to provide information
@@ -43,12 +46,19 @@ TODO
     * Rule set
     * Storyboard
     * Description, min/max of players, required level
+* Combat
+    * Order / Initiatives rolls
 * Scenario (DM reserved)
     * Rule set
     * Storyboard
     * Description, min/max of players, required level
     * Setups
     * NPCs
+    * Clues
+* Clues
+    * Can be an image or text
+    * Can be created before or on the fly
+    * Can be linked to a setup or scenario
 * Helps
     * NPC for different rulesets
         * NPC Library provided by other users
@@ -84,6 +94,7 @@ TODO
             * Waiting for Player X: Player X turn to act
             * Waiting for Player: waiting for any player to act
             * Paused
+        * States can be automated (for example during a combat session)
 * Action
     * Player describe action and rolls required (could be no rolls)
     * DM can add a roll, and/or modifiers to the roll and then declares if it is a success, miss or something else
