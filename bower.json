@@ -1,0 +1,27 @@
+{
+  "name": "jdr",
+  "version": "0.0.0",
+  "authors": [
+    "Cadrach"
+  ],
+  "description": "js",
+  "main": "public/js/",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.10",
+    "Class.js": "1.0.0",
+    "angular-bootstrap": "~0.10.0",
+    "bootstrap": "~3.1.1",
+    "angular-route": "~1.2.9",
+    "angular-promise-tracker-git": "https://github.com/ajoslin/angular-promise-tracker.git#366180c26a39d9dd05f37993b1929714b90a9821",
+    "angular-sanitize": "~1.2.10"
+  }
+}
