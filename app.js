@@ -53,3 +53,4 @@ server.listen(app.get('port'), function(){
 
 //Create socket.io
 var io = require('socket.io').listen(server);
+io.set('log level', 1); //debug level reduced

@@ -39,6 +39,7 @@ TODO
     * Player can split and be in different setups
     * Can have linked NPC for easier retrieval
     * Can have clues
+    * Prepared text quickly usable (Parcels)
 * Maps
     * Optionnal (but cool)
     * Managed by the DM to provide information
@@ -58,7 +59,7 @@ TODO
     * Setups
     * NPCs
     * Clues
-    * Prepared text quickly usable
+    * Prepared text quickly usable (Parcels)
 * Clues
     * Can be an image or text
     * Can be created before or on the fly
