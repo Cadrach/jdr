@@ -3,9 +3,18 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        //Auto reloading when NodeJS relaunches
+        var socket = io.connect('http://localhost:3000');
+            socket.on('disconnect', function (data) {
+            window.location.reload();
+        });
+    </script>
   </head>
   <body>
     <h1>{{ title }}</h1>
     <p>Welcome to AAA {{ title }}</p>
+    <p>{{ date }}</p>
   </body>
 </html>

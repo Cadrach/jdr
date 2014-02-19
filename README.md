@@ -16,6 +16,9 @@ TODO
         * Ruleset could have "variations" you can choose from for different steps (Char creations mode, char start at level X, char has specifics attributes, etc...)
         * Ruleset can have references: books or websites urls
     * Can be made a public ruleset (superadmin only)
+    * Layout
+        * Classic layout available
+        * We can make custom layout for common ruleset (character sheet presentation for example)
     * Classic Items characs
     * Weapons characs
 * Player sheets (& NPCs)
@@ -55,6 +58,7 @@ TODO
     * Setups
     * NPCs
     * Clues
+    * Prepared text quickly usable
 * Clues
     * Can be an image or text
     * Can be created before or on the fly

@@ -4,5 +4,8 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express 2' });
+  res.render('index', {
+      title: 'Express 8',
+      date: (new Date()).toString()
+  });
 };
