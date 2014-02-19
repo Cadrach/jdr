@@ -5,6 +5,7 @@
 
 var express = require('express');
 var mongodb = require('mongodb');
+var mongoose = require('mongoose');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
@@ -32,8 +33,12 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//Routes
 app.get('/', routes.index);
 app.get('/users', user.list);
+
+var apiRuleSet = require('./controllers/api/ruleset.js');
+app.get('/api/ruleset', apiRuleSet.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
