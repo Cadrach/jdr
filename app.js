@@ -1,67 +1,80 @@
-
 /**
- * Module dependencies.
+ * App Dependencies.
  */
 
-var express = require('express');
-var mongodb = require('mongodb');
-var mongoose = require('mongoose');
-var routes = require('./routes');
-var io = require('socket.io');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
+var loopback = require('loopback')
+    , app = module.exports = loopback()
+    , fs = require('fs')
+    , path = require('path')
+//  , cors = require('cors')
+//  , request = require('request')
+//  , TaskEmitter = require('strong-task-emitter');
 
-var app = express();
+// Require models, make sure it happens before api explorer
+fs
+    .readdirSync(path.join(__dirname, './models'))
+    .filter(function(m) {
+        return path.extname(m) === '.js';
+    })
+    .forEach(function(m) {
+        // expose model over rest
+        app.model(require('./models/' + m));
+    });
 
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
-app.use(app.router);
-app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
-app.use(express.static(path.join(__dirname, 'public')));
+// Set up the HTTP listener ip & port
+var ip = process.env.IP || '0.0.0.0';
+var port = process.env.PORT || 3000;
+var baseURL = 'http://' + ip + ':' + port;
+app.set('ip', ip);
+app.set('port', port);
 
+app.use(loopback.favicon());
+// app.use(loopback.logger(app.get('env') === 'development' ? 'dev' : 'default'));
+app.use(loopback.bodyParser());
+app.use(loopback.methodOverride());
 
+// Establish our overly-permissive CORS rules.
+//app.use(cors());
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+var apiPath = '/api';
+
+// Expose a rest api
+app.use(apiPath, loopback.rest());
+
+// API explorer (if present)
+var explorerPath = '/explorer';
+try {
+    var explorer = require('loopback-explorer');
+    app.use(explorerPath, explorer(app, { basePath: apiPath }));
+} catch(e){
+    // ignore errors, explorer stays disabled
 }
 
-//Routes
-app.get('/', routes.index);
-app.get('/users', user.list);
 
-var apiRuleSet = require('./controllers/api/ruleset.js');
-app.get('/api/ruleset', apiRuleSet.index);
+// Let express routes handle requests that were not handled
+// by any of the middleware registered above.
+// This way LoopBack REST and API Explorer take precedence over
+// express routes.
+app.use(app.router);
 
-//Create server
-var server = http.createServer(app);
+// The static file server should come after all other routes
+// Every request that goes through the static middleware hits
+// the file system to check if a file exists.
+app.use(loopback.static(path.join(__dirname, 'public')));
 
-//Listen on server
-server.listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+// Requests that get this far won't be handled
+// by any middleware. Convert them into a 404 error
+// that will be handled later down the chain.
+app.use(loopback.urlNotFound());
+
+// The ultimate error handler.
+app.use(loopback.errorHandler());
+
+// Start the server
+app.listen(port, ip, function() {
+    if(process.env.C9_PROJECT) {
+        // Customize the url for the Cloud9 environment
+        baseURL = 'https://' + process.env.C9_PROJECT + '-c9-' + process.env.C9_USER + '.c9.io';
+    }
+    console.error('StrongLoop Suite sample is now ready at ' + baseURL);
 });
-
-//Create socket.io
-var io = require('socket.io').listen(server);
-io.set('log level', 1); //debug level reduced
-
-/**
- * Use http://localhost:3001/dashboard/ to access the resources declarations
- * @type {exports}
- */
-var deployd = require('deployd')
-    , options = {port: 3001, env:'development'};
-
-var dpd = deployd(options);
-
-dpd.listen();

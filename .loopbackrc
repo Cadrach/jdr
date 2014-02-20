@@ -1,0 +1,16 @@
+{
+    "dev": {
+        "mongodb": {
+            "host": "127.0.0.1",
+            "database": "demo",
+            "port": 27017
+        }
+    },
+    "demo": {
+        "mongodb": {
+            "host": "127.0.0.1",
+            "database": "demo",
+            "port": 27017
+        }
+    }
+}
