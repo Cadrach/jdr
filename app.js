@@ -54,3 +54,14 @@ server.listen(app.get('port'), function(){
 //Create socket.io
 var io = require('socket.io').listen(server);
 io.set('log level', 1); //debug level reduced
+
+/**
+ * Use http://localhost:3001/dashboard/ to access the resources declarations
+ * @type {exports}
+ */
+var deployd = require('deployd')
+    , options = {port: 3001, env:'development'};
+
+var dpd = deployd(options);
+
+dpd.listen();
