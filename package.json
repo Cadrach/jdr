@@ -1,26 +1,29 @@
 {
-  "version": "0.0.0",
-  "main": "app.js",
-  "bin": "server.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "loopback": "1.x >=1.6.1",
-    "loopback-connector-mongodb": "*",
-    "loopback-connector-rest": "~1.1.3",
-    "rc": "~0.3.3",
-    "strong-task-emitter": "~0.0.5",
-      "request": "~2.33.0"
-  },
-  "optionalDependencies": {
-    "loopback-explorer": "~1.1.0",
-    "loopback-push-notification": "~1.1.0"
-  },
+    "version": "0.0.0",
+    "main": "app.js",
+    "bin": "server.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "loopback": "*",
+        "loopback-connector-mongodb": "*",
+        "loopback-connector-rest": "~1.1.3",
+        "rc": "~0.3.3",
+        "strong-task-emitter": "~0.0.5",
+        "request": "~2.33.0"
+    },
+    "optionalDependencies": {
+        "loopback-explorer": "~1.1.0",
+        "loopback-push-notification": "~1.1.0"
+    },
     "devDependencies": {
         "supertest": "~0.9.0",
         "mocha": "~1.17.1",
-        "async": "~0.2.10"
+        "async": "~0.2.10",
+        "grunt": "*",
+        "grunt-loopback-angular": "*",
+        "grunt-docular": "*"
     },
-  "name": "jdr"
+    "name": "jdr"
 }
