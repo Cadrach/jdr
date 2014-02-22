@@ -17,4 +17,4 @@ var Ruleset = module.exports = db.createModel(
 );
 
 //A rule set can have many sheets models
-Ruleset.hasMany(SheetModel);
+Ruleset.hasMany('sheets', {model: SheetModel});

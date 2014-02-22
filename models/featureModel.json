@@ -1,0 +1,17 @@
+{
+  "name": "FeatureModel",
+  "options": {
+    "plural": "featuremodels"
+  },
+  "properties": {
+      "name": {
+          "type": "String",
+          "required": true,
+          "length": 20
+      },
+      "description": {
+          "type": "String",
+          "length": 20
+      }
+  }
+}
