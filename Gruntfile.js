@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
 //        'jshint',
         'loopback_angular'
-//        , 'docular' // newly added
+        , 'docular' // newly added
 //        'qunit', 'concat', 'uglify'
     ]);
 };
