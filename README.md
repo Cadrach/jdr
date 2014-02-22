@@ -113,3 +113,47 @@ TODO
     * Chat
     * Skype integration
     * All roll registered, can be hidden from players (by default for DM)
+
+
+
+* Structure
+    * FeatureModel
+        * N FeatureRoll
+        * Properties
+            * templateUrl
+    * Ruleset
+        * N SheetModels
+            * N Groups
+                * N Features
+                    * 1 FeatureModel
+                    * Properties
+                        * Name
+            * Properties
+                * templateUrl
+                * N CustomAddableFeature
+                    * 1 FeatureModel
+                    * (?) N FeatureExamples
+
+    * Game
+        * 1 Ruleset
+        * 0-1 Campaign (group of scenarios)
+        * 0-N Scenario (library of sheets & clues, duplicated on game creation)
+        * N Events
+        * N Sheets
+            * 1 SheetModel
+                * N FeatureValue
+                    * 1 Feature
+            * Properties
+                * Locked groups (prevent edition of certain parts, admin only)
+                * Player access (admin have access to all sheets)
+        * N Players
+            * 1 Account
+            * N accesses to Sheets, Clues
+            * Properties
+                * Role (player or admin, can have N of both)
+        * N Addendums/Clues (Letters, images, maps)
+        * Properties
+            * Status
+            * Can add admin
+            * Can add
+    * Accounts
