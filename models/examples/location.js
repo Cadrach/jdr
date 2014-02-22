@@ -2,12 +2,12 @@
  * Module Dependencies
  */
 
-var db = require('../data-sources/db');
+var db = require('../../data-sources/db');
 var config = require('./location.json');
 var loopback = require('loopback');
 var GeoPoint = loopback.GeoPoint;
 var TaskEmitter = require('strong-task-emitter');
-var rest = require('../data-sources/rest-geocode');
+var rest = require('../../data-sources/rest-geocode');
 var Inventory = require('./inventory');
 
 /**
@@ -68,7 +68,7 @@ loopback.remoteMethod(
       {arg: 'page', type: 'Number', description: 'number of pages (page size=10)'},
       {arg: 'max', type: 'Number', description: 'max distance in miles'}
     ],
-    returns: {arg: 'locations', root: true, }
+    returns: {arg: 'locations', root: true }
   }
 );
 

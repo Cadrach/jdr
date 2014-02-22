@@ -1,0 +1,17 @@
+{
+  "name": "SheetModel",
+  "options": {
+    "plural": "sheetmodels"
+  },
+  "properties": {
+      "name": {
+          "type": "String",
+          "required": true,
+          "length": 20
+      },
+      "description": {
+          "type": "String",
+          "length": 20
+      }
+  }
+}
