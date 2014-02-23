@@ -1,7 +1,7 @@
 {
   "name": "Feature",
   "options": {
-    "plural": "features"
+    "plural": "Features"
   },
   "properties": {
       "name": {

@@ -34,7 +34,7 @@ module.factory(
   "Feature",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/features/:id",
+      urlBase + "/Features/:id",
       { 'id': '@id' },
       {
         /**
@@ -71,7 +71,7 @@ module.factory(
          * </em>
          */
         "create": {
-          url: urlBase + "/features",
+          url: urlBase + "/Features",
           method: "POST",
         },
         /**
@@ -108,7 +108,7 @@ module.factory(
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/features",
+          url: urlBase + "/Features",
           method: "PUT",
         },
         /**
@@ -145,7 +145,7 @@ module.factory(
          * </em>
          */
         "upsert": {
-          url: urlBase + "/features",
+          url: urlBase + "/Features",
           method: "PUT",
         },
         /**
@@ -176,7 +176,7 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/features/:id/exists",
+          url: urlBase + "/Features/:id/exists",
           method: "GET",
         },
         /**
@@ -208,7 +208,7 @@ module.factory(
          * </em>
          */
         "findById": {
-          url: urlBase + "/features/:id",
+          url: urlBase + "/Features/:id",
           method: "GET",
         },
         /**
@@ -240,7 +240,7 @@ module.factory(
          * </em>
          */
         "find": {
-          url: urlBase + "/features",
+          url: urlBase + "/Features",
           method: "GET",
           isArray: true,
         },
@@ -273,7 +273,7 @@ module.factory(
          * </em>
          */
         "findOne": {
-          url: urlBase + "/features/findOne",
+          url: urlBase + "/Features/findOne",
           method: "GET",
         },
         /**
@@ -302,7 +302,7 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/features/:id",
+          url: urlBase + "/Features/:id",
           method: "DELETE",
         },
         /**
@@ -331,7 +331,7 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/features/:id",
+          url: urlBase + "/Features/:id",
           method: "DELETE",
         },
         /**
@@ -360,7 +360,7 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/features/:id",
+          url: urlBase + "/Features/:id",
           method: "DELETE",
         },
         /**
@@ -391,7 +391,7 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/features/count",
+          url: urlBase + "/Features/count",
           method: "GET",
         },
         /**
@@ -428,7 +428,7 @@ module.factory(
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/features/:id",
+          url: urlBase + "/Features/:id",
           method: "PUT",
         },
       }
@@ -437,12 +437,12 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Featuregroup
+ * @name lbServices.FeatureGroup
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Featuregroup` model.
+ * A $resource object for interacting with the `FeatureGroup` model.
  *
  * ## Example
  *
@@ -452,16 +452,16 @@ module.factory(
  *
  */
 module.factory(
-  "Featuregroup",
+  "FeatureGroup",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/featuregroups/:id",
+      urlBase + "/FeatureGroups/:id",
       { 'id': '@id' },
       {
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#create
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#create
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -488,17 +488,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/featuregroups",
+          url: urlBase + "/FeatureGroups",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#updateOrCreate
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#updateOrCreate
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -525,17 +525,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/featuregroups",
+          url: urlBase + "/FeatureGroups",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#upsert
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#upsert
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -562,17 +562,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/featuregroups",
+          url: urlBase + "/FeatureGroups",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#exists
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#exists
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -597,13 +597,13 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/featuregroups/:id/exists",
+          url: urlBase + "/FeatureGroups/:id/exists",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#findById
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#findById
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -625,17 +625,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/featuregroups/:id",
+          url: urlBase + "/FeatureGroups/:id",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#find
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#find
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -657,18 +657,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "find": {
-          url: urlBase + "/featuregroups",
+          url: urlBase + "/FeatureGroups",
           method: "GET",
           isArray: true,
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#findOne
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#findOne
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -690,17 +690,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/featuregroups/findOne",
+          url: urlBase + "/FeatureGroups/findOne",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#destroyById
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#destroyById
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -723,13 +723,13 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/featuregroups/:id",
+          url: urlBase + "/FeatureGroups/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#deleteById
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#deleteById
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -752,13 +752,13 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/featuregroups/:id",
+          url: urlBase + "/FeatureGroups/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#removeById
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#removeById
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -781,13 +781,13 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/featuregroups/:id",
+          url: urlBase + "/FeatureGroups/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#count
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#count
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -812,13 +812,13 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/featuregroups/count",
+          url: urlBase + "/FeatureGroups/count",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#prototype$updateAttributes
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#prototype$updateAttributes
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -845,17 +845,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/featuregroups/:id",
+          url: urlBase + "/FeatureGroups/:id",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#prototype$__get__features
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#prototype$__get__features
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -877,18 +877,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "prototype$__get__features": {
-          url: urlBase + "/featuregroups/:id/features",
+          url: urlBase + "/FeatureGroups/:id/features",
           method: "GET",
           isArray: true,
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#prototype$__create__features
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#prototype$__create__features
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -915,17 +915,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "prototype$__create__features": {
-          url: urlBase + "/featuregroups/:id/features",
+          url: urlBase + "/FeatureGroups/:id/features",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuregroup#prototype$__delete__features
-         * @methodOf lbServices.Featuregroup
+         * @name lbServices.FeatureGroup#prototype$__delete__features
+         * @methodOf lbServices.FeatureGroup
          *
          * @description
          *
@@ -948,11 +948,11 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuregroup` object.)
+         * This usually means the response is a `FeatureGroup` object.)
          * </em>
          */
         "prototype$__delete__features": {
-          url: urlBase + "/featuregroups/:id/features",
+          url: urlBase + "/FeatureGroups/:id/features",
           method: "DELETE",
         },
       }
@@ -961,12 +961,12 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Featuremodel
+ * @name lbServices.FeatureModel
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Featuremodel` model.
+ * A $resource object for interacting with the `FeatureModel` model.
  *
  * ## Example
  *
@@ -976,16 +976,16 @@ module.factory(
  *
  */
 module.factory(
-  "Featuremodel",
+  "FeatureModel",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/featuremodels/:id",
+      urlBase + "/FeatureModels/:id",
       { 'id': '@id' },
       {
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#create
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#create
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1012,17 +1012,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/featuremodels",
+          url: urlBase + "/FeatureModels",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#updateOrCreate
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#updateOrCreate
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1049,17 +1049,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/featuremodels",
+          url: urlBase + "/FeatureModels",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#upsert
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#upsert
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1086,17 +1086,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/featuremodels",
+          url: urlBase + "/FeatureModels",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#exists
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#exists
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1121,13 +1121,13 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/featuremodels/:id/exists",
+          url: urlBase + "/FeatureModels/:id/exists",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#findById
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#findById
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1149,17 +1149,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/featuremodels/:id",
+          url: urlBase + "/FeatureModels/:id",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#find
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#find
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1181,18 +1181,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "find": {
-          url: urlBase + "/featuremodels",
+          url: urlBase + "/FeatureModels",
           method: "GET",
           isArray: true,
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#findOne
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#findOne
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1214,17 +1214,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/featuremodels/findOne",
+          url: urlBase + "/FeatureModels/findOne",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#destroyById
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#destroyById
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1247,13 +1247,13 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/featuremodels/:id",
+          url: urlBase + "/FeatureModels/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#deleteById
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#deleteById
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1276,13 +1276,13 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/featuremodels/:id",
+          url: urlBase + "/FeatureModels/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#removeById
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#removeById
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1305,13 +1305,13 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/featuremodels/:id",
+          url: urlBase + "/FeatureModels/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#count
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#count
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1336,13 +1336,13 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/featuremodels/count",
+          url: urlBase + "/FeatureModels/count",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Featuremodel#prototype$updateAttributes
-         * @methodOf lbServices.Featuremodel
+         * @name lbServices.FeatureModel#prototype$updateAttributes
+         * @methodOf lbServices.FeatureModel
          *
          * @description
          *
@@ -1369,11 +1369,11 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Featuremodel` object.)
+         * This usually means the response is a `FeatureModel` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/featuremodels/:id",
+          url: urlBase + "/FeatureModels/:id",
           method: "PUT",
         },
       }
@@ -1400,7 +1400,7 @@ module.factory(
   "Ruleset",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/rulesets/:id",
+      urlBase + "/Rulesets/:id",
       { 'id': '@id' },
       {
         /**
@@ -1437,7 +1437,7 @@ module.factory(
          * </em>
          */
         "create": {
-          url: urlBase + "/rulesets",
+          url: urlBase + "/Rulesets",
           method: "POST",
         },
         /**
@@ -1474,7 +1474,7 @@ module.factory(
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/rulesets",
+          url: urlBase + "/Rulesets",
           method: "PUT",
         },
         /**
@@ -1511,7 +1511,7 @@ module.factory(
          * </em>
          */
         "upsert": {
-          url: urlBase + "/rulesets",
+          url: urlBase + "/Rulesets",
           method: "PUT",
         },
         /**
@@ -1542,7 +1542,7 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/rulesets/:id/exists",
+          url: urlBase + "/Rulesets/:id/exists",
           method: "GET",
         },
         /**
@@ -1574,7 +1574,7 @@ module.factory(
          * </em>
          */
         "findById": {
-          url: urlBase + "/rulesets/:id",
+          url: urlBase + "/Rulesets/:id",
           method: "GET",
         },
         /**
@@ -1606,7 +1606,7 @@ module.factory(
          * </em>
          */
         "find": {
-          url: urlBase + "/rulesets",
+          url: urlBase + "/Rulesets",
           method: "GET",
           isArray: true,
         },
@@ -1639,7 +1639,7 @@ module.factory(
          * </em>
          */
         "findOne": {
-          url: urlBase + "/rulesets/findOne",
+          url: urlBase + "/Rulesets/findOne",
           method: "GET",
         },
         /**
@@ -1668,7 +1668,7 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/rulesets/:id",
+          url: urlBase + "/Rulesets/:id",
           method: "DELETE",
         },
         /**
@@ -1697,7 +1697,7 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/rulesets/:id",
+          url: urlBase + "/Rulesets/:id",
           method: "DELETE",
         },
         /**
@@ -1726,7 +1726,7 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/rulesets/:id",
+          url: urlBase + "/Rulesets/:id",
           method: "DELETE",
         },
         /**
@@ -1757,7 +1757,7 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/rulesets/count",
+          url: urlBase + "/Rulesets/count",
           method: "GET",
         },
         /**
@@ -1794,7 +1794,7 @@ module.factory(
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/rulesets/:id",
+          url: urlBase + "/Rulesets/:id",
           method: "PUT",
         },
         /**
@@ -1826,7 +1826,7 @@ module.factory(
          * </em>
          */
         "prototype$__get__sheets": {
-          url: urlBase + "/rulesets/:id/sheets",
+          url: urlBase + "/Rulesets/:id/sheets",
           method: "GET",
           isArray: true,
         },
@@ -1864,7 +1864,7 @@ module.factory(
          * </em>
          */
         "prototype$__create__sheets": {
-          url: urlBase + "/rulesets/:id/sheets",
+          url: urlBase + "/Rulesets/:id/sheets",
           method: "POST",
         },
         /**
@@ -1897,7 +1897,7 @@ module.factory(
          * </em>
          */
         "prototype$__delete__sheets": {
-          url: urlBase + "/rulesets/:id/sheets",
+          url: urlBase + "/Rulesets/:id/sheets",
           method: "DELETE",
         },
       }
@@ -1906,12 +1906,12 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Sheetmodel
+ * @name lbServices.SheetModel
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Sheetmodel` model.
+ * A $resource object for interacting with the `SheetModel` model.
  *
  * ## Example
  *
@@ -1921,16 +1921,16 @@ module.factory(
  *
  */
 module.factory(
-  "Sheetmodel",
+  "SheetModel",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/sheetmodels/:id",
+      urlBase + "/SheetModels/:id",
       { 'id': '@id' },
       {
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#create
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#create
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -1957,17 +1957,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/sheetmodels",
+          url: urlBase + "/SheetModels",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#updateOrCreate
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#updateOrCreate
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -1994,17 +1994,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/sheetmodels",
+          url: urlBase + "/SheetModels",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#upsert
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#upsert
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2031,17 +2031,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/sheetmodels",
+          url: urlBase + "/SheetModels",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#exists
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#exists
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2066,13 +2066,13 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/sheetmodels/:id/exists",
+          url: urlBase + "/SheetModels/:id/exists",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#findById
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#findById
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2094,17 +2094,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/sheetmodels/:id",
+          url: urlBase + "/SheetModels/:id",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#find
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#find
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2126,18 +2126,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "find": {
-          url: urlBase + "/sheetmodels",
+          url: urlBase + "/SheetModels",
           method: "GET",
           isArray: true,
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#findOne
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#findOne
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2159,17 +2159,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/sheetmodels/findOne",
+          url: urlBase + "/SheetModels/findOne",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#destroyById
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#destroyById
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2192,13 +2192,13 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/sheetmodels/:id",
+          url: urlBase + "/SheetModels/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#deleteById
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#deleteById
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2221,13 +2221,13 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/sheetmodels/:id",
+          url: urlBase + "/SheetModels/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#removeById
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#removeById
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2250,13 +2250,13 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/sheetmodels/:id",
+          url: urlBase + "/SheetModels/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#count
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#count
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2281,13 +2281,46 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/sheetmodels/count",
+          url: urlBase + "/SheetModels/count",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#prototype$updateAttributes
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#full
+         * @methodOf lbServices.SheetModel
+         *
+         * @description
+         *
+         * Returns full sheet informations
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{String}` - The id of the sheet
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `sheet` – `{object=}` - 
+         *
+         *  - `groups` – `{array=}` - 
+         */
+        "full": {
+          url: urlBase + "/SheetModels/full",
+          method: "GET",
+        },
+        /**
+         * @ngdoc method
+         * @name lbServices.SheetModel#prototype$updateAttributes
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2314,17 +2347,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/sheetmodels/:id",
+          url: urlBase + "/SheetModels/:id",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#prototype$__get__groups
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#prototype$__get__groups
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2346,18 +2379,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "prototype$__get__groups": {
-          url: urlBase + "/sheetmodels/:id/groups",
+          url: urlBase + "/SheetModels/:id/groups",
           method: "GET",
           isArray: true,
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#prototype$__create__groups
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#prototype$__create__groups
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2384,17 +2417,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "prototype$__create__groups": {
-          url: urlBase + "/sheetmodels/:id/groups",
+          url: urlBase + "/SheetModels/:id/groups",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.Sheetmodel#prototype$__delete__groups
-         * @methodOf lbServices.Sheetmodel
+         * @name lbServices.SheetModel#prototype$__delete__groups
+         * @methodOf lbServices.SheetModel
          *
          * @description
          *
@@ -2417,11 +2450,11 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Sheetmodel` object.)
+         * This usually means the response is a `SheetModel` object.)
          * </em>
          */
         "prototype$__delete__groups": {
-          url: urlBase + "/sheetmodels/:id/groups",
+          url: urlBase + "/SheetModels/:id/groups",
           method: "DELETE",
         },
       }

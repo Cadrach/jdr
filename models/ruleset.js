@@ -11,7 +11,7 @@ var SheetModel = require('./sheetModel')
  */
 
 var Ruleset = module.exports = db.createModel(
-  'ruleset',
+  'Ruleset',
   config.properties,
   config.options
 );

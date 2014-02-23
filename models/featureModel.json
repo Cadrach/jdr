@@ -1,7 +1,7 @@
 {
   "name": "FeatureModel",
   "options": {
-    "plural": "featuremodels"
+    "plural": "FeatureModels"
   },
   "properties": {
       "name": {

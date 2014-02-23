@@ -11,7 +11,7 @@ var FeatureModel = require('./featureModel');
  */
 
 var Feature = module.exports = db.createModel(
-  'feature',
+  'Feature',
   config.properties,
   config.options
 );

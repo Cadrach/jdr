@@ -10,7 +10,7 @@ var config = require('./featureModel.json');
  */
 
 var FeatureModel = module.exports = db.createModel(
-    'featuremodel',
+    'FeatureModel',
     config.properties,
     config.options
 );

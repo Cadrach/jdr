@@ -11,7 +11,7 @@ var Feature = require('./feature');
  */
 
 var FeatureGroup = module.exports = db.createModel(
-    'featuregroup',
+    'FeatureGroup',
     config.properties,
     config.options
 );

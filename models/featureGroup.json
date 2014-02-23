@@ -1,7 +1,7 @@
 {
   "name": "FeatureGroup",
   "options": {
-    "plural": "featuregroups"
+    "plural": "FeatureGroups"
   },
   "properties": {
       "name": {
