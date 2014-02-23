@@ -1,8 +1,9 @@
 
-function controllerAdminMain($scope, $location, Ruleset, FeatureModel) {
+function controllerAdminMain($scope, $location, Ruleset, FeatureModel, Game) {
     "use strict";
 
     $scope.rules = Ruleset.find();
+    $scope.games = Game.find();
     $scope.featureModels = FeatureModel.find();
 
     /**
