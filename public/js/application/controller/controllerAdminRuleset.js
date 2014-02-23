@@ -13,7 +13,7 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
                 include: 'sheets'
             }});
         }
-    })
+    });
 
     $scope.addSheetModel = function(){
         $translate('NAME_NEW_SHEETMODEL_FOR_RULESET').then(function(text){
@@ -27,5 +27,5 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
                 }));
             }
         })
-    }
+    };
 }

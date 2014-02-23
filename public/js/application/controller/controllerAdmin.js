@@ -1,12 +1,9 @@
 
-function controllerAdmin($scope, $location, Ruleset) {
+function controllerAdmin($scope, $location, Ruleset, FeatureModel) {
     "use strict";
 
     $scope.rules = Ruleset.find();
-
-    $scope.hasRuleset = function(){
-        return $location.search().rule ? true:false;
-    }
+    $scope.featureModels = FeatureModel.find();
 
     /**
      * Return TRUE if key=value is in route
@@ -16,6 +13,6 @@ function controllerAdmin($scope, $location, Ruleset) {
     $scope.hasRoute = function(key, value)
     {
         var search = $location.search();
-        return ! search[key] || search[key]!=value ? false:true;
+        return (! search[key] || (value && search[key]!=value)) ? false:true;
     }
 }

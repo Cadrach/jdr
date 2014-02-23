@@ -18,18 +18,34 @@
     </head>
     <body>
         <div ng-controller="controllerAdmin">
-            <h1>{{'ADMINISTRATION' | translate}}</h1>
+            <h1>
+                <a href="/">
+                    <span class="glyphicon glyphicon-home"></span>
+                    &nbsp;{{'ADMINISTRATION' | translate}}
+                </a>
+            </h1>
 
-            <!-- Ruleset selector -->
-            <table class="table" ng-hide="hasRuleset()">
-                <tr ng-repeat="rule in rules">
-                    <th>{{rule.name}}</th>
-                    <td><a ng-href="{{'#?rule=' + rule.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
-                </tr>
-            </table>
+            <!-- Ruleset / FeatureModel selector -->
+            <div ng-hide="hasRoute('rule') || hasRoute('featureModel')">
+                <h3>{{'RULES'|translate}}</h3>
+                <table class="table">
+                    <tr ng-repeat="rule in rules">
+                        <th>{{rule.name}}</th>
+                        <td><a ng-href="{{'#?rule=' + rule.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
+                    </tr>
+                </table>
+
+                <h3>{{'FEATURE_MODELS'|translate}}</h3>
+                <table class="table">
+                    <tr ng-repeat="featureModel in featureModels">
+                        <th>{{featureModel.name}}</th>
+                        <td><a ng-href="{{'#?featureModel=' + featureModel.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
+                    </tr>
+                </table>
+            </div>
 
             <!-- Ruleset Detail -->
-            <div ng-controller="controllerAdminRuleset" ng-show="hasRuleset()">
+            <div ng-controller="controllerAdminRuleset" ng-show="hasRoute('rule')">
                 <h2>{{rule.name}}</h2>
                 <tabset>
                     <!-- Ruleset SheetModels -->
@@ -63,6 +79,11 @@
                 </tabset>
             </div>
 
+            <div
+                    ng-controller="controllerAdminFeatureModel"
+                    ng-show="hasRoute('featureModel')"
+                    ng-include="'templates/admin/featureModel.html'">
+            </div>
         </div>
 
 
@@ -91,6 +112,7 @@
         <script src="js/application/controller/controllerAdmin.js"></script>
         <script src="js/application/controller/controllerAdminRuleset.js"></script>
         <script src="js/application/controller/controllerAdminSheetModel.js"></script>
+        <script src="js/application/controller/controllerAdminFeatureModel.js"></script>
 
         <!--Directives-->
         <script src="js/application/directives/jdrUpdater.js"></script>
