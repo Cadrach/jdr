@@ -1,6 +1,53 @@
 <div class="panel panel-default">
-    <div class="panel-heading">{{sheet.name}}</div>
+
+    <div class="panel-heading">
+        <button class="btn btn-primary btn-sm pull-right" ng-click="addGroup()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        {{sheet.name}}
+    </div>
+
     <div class="panel-body">
-        <pre>{{sheet|json}}</pre>
+        <div class="col-lg-6" ng-repeat="group in sheet.groups">
+            <h3>
+                {{group.name}}
+                <button class="btn btn-danger btn-sm pull-right" ng-click="removeGroup(group)">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+            </h3>
+            <!--<div class="panel panel-default">-->
+                <table class="table table-bordered table-condensed table-striped">
+                    <colgroup>
+                        <col/>
+                        <col width="75"/>
+                        <col width="75"/>
+                        <col width="40"/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>{{'NAME'|translate}}</th>
+                            <th>{{'SHORTNAME'|translate}}</th>
+                            <th>{{'ORDER'|translate}}</th>
+                            <th>
+                                <button class="btn btn-primary btn-sm pull-right" ng-click="addFeature(group)">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="feature in group.features|orderBy:'order'">
+                        <th><input class="form-control" type="text" ng-model="feature.name" jdr-updater/></th>
+                        <td><input class="form-control" type="text" ng-model="feature.nameShort" jdr-updater/></td>
+                        <td><input class="form-control" type="number" ng-model="feature.order" jdr-updater/></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+
+                <!--<pre>{{group.features|json}}</pre>-->
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
     </div>
 </div>

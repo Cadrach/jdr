@@ -8,6 +8,7 @@ var module = angular.module('application', [
         'ui.bootstrap',
         'ajoslin.promise-tracker',
         'pascalprecht.translate',
+        'dialogs',
         'jdr'
 ]).config(function($translateProvider){
     //    //Add header so that all Ajax calls are treated as such server side
@@ -15,7 +16,9 @@ var module = angular.module('application', [
     $translateProvider.translations('en', {
         'ADMINISTRATION': 'Administration Panel',
         'SHEETS': 'Sheets',
-        'NAME_NEW_SHEETMODEL_FOR_RULESET': 'Specify the name of the new sheet added to the rules'
+        'NAME_NEW_SHEETMODEL_FOR_RULESET': 'Specify the name of the new sheet added to the rules',
+        'NAME_NEW_GROUP_FOR_SHEETMODEL': 'Specify the name of the new group added to the sheet',
+        'CONFIRM': 'Are you sure?'
     });
 
     $translateProvider.preferredLanguage('en');

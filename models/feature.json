@@ -9,6 +9,13 @@
           "required": true,
           "length": 20
       },
+      "nameShort": {
+          "type": "String",
+          "length": 3
+      },
+      "order": {
+          "type": "Number"
+      },
       "description": {
           "type": "String",
           "length": 20

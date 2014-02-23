@@ -2,7 +2,6 @@
 function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
     "use strict";
 
-    console.log('RULE', $location.search().rule)
     $scope.rule = null;
 
     $scope.$on('$locationChangeSuccess', function(){
@@ -10,7 +9,7 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
         if(id && (!$scope.rule || $scope.rule.id != id) )
         {
             $scope.rule = Ruleset.findOne({filter: {
-                id: id,
+                where: {id: id},
                 include: 'sheets'
             }});
         }
