@@ -1,5 +1,5 @@
 
-function controllerAdmin($scope, $location, Ruleset, FeatureModel) {
+function controllerAdminMain($scope, $location, Ruleset, FeatureModel) {
     "use strict";
 
     $scope.rules = Ruleset.find();

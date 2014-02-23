@@ -17,9 +17,9 @@
 
     </head>
     <body>
-        <div ng-controller="controllerAdmin">
+        <div ng-controller="controllerAdminMain">
             <h1>
-                <a href="/">
+                <a href="?">
                     <span class="glyphicon glyphicon-home"></span>
                     &nbsp;{{'ADMINISTRATION' | translate}}
                 </a>
@@ -109,10 +109,10 @@
         <script src="js/application/application.js"></script>
 
         <!--Controllers-->
-        <script src="js/application/controller/controllerAdmin.js"></script>
-        <script src="js/application/controller/controllerAdminRuleset.js"></script>
-        <script src="js/application/controller/controllerAdminSheetModel.js"></script>
-        <script src="js/application/controller/controllerAdminFeatureModel.js"></script>
+        <script src="js/application/controllers/admin/main.js"></script>
+        <script src="js/application/controllers/admin/ruleset.js"></script>
+        <script src="js/application/controllers/admin/sheetModel.js"></script>
+        <script src="js/application/controllers/admin/featureModel.js"></script>
 
         <!--Directives-->
         <script src="js/application/directives/jdrUpdater.js"></script>

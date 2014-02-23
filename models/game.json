@@ -1,0 +1,17 @@
+{
+  "name": "Game",
+  "options": {
+    "plural": "Games"
+  },
+  "properties": {
+      "name": {
+          "type": "String",
+          "required": true,
+          "length": 20
+      },
+      "description": {
+          "type": "String",
+          "length": 200
+      }
+  }
+}
