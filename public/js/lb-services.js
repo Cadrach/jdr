@@ -2286,39 +2286,6 @@ module.factory(
         },
         /**
          * @ngdoc method
-         * @name lbServices.SheetModel#full
-         * @methodOf lbServices.SheetModel
-         *
-         * @description
-         *
-         * Returns full sheet informations
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{String}` - The id of the sheet
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `sheet` – `{object=}` - 
-         *
-         *  - `groups` – `{array=}` - 
-         */
-        "full": {
-          url: urlBase + "/SheetModels/full",
-          method: "GET",
-        },
-        /**
-         * @ngdoc method
          * @name lbServices.SheetModel#prototype$updateAttributes
          * @methodOf lbServices.SheetModel
          *

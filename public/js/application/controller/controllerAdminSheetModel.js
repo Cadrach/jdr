@@ -8,7 +8,13 @@ function controllerAdminSheetModel($scope, $location, SheetModel) {
         var id = $location.search().sheet;
         if(id)
         {
-            $scope.sheet = SheetModel.findById({id: id});
+//            $scope.sheet = SheetModel.full({
+//                id: id
+//            });
+            $scope.sheet = SheetModel.findOne({filter: {
+                id: id,
+                include: 'groups'
+            }});
         }
     })
 }

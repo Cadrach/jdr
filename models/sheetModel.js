@@ -21,27 +21,27 @@ var SheetModel = module.exports = db.createModel(
 //Relations
 SheetModel.hasMany('groups', {model: FeatureGroup});
 
-//Full information
-SheetModel.full = function(id, callback){
-    SheetModel.findById(id, function(err, sheet){
-        sheet.groups(function(err, groups){
-            callback(err, sheet, groups);
-        })
-    });
-}
-
-
-//Remote methods
-loopback.remoteMethod(
-    SheetModel.full,
-    {
-        description: 'Returns full sheet informations',
-        accepts: [
-            {arg: 'id', type: 'String', required: true, description: 'The id of the sheet'}
-        ],
-        returns: [
-            {arg: 'sheet', type: 'object'},
-            {arg: 'groups', type: 'array' }
-        ]
-    }
-);
+////Full information
+//SheetModel.findOneFull = function(id, callback){
+//    SheetModel.find({
+//        id: id,
+//        include: 'groups'
+//    }, function(err, sheet){
+//        callback(err, sheet[0]);
+//    });
+//}
+//
+//
+////Remote methods
+//loopback.remoteMethod(
+//    SheetModel.findOneFull,
+//    {
+//        description: 'Returns full sheet informations',
+//        accepts: [
+//            {arg: 'id', type: 'String', required: true, description: 'The id of the sheet'}
+//        ],
+//        returns: [
+//            {arg: 'sheet', root: true}
+//        ]
+//    }
+//);

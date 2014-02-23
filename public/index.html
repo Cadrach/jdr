@@ -33,18 +33,18 @@
                 <tabset>
                     <!-- Ruleset SheetModels -->
                     <tab heading="{{'SHEETS'|translate}}">
-                        <button class="btn btn-primary btn-sm pull-left" ng-click="addSheetModel()">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
 
-                        <div class="clearfix"></div>
+                        <div class="clearfix">&nbsp;</div>
 
                         <ul class="list-group col-xs-2">
                             <a
                                class="list-group-item"
                                ng-href="{{'#?rule=' + rule.id + '&sheet=' + sheet.id}}"
-                               ng-repeat="sheet in sheets">
+                               ng-repeat="sheet in rule.sheets">
                                 {{sheet.name}}
+                            </a>
+                            <a class="list-group-item" ng-click="addSheetModel()">
+                                <span class="glyphicon glyphicon-plus"></span>
                             </a>
                         </ul>
 

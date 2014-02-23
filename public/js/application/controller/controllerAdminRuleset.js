@@ -9,8 +9,10 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
         var id = $location.search().rule;
         if(id && (!$scope.rule || $scope.rule.id != id) )
         {
-            $scope.rule = Ruleset.findById({id: id});
-            $scope.sheets = Ruleset.prototype$__get__sheets({id: id});
+            $scope.rule = Ruleset.findOne({filter: {
+                id: id,
+                include: 'sheets'
+            }});
         }
     })
 
