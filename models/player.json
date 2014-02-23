@@ -1,17 +1,12 @@
 {
-  "name": "Ruleset",
+  "name": "Player",
   "options": {
-    "strict": true,
-    "plural": "Rulesets"
+    "plural": "Players"
   },
   "properties": {
       "name": {
           "type": "String",
           "required": true,
-          "length": 20
-      },
-      "description": {
-          "type": "String",
           "length": 20
       }
   }

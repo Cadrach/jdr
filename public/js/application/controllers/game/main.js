@@ -3,6 +3,7 @@ function controllerGameMain($scope, $location, $translate, Game, Sheet) {
     "use strict";
 
     $scope.game = null;
+    $scope.sheets = [];
 
     /**
      * Load game
@@ -13,7 +14,10 @@ function controllerGameMain($scope, $location, $translate, Game, Sheet) {
         {
             $scope.game = Game.findOne({filter: {
                 where: {id: id},
-                include: {ruleset: 'sheets'}
+                include: {
+                    ruleset: 'sheets',
+                    sheets: {}
+                }
             }});
         }
     });
@@ -22,11 +26,11 @@ function controllerGameMain($scope, $location, $translate, Game, Sheet) {
         var value = prompt($translate.instant('NEW_SHEET_NAME'));
         if(value)
         {
-            Sheet.create(null, {
+            $scope.game.sheets.push(Sheet.create(null, {
                 name: value,
                 sheetModelId: sheetModel.id,
                 gameId: $scope.game.id
-            });
+            }));
         }
     }
 

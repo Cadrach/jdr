@@ -23,6 +23,7 @@
                         <col width="75"/>
                         <col width="150"/>
                         <col width="40"/>
+                        <col width="40"/>
                     </colgroup>
                     <thead>
                         <tr>
@@ -30,6 +31,7 @@
                             <th>{{'SHORTNAME'|translate}}</th>
                             <th>{{'ORDER'|translate}}</th>
                             <th>{{'MODEL'|translate}}</th>
+                            <th>&nbsp;</th>
                             <th>
                                 <button class="btn btn-primary btn-sm pull-right" ng-click="addFeature(group)">
                                     <span class="glyphicon glyphicon-plus"></span>
@@ -44,6 +46,11 @@
                         <td><select class="form-control"
                                     ng-model="feature.featureModelId"
                                     ng-options="v.id as v.name for v in featureModels" jdr-updater></select>
+                        </td>
+                        <td>
+                            <button class="btn btn-default" ng-click="configFeature(feature)">
+                                <span class="glyphicon glyphicon-wrench"></span>
+                            </button>
                         </td>
                         <td>&nbsp;</td>
                     </tr>

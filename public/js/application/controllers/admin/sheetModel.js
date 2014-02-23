@@ -1,5 +1,5 @@
 
-function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $modal, SheetModel, FeatureGroup, FeatureModel, Feature) {
+function controllerAdminSheetModel($scope, $location, $translate, $dialogs, SheetModel, FeatureGroup, FeatureModel, Feature) {
     "use strict";
 
     /**
@@ -18,7 +18,7 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
         {
             $scope.sheet = SheetModel.findOne({filter: {
                 where: {id: id},
-                include: {groups: {features: 'featureModel'}}
+                include: {groups: {features: {}}}
             }});
         }
     });
@@ -49,21 +49,10 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
     }
 
     /**
-     *
+     * Add a feature to the specified group
      * @param group
      */
     $scope.addFeature = function(group){
-//        $modal.open({
-//            templateUrl: 'templates/admin/edit-feature.html',
-//            controller: controllerAdminFeature
-//        }).result.then(function(item){
-//            group.features.push(Feature.save({
-//                featureGroupId: group.id,
-//                name: item.name
-//            }));
-//        }, function(){
-//            console.log('delete');
-//        });
         var value = prompt($translate.instant('NEW_FEATURE'));
         if(value)
         {
@@ -73,11 +62,14 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
             }));
         }
     }
+
+    $scope.configFeature = function(feature){
+        console.log(feature);
+    }
 }
 
 function controllerAdminFeature($scope){
     $scope.item = {};
-
 
     /**
      * Cancel modal
