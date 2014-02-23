@@ -15,11 +15,11 @@
     <body>
         <div ng-controller="controllerGameMain">
             <h1>{{game.name}}</h1>
+            <select class="form-control"
+                    ng-model="selectedSheet"
+                    ng-options="v as v.name for v in game.ruleset.sheets"></select>
+            <button ng-click="newSheet(selectedSheet)">{{'NEW_SHEET'|translate}}</button>
         </div>
-
-
-
-
 
         <!--Angular-->
         <script src="js/bower/angular/angular.js"></script>
