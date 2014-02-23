@@ -28,11 +28,10 @@ module.directive('jdrUpdater', function($parse, $http, $timeout, $injector, prom
                         item = getterItem(scope.$parent);
                     }
 
-                    var copy = angular.copy(item);
-                    delete copy._id;
-                    delete copy._id;
                     var service = $injector.get(itemName.toProperCase());
-                    service.prototype$updateAttributes({id: item.id}, copy);
+                    var data = {};
+                    data[attrName] = item[attrName];
+                    service.prototype$updateAttributes({id: item.id}, data);
                 }
             };
 

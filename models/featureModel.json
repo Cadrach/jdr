@@ -9,6 +9,10 @@
           "required": true,
           "length": 20
       },
+      "templateUrlConfig": {
+          "type": "String",
+          "length": 200
+      },
       "description": {
           "type": "String",
           "length": 20

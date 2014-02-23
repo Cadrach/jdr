@@ -21,6 +21,7 @@
                         <col/>
                         <col width="75"/>
                         <col width="75"/>
+                        <col width="150"/>
                         <col width="40"/>
                     </colgroup>
                     <thead>
@@ -28,6 +29,7 @@
                             <th>{{'NAME'|translate}}</th>
                             <th>{{'SHORTNAME'|translate}}</th>
                             <th>{{'ORDER'|translate}}</th>
+                            <th>{{'MODEL'|translate}}</th>
                             <th>
                                 <button class="btn btn-primary btn-sm pull-right" ng-click="addFeature(group)">
                                     <span class="glyphicon glyphicon-plus"></span>
@@ -39,11 +41,15 @@
                         <th><input class="form-control" type="text" ng-model="feature.name" jdr-updater/></th>
                         <td><input class="form-control" type="text" ng-model="feature.nameShort" jdr-updater/></td>
                         <td><input class="form-control" type="number" ng-model="feature.order" jdr-updater/></td>
+                        <td><select class="form-control"
+                                    ng-model="feature.featureModelId"
+                                    ng-options="v.id as v.name for v in featureModels" jdr-updater></select>
+                        </td>
                         <td>&nbsp;</td>
                     </tr>
                 </table>
 
-                <!--<pre>{{group.features|json}}</pre>-->
+                <pre>{{group.features|json}}</pre>
             </div>
         </div>
 

@@ -17,6 +17,6 @@ var Feature = module.exports = db.createModel(
 );
 
 Feature.belongsTo(FeatureModel, {
-    as: 'model',
-    foreignKey: '_id'
+    as: 'featureModel',
+    foreignKey: 'featureModelId'
 });

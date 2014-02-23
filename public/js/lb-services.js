@@ -34,7 +34,7 @@ module.factory(
   "Dice",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/Features/:id",
+      urlBase + "/Dices/:id",
       { 'id': '@id' },
       {
         /**
@@ -71,7 +71,7 @@ module.factory(
          * </em>
          */
         "create": {
-          url: urlBase + "/Features",
+          url: urlBase + "/Dices",
           method: "POST",
         },
         /**
@@ -108,7 +108,7 @@ module.factory(
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/Features",
+          url: urlBase + "/Dices",
           method: "PUT",
         },
         /**
@@ -145,7 +145,7 @@ module.factory(
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Features",
+          url: urlBase + "/Dices",
           method: "PUT",
         },
         /**
@@ -176,7 +176,7 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/Features/:id/exists",
+          url: urlBase + "/Dices/:id/exists",
           method: "GET",
         },
         /**
@@ -208,7 +208,7 @@ module.factory(
          * </em>
          */
         "findById": {
-          url: urlBase + "/Features/:id",
+          url: urlBase + "/Dices/:id",
           method: "GET",
         },
         /**
@@ -240,7 +240,7 @@ module.factory(
          * </em>
          */
         "find": {
-          url: urlBase + "/Features",
+          url: urlBase + "/Dices",
           method: "GET",
           isArray: true,
         },
@@ -273,7 +273,7 @@ module.factory(
          * </em>
          */
         "findOne": {
-          url: urlBase + "/Features/findOne",
+          url: urlBase + "/Dices/findOne",
           method: "GET",
         },
         /**
@@ -302,7 +302,7 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/Features/:id",
+          url: urlBase + "/Dices/:id",
           method: "DELETE",
         },
         /**
@@ -331,7 +331,7 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/Features/:id",
+          url: urlBase + "/Dices/:id",
           method: "DELETE",
         },
         /**
@@ -360,7 +360,7 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/Features/:id",
+          url: urlBase + "/Dices/:id",
           method: "DELETE",
         },
         /**
@@ -391,7 +391,7 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/Features/count",
+          url: urlBase + "/Dices/count",
           method: "GET",
         },
         /**
@@ -428,7 +428,7 @@ module.factory(
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/Features/:id",
+          url: urlBase + "/Dices/:id",
           method: "PUT",
         },
       }

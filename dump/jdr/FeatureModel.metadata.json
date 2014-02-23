@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "jdr.FeatureModel", "name" : "_id_" } ] }

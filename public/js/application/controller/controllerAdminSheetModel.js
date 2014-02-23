@@ -7,7 +7,7 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
      * @type {null}
      */
     $scope.sheet = null;
-    $scope.featureModels = FeatureModel.find();
+    $scope.featureodels = FeatureModel.find();
 
     /**
      * Load sheet on route change
@@ -18,7 +18,7 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
         {
             $scope.sheet = SheetModel.findOne({filter: {
                 where: {id: id},
-                include: {groups: 'features'}
+                include: {groups: {features: 'featureModel'}}
             }});
         }
     });
@@ -53,17 +53,25 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
      * @param group
      */
     $scope.addFeature = function(group){
-        $modal.open({
-            templateUrl: 'templates/admin/edit-feature.html',
-            controller: controllerAdminFeature
-        }).result.then(function(item){
+//        $modal.open({
+//            templateUrl: 'templates/admin/edit-feature.html',
+//            controller: controllerAdminFeature
+//        }).result.then(function(item){
+//            group.features.push(Feature.save({
+//                featureGroupId: group.id,
+//                name: item.name
+//            }));
+//        }, function(){
+//            console.log('delete');
+//        });
+        var value = prompt($translate.instant('NEW_FEATURE'));
+        if(value)
+        {
             group.features.push(Feature.save({
                 featureGroupId: group.id,
-                name: item.name
+                name: value
             }));
-        }, function(){
-            console.log('delete');
-        });
+        }
     }
 }
 

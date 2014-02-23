@@ -3,7 +3,7 @@
  */
 
 var db = require('../data-sources/db');
-var config = require('./feature.json');
+var config = require('./dice.json');
 
 /**
  * Feature
