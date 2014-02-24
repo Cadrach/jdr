@@ -1,5 +1,5 @@
 
-function controllerAdminSheetModel($scope, $location, $translate, $dialogs, SheetModel, FeatureGroup, FeatureModel, Feature) {
+function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $modal, SheetModel, FeatureGroup, FeatureModel, Feature) {
     "use strict";
 
     /**
@@ -7,7 +7,7 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, Shee
      * @type {null}
      */
     $scope.sheet = null;
-    $scope.featureodels = FeatureModel.find();
+    $scope.featureModels = FeatureModel.find();
 
     /**
      * Load sheet on route change
@@ -64,7 +64,15 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, Shee
     }
 
     $scope.configFeature = function(feature){
-        console.log(feature);
+        $modal.open({
+            templateUrl: 'templates/admin/feature-model/modal.html',
+            controller: controllerAdminFeatureConfig,
+            resolve: {
+                feature: function () {
+                    return feature;
+                }
+            }
+        });
     }
 }
 
