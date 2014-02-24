@@ -39,6 +39,10 @@ app.use(loopback.methodOverride());
 var apiPath = '/api';
 
 // Expose a rest api
+//app.use(apiPath, loopback.rest());
+//AUTH
+app.use(loopback.cookieParser('secret'));
+app.use(loopback.token({model: app.models.JdrAccessToken}));
 app.use(apiPath, loopback.rest());
 
 // API explorer (if present)
@@ -69,6 +73,9 @@ app.use(loopback.urlNotFound());
 
 // The ultimate error handler.
 app.use(loopback.errorHandler());
+
+//AUTH - enable auth
+//app.enableAuth();
 
 // Start the server
 app.listen(port, ip, function() {

@@ -1,21 +1,29 @@
 {
-  "name": "FeatureModel",
-  "options": {
-    "plural": "FeatureModels"
-  },
-  "properties": {
-      "name": {
-          "type": "String",
-          "required": true,
-          "length": 20
-      },
-      "templateUrlConfig": {
-          "type": "String",
-          "length": 200
-      },
-      "description": {
-          "type": "String",
-          "length": 20
-      }
-  }
+    "name": "FeatureModel",
+    "options": {
+        "plural": "FeatureModels",
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "ALLOW",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "properties": {
+        "name": {
+            "type": "String",
+            "required": true,
+            "length": 20
+        },
+        "templateUrlConfig": {
+            "type": "String",
+            "length": 200
+        },
+        "description": {
+            "type": "String",
+            "length": 20
+        }
+    }
 }

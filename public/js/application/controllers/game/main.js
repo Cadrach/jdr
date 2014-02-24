@@ -16,7 +16,7 @@ function controllerGameMain($scope, $location, $translate, Game, Sheet) {
                 where: {id: id},
                 include: {
                     ruleset: 'sheets',
-                    sheets: {}
+                    sheets: {players: {}}
                 }
             }});
         }

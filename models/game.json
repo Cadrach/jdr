@@ -1,17 +1,25 @@
 {
-  "name": "Game",
-  "options": {
-    "plural": "Games"
-  },
-  "properties": {
-      "name": {
-          "type": "String",
-          "required": true,
-          "length": 20
-      },
-      "description": {
-          "type": "String",
-          "length": 200
-      }
-  }
+    "name": "Game",
+    "options": {
+        "plural": "Games",
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "ALLOW",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "properties": {
+        "name": {
+            "type": "String",
+            "required": true,
+            "length": 20
+        },
+        "description": {
+            "type": "String",
+            "length": 200
+        }
+    }
 }

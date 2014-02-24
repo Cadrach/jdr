@@ -1,17 +1,25 @@
 {
-  "name": "FeatureGroup",
-  "options": {
-    "plural": "FeatureGroups"
-  },
-  "properties": {
-      "name": {
-          "type": "String",
-          "required": true,
-          "length": 20
-      },
-      "description": {
-          "type": "String",
-          "length": 20
-      }
-  }
+    "name": "FeatureGroup",
+    "options": {
+        "plural": "FeatureGroups",
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "ALLOW",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "properties": {
+        "name": {
+            "type": "String",
+            "required": true,
+            "length": 20
+        },
+        "description": {
+            "type": "String",
+            "length": 20
+        }
+    }
 }

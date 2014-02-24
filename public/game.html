@@ -38,9 +38,9 @@
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="sheet in game.sheets">
                             {{sheet.name}}
-                            <div class="pull-right">
+                            <div class="pull-right badge">
                                 <span class="glyphicon glyphicon-eye-open"></span>
-                                1
+                                {{sheet.players.length}}
                             </div>
                         </li>
                     </ul>

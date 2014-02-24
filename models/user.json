@@ -1,0 +1,21 @@
+{
+    "options": {
+        "base": "User",
+        "relations": {
+            "accessTokens": {
+                "model": "accessToken",
+                "type": "hasMany",
+                "foreignKey": "userId"
+            }
+        },
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "DENY",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "public": true
+}

@@ -32,7 +32,7 @@
                         </colgroup>
                         <tr ng-repeat="rule in rules">
                             <th>{{rule.name}}</th>
-                            <td><a ng-href="{{'#?rule=' + rule.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
+                            <td><a ng-href="{{'#/?rule=' + rule.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
                         </tr>
                     </table>
                     </div>
@@ -46,7 +46,7 @@
                         </colgroup>
                         <tr ng-repeat="featureModel in featureModels">
                             <th>{{featureModel.name}}</th>
-                            <td><a ng-href="{{'#?featureModel=' + featureModel.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
+                            <td><a ng-href="{{'#/?featureModel=' + featureModel.id}}" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
                         </tr>
                     </table>
                 </div>
@@ -65,7 +65,7 @@
                             <a
                                class="list-group-item"
                                ng-class="{active: hasRoute('sheet', sheet.id)}"
-                               ng-href="{{'#?rule=' + rule.id + '&sheet=' + sheet.id}}"
+                               ng-href="{{'#/?rule=' + rule.id + '&sheet=' + sheet.id}}"
                                ng-repeat="sheet in rule.sheets">
                                 {{sheet.name}}
                             </a>
@@ -87,7 +87,7 @@
                                     class="list-group-item"
                                     target="_blank"
                                     ng-repeat="game in games"
-                                    ng-href="{{'game.html#?id=' + game.id}}">
+                                    ng-href="{{'game.html#/?id=' + game.id}}">
                                 {{game.name}}</a>
                         </ul>
                     </tab>

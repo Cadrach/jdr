@@ -1,18 +1,26 @@
 {
-  "name": "Ruleset",
-  "options": {
-    "strict": true,
-    "plural": "Rulesets"
-  },
-  "properties": {
-      "name": {
-          "type": "String",
-          "required": true,
-          "length": 20
-      },
-      "description": {
-          "type": "String",
-          "length": 20
-      }
-  }
+    "name": "Ruleset",
+    "options": {
+        "strict": true,
+        "plural": "Rulesets",
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "ALLOW",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "properties": {
+        "name": {
+            "type": "String",
+            "required": true,
+            "length": 20
+        },
+        "description": {
+            "type": "String",
+            "length": 20
+        }
+    }
 }
