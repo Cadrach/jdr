@@ -1,6 +1,7 @@
 <span class="pull-left hidden-lg">{{feature.name}}</span>
 <span class="pull-left visible-lg">{{feature.nameShort||feature.name}}</span>
 <input
+        min="{{feature.config.valueMin}}"
         class="form-control pull-right"
         style="width: 60px"
         type="number"
