@@ -17,6 +17,10 @@
             "required": true,
             "length": 20
         },
+        "templateUrl": {
+            "type": "String",
+            "length": 200
+        },
         "description": {
             "type": "String",
             "length": 20

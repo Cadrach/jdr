@@ -1,0 +1,9 @@
+<span class="pull-left hidden-lg">{{feature.name}}</span>
+<span class="pull-left visible-lg">{{feature.nameShort||feature.name}}</span>
+<input
+        class="form-control pull-right"
+        style="width: 60px"
+        type="number"
+        ng-model="sheet.config.features[feature.id].value"
+        jdr-updater="sheet.config"/>
+<div class="clearfix"></div>

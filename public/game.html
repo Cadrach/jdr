@@ -24,9 +24,11 @@
                 <h4>{{'CLUES'|translate}}</h4>
             </div>
 
+            <!-- SHEETS -->
             <div class="col-lg-4">
+                <!-- SHEETS LIST -->
                 <h4>{{'SHEETS'|translate}}</h4>
-                <div class="col-xs-4">
+                <div class="col-sm-4">
                     <select class="form-control"
                             ng-model="selectedSheet"
                             ng-options="v as v.name for v in game.ruleset.sheets"></select>
@@ -36,14 +38,27 @@
                     <div class="clearfix">&nbsp;</div>
 
                     <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="sheet in game.sheets">
+                        <a class="list-group-item"
+                           ng-class="{active: hasRoute('sheet', sheet.id)}"
+                           ng-repeat="sheet in game.sheets"
+                           ng-click="setRoute('sheet', sheet.id)">
                             {{sheet.name}}
                             <div class="pull-right badge">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 {{sheet.players.length}}
                             </div>
-                        </li>
+                        </a>
                     </ul>
+                </div>
+
+                <!-- CURRENT SHEET DETAIL -->
+                <div class="col-sm-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{sheet.name}}</div>
+                        <div class="panel-body"
+                             ng-hide="!sheet"
+                             ng-include="sheet.sheetModel.templateUrl || 'templates/game/sheet/default.html'"></div>
+                    </div>
                 </div>
             </div>
 
@@ -68,6 +83,7 @@
         <script src="js/application/application.js"></script>
 
         <!--Controllers-->
+        <script src="js/application/controllers/abstract/main.js"></script>
         <script src="js/application/controllers/game/main.js"></script>
 
         <!--Directives-->

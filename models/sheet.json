@@ -16,6 +16,10 @@
             "type": "String",
             "required": true,
             "length": 20
+        },
+        "config": {
+            "type": "Object",
+            "default": {"features": {}}
         }
     }
 }

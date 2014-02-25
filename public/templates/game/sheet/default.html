@@ -1,0 +1,16 @@
+<div>
+    <div class="col-sm-6" ng-repeat="group in sheet.sheetModel.groups">
+        <h4>{{group.name}}</h4>
+        <div class="list-group">
+            <div
+                    class="list-group-item"
+                    ng-repeat="feature in group.features"
+                    ng-init="sheet.config.features[feature.id] = sheet.config.features[feature.id] ? sheet.config.features[feature.id]:{}"
+                    ng-include="feature.featureModel.templateUrlDisplay"></div>
+        </div>
+    </div>
+
+    <div class="clearfix">&nbsp;</div>
+
+    <pre>{{sheet|json}}</pre>
+</div>

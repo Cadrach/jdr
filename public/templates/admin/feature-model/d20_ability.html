@@ -1,4 +1,13 @@
 <div>
-    <input class="form-control" type="number" ng-model="feature.config.valueMin" jdr-updater="feature.config"/>
+    <div class="col-sm-3">
+        <label>{{'MIN_VALUE'|translate}}</label>
+        <input class="form-control" type="number" ng-model="feature.config.valueMin" jdr-updater="feature.config"/>
+        <label>{{'MAX_VALUE'|translate}}</label>
+        <input class="form-control" type="number" ng-model="feature.config.valueMax" jdr-updater="feature.config"/>
+    </div>
+
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+
     <pre>{{feature|json}}</pre>
 </div>

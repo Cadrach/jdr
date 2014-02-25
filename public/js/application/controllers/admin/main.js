@@ -1,19 +1,13 @@
 
-function controllerAdminMain($scope, $location, Ruleset, FeatureModel, Game) {
+function controllerAdminMain($injector, $scope, $location, Ruleset, FeatureModel, Game) {
     "use strict";
+
+    //Controller Inheritance
+    $injector.invoke(controllerAbstractMain, this, {
+        $scope: $scope
+    });
 
     $scope.rules = Ruleset.find();
     $scope.games = Game.find();
     $scope.featureModels = FeatureModel.find();
-
-    /**
-     * Return TRUE if key=value is in route
-     * @param values
-     * @returns {boolean}
-     */
-    $scope.hasRoute = function(key, value)
-    {
-        var search = $location.search();
-        return (! search[key] || (value && search[key]!=value)) ? false:true;
-    }
 }

@@ -1,6 +1,11 @@
 
-function controllerGameMain($scope, $location, $translate, Game, Sheet) {
+function controllerGameMain($injector, $scope, $location, $translate, Game, Sheet) {
     "use strict";
+
+    //Controller Inheritance
+    $injector.invoke(controllerAbstractMain, this, {
+        $scope: $scope
+    });
 
     $scope.game = null;
     $scope.sheets = [];
@@ -9,16 +14,41 @@ function controllerGameMain($scope, $location, $translate, Game, Sheet) {
      * Load game
      */
     $scope.$on('$locationChangeSuccess', function(){
-        var id = $location.search().id;
-        if(id && (!$scope.game || $scope.game.id != id) )
+        //Load game
+        var gameId = $location.search().id;
+        if(gameId && (!$scope.game || $scope.game.gameId != gameId) )
         {
             $scope.game = Game.findOne({filter: {
-                where: {id: id},
+                where: {id: gameId},
                 include: {
                     ruleset: 'sheets',
                     sheets: {players: {}}
                 }
             }});
+        }
+
+        //Load Sheet
+        if(gameId)
+        {
+            var sheetId = $location.search().sheet;
+            if(sheetId && (!$scope.sheet || $scope.sheet.id != sheetId) )
+            {
+                $scope.sheet = Sheet.findOne({filter: {
+                    where: {
+                        id: sheetId,
+                        gameId: gameId
+                    },
+                    include: {
+                        sheetModel: {
+                            groups: {
+                                features: {
+                                    featureModel: {}
+                                }
+                            }
+                        }
+                    }
+                }});
+            }
         }
     });
 
