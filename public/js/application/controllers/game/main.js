@@ -9,6 +9,7 @@ function controllerGameMain($injector, $scope, $location, $translate, Game, Shee
 
     $scope.game = null;
     $scope.sheets = [];
+    $scope.sheet = null;
 
     /**
      * Load game
@@ -33,7 +34,7 @@ function controllerGameMain($injector, $scope, $location, $translate, Game, Shee
             var sheetId = $location.search().sheet;
             if(sheetId && (!$scope.sheet || $scope.sheet.id != sheetId) )
             {
-                $scope.sheet = Sheet.findOne({filter: {
+                Sheet.findOne({filter: {
                     where: {
                         id: sheetId,
                         gameId: gameId
@@ -47,7 +48,20 @@ function controllerGameMain($injector, $scope, $location, $translate, Game, Shee
                             }
                         }
                     }
-                }});
+                }}, function(sheet){
+                    //Apply sheet through promise to avoid a flashing due to empty sheet
+                    $scope.sheet = sheet;
+
+                    //Creating default config
+                    var config = {features:{}};
+
+                    //Parsing object to fill default config keys
+                    sheet.sheetModel.groups.forEach(function(group){
+                        group.features.forEach(function(feature){
+                            config.features[feature.id] = sheet.config[feature.id] ? sheet.config[feature.id]:{};
+                        });
+                    });
+                });
             }
         }
     });

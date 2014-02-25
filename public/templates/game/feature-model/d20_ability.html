@@ -1,5 +1,12 @@
-<span class="pull-left hidden-lg">{{feature.name}}</span>
-<span class="pull-left visible-lg">{{feature.nameShort||feature.name}}</span>
+
+<span class="pull-left visible-md">{{feature.name}}</span>
+<span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
+
+<input disabled
+       class="form-control pull-right"
+       style="width: 50px"
+       ng-value="((sheet.config.features[feature.id].value - 10) >= 0 ? '+':'') + Math.floor((sheet.config.features[feature.id].value - 10) / 2)"></span>
+
 <input
         min="{{feature.config.valueMin}}"
         class="form-control pull-right"
@@ -7,4 +14,5 @@
         type="number"
         ng-model="sheet.config.features[feature.id].value"
         jdr-updater="sheet.config"/>
+
 <div class="clearfix"></div>

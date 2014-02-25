@@ -5,12 +5,11 @@
             <div
                     class="list-group-item"
                     ng-repeat="feature in group.features|orderBy:'order'"
-                    ng-init="sheet.config.features[feature.id] = sheet.config.features[feature.id] ? sheet.config.features[feature.id]:{}"
                     ng-include="feature.featureModel.templateUrlDisplay"></div>
         </div>
     </div>
 
     <div class="clearfix">&nbsp;</div>
 
-    <pre>{{sheet|json}}</pre>
+    <!--<pre>{{sheet|json}}</pre>-->
 </div>

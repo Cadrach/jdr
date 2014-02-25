@@ -13,8 +13,18 @@ function controllerAbstractMain($scope, $location, Ruleset, FeatureModel, Game) 
         return (! search[key] || (value && search[key]!=value)) ? false:true;
     }
 
+    /**
+     * Set a parameter in the url address bar
+     * @param key
+     * @param value
+     */
     $scope.setRoute = function(key, value)
     {
         $location.search(key, value);
     }
+
+    /**
+     * Math methods used in ngBind
+     */
+    $scope.Math = Math;
 }
