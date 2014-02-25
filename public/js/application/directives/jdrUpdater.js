@@ -3,11 +3,11 @@ module.directive('jdrUpdater', function($parse, $http, $timeout, $injector, prom
         function link(scope, element, attrs, ngModel) {
 
             //Item name & value
-            var itemName = attrs.ngModel.split('.').slice(0, -1).join('.');
+            var itemName = (attrs.jdrUpdater || attrs.ngModel).split('.').slice(0, -1).join('.');
             var lastValue = null;
 
             //Getter for the object containing the value passed to ngModel
-            var attrName = attrs.jdrUpdater ? attrs.jdrUpdater : attrs.ngModel.split('.').pop();
+            var attrName = (attrs.jdrUpdater || attrs.ngModel).split('.').pop();
             var getterItem = $parse(itemName);
 
             //On focus, store value
