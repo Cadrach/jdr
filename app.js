@@ -28,6 +28,11 @@ loopback.Role.attachTo(db);
 loopback.ACL.attachTo(db);
 app.enableAuth();
 
+//Testing shared function
+var shared = require('./public/js/shared'),
+    sys = require('sys');
+sys.puts(shared.test());
+
 // Set up the HTTP listener ip & port
 var ip = process.env.IP || '0.0.0.0';
 var port = process.env.PORT || 3000;

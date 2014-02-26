@@ -5,7 +5,7 @@
 <input disabled
        class="form-control pull-right"
        style="width: 50px"
-       ng-value="((sheet.config.features[feature.id].value - 10) >= 0 ? '+':'') + Math.floor((sheet.config.features[feature.id].value - 10) / 2)"></span>
+       ng-value="shared.feature.d20.abilityScore(sheet.config.features[feature.id].value)"></span>
 
 <input
         min="{{feature.config.valueMin}}"

@@ -3,6 +3,11 @@ function controllerAbstractMain($scope, $location, Ruleset, FeatureModel, Game) 
     "use strict";
 
     /**
+     * Retrieve shared methods
+     */
+    $scope.shared = sharedMethods;
+
+    /**
      * Return TRUE if key=value is in route
      * @param values
      * @returns {boolean}
@@ -22,9 +27,4 @@ function controllerAbstractMain($scope, $location, Ruleset, FeatureModel, Game) 
     {
         $location.search(key, value);
     }
-
-    /**
-     * Math methods used in ngBind
-     */
-    $scope.Math = Math;
 }

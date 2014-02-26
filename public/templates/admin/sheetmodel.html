@@ -21,6 +21,7 @@
                         <col/>
                         <col width="75"/>
                         <col width="75"/>
+                        <col width="75"/>
                         <col width="150"/>
                         <col width="40"/>
                         <col width="40"/>
@@ -29,6 +30,7 @@
                         <tr>
                             <th>{{'NAME'|translate}}</th>
                             <th>{{'SHORTNAME'|translate}}</th>
+                            <th>{{'CODE'|translate}}</th>
                             <th>{{'ORDER'|translate}}</th>
                             <th>{{'MODEL'|translate}}</th>
                             <th>&nbsp;</th>
@@ -42,6 +44,7 @@
                     <tr ng-repeat="feature in group.features|orderBy:'order'">
                         <th><input class="form-control" type="text" ng-model="feature.name" jdr-updater/></th>
                         <td><input class="form-control" type="text" ng-model="feature.nameShort" jdr-updater/></td>
+                        <td><input class="form-control" type="text" ng-model="feature.code" jdr-updater/></td>
                         <td><input class="form-control" type="number" ng-model="feature.order" jdr-updater/></td>
                         <td><select class="form-control"
                                     ng-model="feature.featureModelId"

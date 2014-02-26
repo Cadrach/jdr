@@ -1,8 +1,7 @@
 {
     "name": "Feature",
-    "strict": false,
     "options": {
-        "strict": false,
+        "strict": true,
         "plural": "Features",
         "acls": [
             {
@@ -22,6 +21,10 @@
         "nameShort": {
             "type": "String",
             "length": 3
+        },
+        "code": {
+            "type": "String",
+            "length": 20
         },
         "order": {
             "type": "Number"
