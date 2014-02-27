@@ -1,0 +1,102 @@
+<script type="text/javascript">
+    var string = '1D6 + ( ( 2D4+2 )  * 2 + ( 2D8-7  * 3) ) * 6';
+
+    var Parser = function Parser(string){
+        this.string = string.replace(/ /g, '');
+        console.log(this.string);
+        this.analyse();
+    }
+
+    Parser.prototype = {
+        /**
+         * Analyse the string to create the operations & blocks
+         */
+        analyse: function(){
+
+            //Init blocks
+            this.blocks = [];
+
+            var block = '';
+            var max = this.string.length;
+            for(var i=0; i<max; i++)
+            {
+                var c = this.string[i];
+                if(['*','/','+','-'].indexOf(c)>=0)
+                {
+                    //Found math operation, create 2 blocks, one for value and one for operation
+                    this.addBlock(block);
+                    this.addOperation(c);
+                    //Reset block
+                    block = '';
+                }
+                else if(c == '(')
+                {
+                    //Found open parenthesis, looking for closing one
+                    var p = i;
+                    var bracketCount = 0;
+                    do{
+                        if(this.string.charAt(p) == '(')
+                        {
+                            bracketCount++;
+                        }
+                        else if(this.string.charAt(p) == ')')
+                        {
+                            bracketCount--;
+                        }
+                        p++;
+                    }while(bracketCount > 0 && p<max);
+                    this.addBlock(new Parser(this.string.slice(i+1, p-1)));
+                    i = p-1;
+                    //Reset block
+                    block = '';
+                }
+                else
+                {
+                    //Reading a block, continue storing it
+                    block+=c;
+                }
+            }
+            if(block)
+            {
+                //If a block is left over at the end of the parsing, add it
+                this.addBlock(block);
+            }
+        },
+
+        /**
+         * Validate the string passed
+         */
+        validate: function(){
+            //Verifications parenthesis
+            var open = this.string.match(/\(/g);
+            var close =this.string.match(/\)/g);
+            if( (open!==null ||close !== null) && open.length != close.length)
+            {
+                throw 'Wrong number of parenthesis';
+            }
+        },
+
+        /**
+         * Create a block
+         * @param string
+         */
+        addBlock: function(string){
+            if(string)
+            {
+                this.blocks.push(string);
+            }
+        },
+
+        /**
+         * Create operation
+         * @param string
+         */
+        addOperation: function(string){
+            this.blocks.push(string);
+        }
+    }
+
+    var p = new Parser(string);
+    console.log(p.blocks);
+
+</script>
