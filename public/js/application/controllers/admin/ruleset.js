@@ -1,34 +1,22 @@
 
-function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
+function controllerAdminRuleset($scope, $routeParams, $translate, Ruleset) {
     "use strict";
 
     $scope.rule = null;
 
     /**
-     * This function read the search param and load the ruleset if necessary
+     * Load new ruleset when search changes
      */
-    $scope.loadRuleset = function(){
-        var id = $location.search().rule;
-        console.log('RULE ID', $location.search().rule)
+    $scope.$watch(function(){return $routeParams.rule}, function(){
+        var id = $routeParams.rule;
         if(id && (!$scope.rule || $scope.rule.id != id) )
         {
-            console.log('SEARHING RULE' , $scope)
             $scope.rule = Ruleset.findOne({filter: {
                 where: {id: id},
                 include: 'sheets'
             }});
         }
-    };
-
-    /**
-     * Load new ruleset when search changes
-     */
-    $scope.$on('$locationChangeSuccess', $scope.loadRuleset);
-
-    /**
-     * Load ruleset on controller load in case a ruleset is define in URL
-     */
-    $scope.loadRuleset();
+    });
 
     $scope.addSheetModel = function(){
         $translate('NAME_NEW_SHEETMODEL_FOR_RULESET').then(function(text){

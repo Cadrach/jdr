@@ -1,5 +1,5 @@
 
-function controllerLogin($scope, $location, User) {
+function controllerLogin($scope, User) {
     "use strict";
 
     $scope.login = {};

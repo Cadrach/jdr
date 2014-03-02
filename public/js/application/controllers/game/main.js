@@ -1,5 +1,5 @@
 
-function controllerGameMain($injector, $scope, $routeParams, $location, $translate, Game, Sheet) {
+function controllerGameMain($injector, $scope, $routeParams, $translate, Game, Sheet) {
     "use strict";
 
     //Controller Inheritance
@@ -12,10 +12,10 @@ function controllerGameMain($injector, $scope, $routeParams, $location, $transla
     $scope.sheet = null;
 
     /**
-     * This function load a sheet by reading the search params
+     * When search changes, loadSheet
      */
-    $scope.loadSheet = function(){
-        var sheetId = $location.search().sheet;
+    $scope.$watch(function(){return $routeParams.sheet}, function(){
+        var sheetId = $routeParams.sheet;
         if(sheetId && (!$scope.sheet || $scope.sheet.id != sheetId) )
         {
             Sheet.findOne({filter: {
@@ -68,12 +68,7 @@ function controllerGameMain($injector, $scope, $routeParams, $location, $transla
                 sheet.shortCut = shortCut;
             });
         }
-    };
-
-    /**
-     * When search changes, loadSheet
-     */
-    $scope.$on('$locationChangeSuccess', $scope.loadSheet);
+    });
 
     /**
      * Load game
@@ -91,8 +86,6 @@ function controllerGameMain($injector, $scope, $routeParams, $location, $transla
                 }
             }});
         }
-
-        $scope.loadSheet();
     });
 
     $scope.newSheet = function(sheetModel){

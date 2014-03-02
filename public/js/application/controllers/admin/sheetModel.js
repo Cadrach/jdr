@@ -1,5 +1,5 @@
 
-function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $modal, SheetModel, FeatureGroup, FeatureModel, Feature) {
+function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $modal, SheetModel, FeatureGroup, FeatureModel, Feature) {
     "use strict";
 
     /**
@@ -12,8 +12,8 @@ function controllerAdminSheetModel($scope, $location, $translate, $dialogs, $mod
     /**
      * Load sheet on route change
      */
-    $scope.$on('$locationChangeSuccess', function(){
-        var id = $location.search().sheet;
+    $scope.$watch(function(){return $routeParams.sheet}, function(){
+        var id = $routeParams.sheet;
         if(id)
         {
             $scope.sheet = SheetModel.findOne({filter: {

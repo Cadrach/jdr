@@ -1,5 +1,5 @@
 
-function controllerAdminMain($injector, $scope, $location, Ruleset, FeatureModel, Game) {
+function controllerAdminMain($injector, $scope, Ruleset, FeatureModel, Game) {
     "use strict";
 
     //Controller Inheritance
