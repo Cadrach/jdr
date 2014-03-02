@@ -1,12 +1,9 @@
 
-function controllerAbstractMain($scope, $location, AppAuth, User, Ruleset, FeatureModel, Game) {
+function controllerAbstractMain($scope, $location, AppAuth, User) {
     "use strict";
 
-    //Verify user
-//    AppAuth.ensureHasCurrentUser(User);
-//
-//    //Connect to user
-//    $scope.user = AppAuth.currentUser;
+    //Connect to user
+    $scope.user = AppAuth.currentUser;
 
     /**
      * Retrieve shared methods
@@ -41,5 +38,14 @@ function controllerAbstractMain($scope, $location, AppAuth, User, Ruleset, Featu
         {
             $location.search(key, value);
         }
+    }
+
+    /**
+     * Disconnect User
+     */
+    $scope.disconnect = function(){
+        User.logout(null, null, function(){
+            $location.url('/login');
+        });
     }
 }

@@ -32,13 +32,24 @@ var module = angular.module('application', [
             templateUrl: '/templates/admin.html',
             controller: 'controllerAdminMain',
             reloadOnSearch: false
+        }).
+        when('/login', {
+            templateUrl: '/templates/login.html',
+            controller: 'controllerLogin',
+            reloadOnSearch: false
         })
         .otherwise({
             redirectTo: '/admin'
         });
 
-}).run(function(promiseTracker, $route){
-    $route.reload()
+}).run(function(promiseTracker, $location, AppAuth, User){
+    //Redirect to login if no User identified
+    AppAuth.ensureHasCurrentUser(User, function(){
+        $location.url('/login');
+    });
+
+
+
 //    //Register promise trackers
 //    [
 //        'patient',
@@ -50,4 +61,7 @@ var module = angular.module('application', [
 //    ].forEach(function(type){
 //        promiseTracker.register(type);
 //    });
+
+    //If not Auth, redirect to login
+
 });
