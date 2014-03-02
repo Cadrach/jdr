@@ -4,7 +4,10 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
 
     $scope.rule = null;
 
-    $scope.$on('$locationChangeSuccess', function(){
+    /**
+     * This function read the search param and load the ruleset if necessary
+     */
+    $scope.loadRuleset = function(){
         var id = $location.search().rule;
         console.log('RULE ID', $location.search().rule)
         if(id && (!$scope.rule || $scope.rule.id != id) )
@@ -15,7 +18,17 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
                 include: 'sheets'
             }});
         }
-    });
+    };
+
+    /**
+     * Load new ruleset when search changes
+     */
+    $scope.$on('$locationChangeSuccess', $scope.loadRuleset);
+
+    /**
+     * Load ruleset on controller load in case a ruleset is define in URL
+     */
+    $scope.loadRuleset();
 
     $scope.addSheetModel = function(){
         $translate('NAME_NEW_SHEETMODEL_FOR_RULESET').then(function(text){
