@@ -1,0 +1,50 @@
+doctype html
+html(lang="en", ng-app="application")
+    head
+        meta(charset="utf-8")
+        meta(name="description", content="")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        title JDR
+
+        link(rel="stylesheet", href="js/bower/bootstrap/dist/css/bootstrap.min.css")
+        link(rel="stylesheet", href="js/bower/angular-dialog-service/dialogs.min.js")
+
+    body
+        div(ng-view)
+
+        //Angular Libs
+        script(src="js/bower/angular/angular.js")
+        script(src="js/bower/angular-route/angular-route.min.js")
+        script(src="js/bower/angular-resource/angular-resource.min.js")
+        script(src="js/bower/angular-sanitize/angular-sanitize.min.js")
+        script(src="js/bower/angular-promise-tracker-git/promise-tracker.min.js")
+        script(src="js/bower/angular-translate/angular-translate.min.js")
+        script(src="js/bower/angular-dialog-service/dialogs.min.js")
+        script(src="js/bower/angular-bootstrap/ui-bootstrap-tpls.min.js")
+
+        //Libs
+        script(src="js/lb-services.js")
+        script(src="js/tools.js")
+        script(src="js/shared.js")
+
+        //Apps
+        script(src="js/application/application.js")
+        script(src="js/application/services.js")
+
+        //Controllers
+        script(src="js/application/controllers/login.js")
+        script(src="js/application/controllers/abstract/main.js")
+        script(src="js/application/controllers/admin/main.js")
+        script(src="js/application/controllers/admin/ruleset.js")
+        script(src="js/application/controllers/admin/sheetModel.js")
+        script(src="js/application/controllers/admin/featureModel.js")
+        script(src="js/application/controllers/admin/featureConfig.js")
+
+        script(src="js/application/controllers/game/main.js")
+
+
+
+        //Directives
+        script(src="js/application/directives/jdrUpdater.js")

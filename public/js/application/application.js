@@ -10,7 +10,7 @@ var module = angular.module('application', [
         'pascalprecht.translate',
         'dialogs',
         'jdr'
-]).config(function($translateProvider){
+]).config(function($translateProvider, $routeProvider){
     //    //Add header so that all Ajax calls are treated as such server side
     //    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     $translateProvider.translations('en', {
@@ -20,10 +20,25 @@ var module = angular.module('application', [
         'NAME_NEW_GROUP_FOR_SHEETMODEL': 'Specify the name of the new group added to the sheet',
         'CONFIRM': 'Are you sure?'
     });
-
     $translateProvider.preferredLanguage('en');
 
-}).run(function(promiseTracker){
+    $routeProvider.
+        when('/game/:gameId', {
+            templateUrl: '/templates/game.html',
+            controller: 'controllerGameMain',
+            reloadOnSearch: false
+        }).
+        when('/admin', {
+            templateUrl: '/templates/admin.html',
+            controller: 'controllerAdminMain',
+            reloadOnSearch: false
+        })
+        .otherwise({
+            redirectTo: '/admin'
+        });
+
+}).run(function(promiseTracker, $route){
+    $route.reload()
 //    //Register promise trackers
 //    [
 //        'patient',

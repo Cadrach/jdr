@@ -6,8 +6,10 @@ function controllerAdminRuleset($scope, $location, $translate, Ruleset) {
 
     $scope.$on('$locationChangeSuccess', function(){
         var id = $location.search().rule;
+        console.log('RULE ID', $location.search().rule)
         if(id && (!$scope.rule || $scope.rule.id != id) )
         {
+            console.log('SEARHING RULE' , $scope)
             $scope.rule = Ruleset.findOne({filter: {
                 where: {id: id},
                 include: 'sheets'

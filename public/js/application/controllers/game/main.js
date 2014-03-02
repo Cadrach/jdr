@@ -1,5 +1,5 @@
 
-function controllerGameMain($injector, $scope, $location, $translate, Game, Sheet) {
+function controllerGameMain($injector, $scope, $routeParams, $location, $translate, Game, Sheet) {
     "use strict";
 
     //Controller Inheritance
@@ -12,12 +12,76 @@ function controllerGameMain($injector, $scope, $location, $translate, Game, Shee
     $scope.sheet = null;
 
     /**
+     * This function load a sheet by reading the search params
+     */
+    $scope.loadSheet = function(){
+        var sheetId = $location.search().sheet;
+        if(sheetId && (!$scope.sheet || $scope.sheet.id != sheetId) )
+        {
+            Sheet.findOne({filter: {
+                where: {
+                    id: sheetId,
+                    gameId: $routeParams.gameId
+                },
+                include: {
+                    sheetModel: {
+                        groups: {
+                            features: {
+                                featureModel: {}
+                            }
+                        }
+                    }
+                }
+            }}, function(sheet){
+                //Apply sheet through promise to avoid a flashing due to empty sheet
+                $scope.sheet = sheet;
+
+                //Creating default config
+                var config = {features:{}};
+
+                //Creating shortCut
+                var shortCut = {};
+
+                //Parsing object to fill default config keys
+                sheet.sheetModel.groups.forEach(function(group){
+                    group.features.forEach(function(feature){
+                        config.features[feature.id] = sheet.config.features[feature.id] ? sheet.config.features[feature.id]:{};
+                        if(feature.code)
+                        {
+                            //If code already present, raise an error, cannot have duplicate
+                            if(shortCut[feature.code])
+                            {
+                                throw "Feature code [" + feature.code + "] already used for this sheet.";
+                            }
+
+                            //Add a shortcut to the sheet for this feature, used by calculated features
+                            shortCut[feature.code] = {
+                                feature: feature,
+                                config: config.features[feature.id]
+                            };
+                        }
+                    });
+                });
+
+                //Apply config & shortCut object
+                sheet.config = config;
+                sheet.shortCut = shortCut;
+            });
+        }
+    };
+
+    /**
+     * When search changes, loadSheet
+     */
+    $scope.$on('$locationChangeSuccess', $scope.loadSheet);
+
+    /**
      * Load game
      */
-    $scope.$on('$locationChangeSuccess', function(){
+    $scope.$watch('$routeParams.gameId', function(){
         //Load game
-        var gameId = $location.search().id;
-        if(gameId && (!$scope.game || $scope.game.gameId != gameId) )
+        var gameId = $routeParams.gameId;
+        if(!$scope.game || $scope.game.gameId != gameId)
         {
             $scope.game = Game.findOne({filter: {
                 where: {id: gameId},
@@ -28,63 +92,7 @@ function controllerGameMain($injector, $scope, $location, $translate, Game, Shee
             }});
         }
 
-        //Load Sheet
-        if(gameId)
-        {
-            var sheetId = $location.search().sheet;
-            if(sheetId && (!$scope.sheet || $scope.sheet.id != sheetId) )
-            {
-                Sheet.findOne({filter: {
-                    where: {
-                        id: sheetId,
-                        gameId: gameId
-                    },
-                    include: {
-                        sheetModel: {
-                            groups: {
-                                features: {
-                                    featureModel: {}
-                                }
-                            }
-                        }
-                    }
-                }}, function(sheet){
-                    //Apply sheet through promise to avoid a flashing due to empty sheet
-                    $scope.sheet = sheet;
-
-                    //Creating default config
-                    var config = {features:{}};
-
-                    //Creating shortCut
-                    var shortCut = {};
-
-                    //Parsing object to fill default config keys
-                    sheet.sheetModel.groups.forEach(function(group){
-                        group.features.forEach(function(feature){
-                            config.features[feature.id] = sheet.config.features[feature.id] ? sheet.config.features[feature.id]:{};
-                            if(feature.code)
-                            {
-                                //If code already present, raise an error, cannot have duplicate
-                                if(shortCut[feature.code])
-                                {
-                                    throw "Feature code [" + feature.code + "] already used for this sheet.";
-                                }
-
-                                //Add a shortcut to the sheet for this feature, used by calculated features
-                                shortCut[feature.code] = {
-                                    feature: feature,
-                                    config: config.features[feature.id]
-                                };
-                            }
-                        });
-                    });
-
-                    //Apply config & shortCut object
-                    sheet.config = config;
-                    sheet.shortCut = shortCut;
-                });
-            }
-        }
+        $scope.loadSheet();
     });
 
     $scope.newSheet = function(sheetModel){

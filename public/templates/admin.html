@@ -1,0 +1,91 @@
+
+<pre>{{user|json}}</pre>
+<pre>{{rules|json}}</pre>
+<pre>{{rule|json}}</pre>
+<h1>
+    <a href="/">
+        <span class="glyphicon glyphicon-home"></span>
+        &nbsp;{{'ADMINISTRATION' | translate}}
+    </a>
+</h1>
+
+<!-- Ruleset / FeatureModel selector -->
+<div ng-hide="hasRoute('rule') || hasRoute('featureModel')">
+    <div class="col-lg-3">
+        <h3>{{'RULES'|translate}}</h3>
+        <table class="table">
+            <colgroup>
+                <col/>
+                <col width="100"/>
+            </colgroup>
+            <tr ng-repeat="rule in rules">
+                <th>{{rule.name}}</th>
+                <td><a ng-click="setRoute('rule', rule.id)" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
+            </tr>
+        </table>
+        </div>
+
+    <div class="col-lg-3">
+        <h3>{{'FEATURE_MODELS'|translate}}</h3>
+        <table class="table">
+            <colgroup>
+                <col/>
+                <col width="100"/>
+            </colgroup>
+            <tr ng-repeat="featureModel in featureModels">
+                <th>{{featureModel.name}}</th>
+                <td><a ng-click="setRoute('featureModel', featureModel.id)" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Ruleset Detail -->
+<div ng-controller="controllerAdminRuleset" ng-show="hasRoute('rule')">
+    <h2>{{rule.name}}</h2>
+    <tabset>
+        <!-- Ruleset SheetModels -->
+        <tab heading="{{'SHEETS'|translate}}">
+
+            <div class="clearfix">&nbsp;</div>
+
+            <ul class="list-group col-xs-2">
+                <a
+                   class="list-group-item"
+                   ng-class="{active: hasRoute('sheet', sheet.id)}"
+                   ng-click="setRoute({rule: rule.id, sheet: sheet.id})"
+                   ng-repeat="sheet in rule.sheets">
+                    {{sheet.name}}
+                </a>
+
+                <a class="list-group-item" ng-click="addSheetModel()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </ul>
+
+            <div
+                class="col-xs-10"
+                ng-controller="controllerAdminSheetModel"
+                ng-include="'templates/admin/sheetmodel.html'">
+            </div>
+        </tab>
+        <tab heading="{{'GAMES'|translate}}">
+            <ul class="list-group">
+                <a
+                        class="list-group-item"
+                        target="_blank"
+                        ng-repeat="game in games"
+                        ng-href="{{'/#/game/' + game.id}}">
+                    {{game.name}}</a>
+            </ul>
+        </tab>
+        <tab heading="{{'CAMPAIGNS'|translate}}"></tab>
+        <tab heading="{{'SCENARIOS'|translate}}"></tab>
+    </tabset>
+</div>
+
+<div
+        ng-controller="controllerAdminFeatureModel"
+        ng-show="hasRoute('featureModel')"
+        ng-include="'templates/admin/featureModel.html'">
+</div>

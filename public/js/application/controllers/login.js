@@ -1,36 +1,12 @@
 
-function controllerAbstractMain($scope, $location, AppAuth, User, Ruleset, FeatureModel, Game) {
+function controllerLogin($scope, $location, User) {
     "use strict";
 
-    //Verify user
-    AppAuth.ensureHasCurrentUser(User);
+    $scope.login = {};
 
-    //Connect to user
-    $scope.user = AppAuth.currentUser;
-
-    /**
-     * Retrieve shared methods
-     */
-    $scope.shared = sharedMethods;
-
-    /**
-     * Return TRUE if key=value is in route
-     * @param values
-     * @returns {boolean}
-     */
-    $scope.hasRoute = function(key, value)
-    {
-        var search = $location.search();
-        return (! search[key] || (value && search[key]!=value)) ? false:true;
-    }
-
-    /**
-     * Set a parameter in the url address bar
-     * @param key
-     * @param value
-     */
-    $scope.setRoute = function(key, value)
-    {
-        $location.search(key, value);
+    $scope.connect = function(){
+        User.login({include: 'user', rememberMe: true}, $scope.login, function(){
+            console.log(arguments);
+        })
     }
 }

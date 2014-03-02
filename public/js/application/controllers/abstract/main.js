@@ -1,6 +1,12 @@
 
-function controllerAbstractMain($scope, $location, Ruleset, FeatureModel, Game) {
+function controllerAbstractMain($scope, $location, AppAuth, User, Ruleset, FeatureModel, Game) {
     "use strict";
+
+    //Verify user
+//    AppAuth.ensureHasCurrentUser(User);
+//
+//    //Connect to user
+//    $scope.user = AppAuth.currentUser;
 
     /**
      * Retrieve shared methods
@@ -25,6 +31,15 @@ function controllerAbstractMain($scope, $location, Ruleset, FeatureModel, Game) 
      */
     $scope.setRoute = function(key, value)
     {
-        $location.search(key, value);
+        if(typeof key == 'object')
+        {
+            angular.forEach(key, function(key, value){
+                $location.search(value, key);
+            })
+        }
+        else
+        {
+            $location.search(key, value);
+        }
     }
 }

@@ -16,427 +16,6 @@ var module = angular.module("jdr", ['ngResource']);
 
 /**
  * @ngdoc object
- * @name lbServices.JdrAccessToken
- * @object
- *
- * @description
- *
- * A $resource object for interacting with the `JdrAccessToken` model.
- *
- * ## Example
- *
- * See
- * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
- * for an example of using this object.
- *
- */
-module.factory(
-  "JdrAccessToken",
-  ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
-    return Resource(
-      urlBase + "/JdrAccessTokens/:id",
-      { 'id': '@id' },
-      {
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#create
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/JdrAccessTokens",
-          method: "POST",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#updateOrCreate
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "updateOrCreate": {
-          url: urlBase + "/JdrAccessTokens",
-          method: "PUT",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#upsert
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/JdrAccessTokens",
-          method: "PUT",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#exists
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `exists` – `{*=}` - 
-         */
-        "exists": {
-          url: urlBase + "/JdrAccessTokens/:id/exists",
-          method: "GET",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#findById
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Find a model instance by id from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/JdrAccessTokens/:id",
-          method: "GET",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#find
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
-         *
-         * @param {Function(Array.<Object>, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "find": {
-          url: urlBase + "/JdrAccessTokens",
-          method: "GET",
-          isArray: true,
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#findOne
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/JdrAccessTokens/findOne",
-          method: "GET",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#destroyById
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "destroyById": {
-          url: urlBase + "/JdrAccessTokens/:id",
-          method: "DELETE",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#deleteById
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "deleteById": {
-          url: urlBase + "/JdrAccessTokens/:id",
-          method: "DELETE",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#removeById
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "removeById": {
-          url: urlBase + "/JdrAccessTokens/:id",
-          method: "DELETE",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#count
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/JdrAccessTokens/count",
-          method: "GET",
-        },
-        /**
-         * @ngdoc method
-         * @name lbServices.JdrAccessToken#prototype$updateAttributes
-         * @methodOf lbServices.JdrAccessToken
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {Function(Object, Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {Function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @return {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrAccessToken` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/JdrAccessTokens/:id",
-          method: "PUT",
-        },
-      }
-    );
-  }]);
-
-/**
- * @ngdoc object
  * @name lbServices.Dice
  * @object
  *
@@ -4844,12 +4423,12 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.JdrUser
+ * @name lbServices.User
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `JdrUser` model.
+ * A $resource object for interacting with the `User` model.
  *
  * ## Example
  *
@@ -4859,16 +4438,16 @@ module.factory(
  *
  */
 module.factory(
-  "JdrUser",
+  "User",
   ['LoopBackResource', 'LoopBackAuth', function(Resource, LoopBackAuth) {
     return Resource(
-      urlBase + "/JdrUsers/:id",
+      urlBase + "/Users/:id",
       { 'id': '@id' },
       {
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#login
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#login
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -4879,6 +4458,10 @@ module.factory(
          * @param {Object=} parameters Request parameters.
          *
          *  - `include` – `{string=}` - Related objects to include in the response. See the description of return value for more details.
+         *
+         *  - `rememberMe` - `boolean` - Whether the authentication credentials
+         *     should be remembered in localStorage across app/browser restarts.
+         *     Default: `true`.
          *
          * @param {Object} postData Request data.
          *
@@ -4902,13 +4485,23 @@ module.factory(
          *
          */
         "login": {
-          url: urlBase + "/JdrUsers/login",
+          url: urlBase + "/Users/login",
           method: "POST",
+          interceptor: {
+            response: function(response) {
+              var accessToken = response.data;
+              LoopBackAuth.currentUserId = accessToken.userId;
+              LoopBackAuth.accessTokenId = accessToken.id;
+              LoopBackAuth.rememberMe = response.config.params.rememberMe !== false;
+              LoopBackAuth.save();
+              return response.resource;
+            }
+          }
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#logout
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#logout
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -4938,13 +4531,21 @@ module.factory(
          * This method returns no data.
          */
         "logout": {
-          url: urlBase + "/JdrUsers/logout",
+          url: urlBase + "/Users/logout",
           method: "POST",
+          interceptor: {
+            response: function(response) {
+              LoopBackAuth.currentUserId = null;
+              LoopBackAuth.accessTokenId = null;
+              LoopBackAuth.save();
+              return response.resource;
+            }
+          }
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#confirm
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#confirm
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -4973,13 +4574,13 @@ module.factory(
          * This method returns no data.
          */
         "confirm": {
-          url: urlBase + "/JdrUsers/confirm",
+          url: urlBase + "/Users/confirm",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#resetPassword
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#resetPassword
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5009,13 +4610,13 @@ module.factory(
          * This method returns no data.
          */
         "resetPassword": {
-          url: urlBase + "/JdrUsers/reset",
+          url: urlBase + "/Users/reset",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#email
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#email
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5045,13 +4646,13 @@ module.factory(
          * This method returns no data.
          */
         "email": {
-          url: urlBase + "/JdrUsers/Emails",
+          url: urlBase + "/Users/Emails",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#accessToken
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#accessToken
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5081,13 +4682,13 @@ module.factory(
          * This method returns no data.
          */
         "accessToken": {
-          url: urlBase + "/JdrUsers/AccessTokens",
+          url: urlBase + "/Users/AccessTokens",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#create
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#create
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5114,17 +4715,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/JdrUsers",
+          url: urlBase + "/Users",
           method: "POST",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#updateOrCreate
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#updateOrCreate
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5151,17 +4752,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "updateOrCreate": {
-          url: urlBase + "/JdrUsers",
+          url: urlBase + "/Users",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#upsert
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#upsert
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5188,17 +4789,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/JdrUsers",
+          url: urlBase + "/Users",
           method: "PUT",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#exists
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#exists
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5223,13 +4824,13 @@ module.factory(
          *  - `exists` – `{*=}` - 
          */
         "exists": {
-          url: urlBase + "/JdrUsers/:id/exists",
+          url: urlBase + "/Users/:id/exists",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#findById
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#findById
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5251,17 +4852,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/JdrUsers/:id",
+          url: urlBase + "/Users/:id",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#find
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#find
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5283,18 +4884,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "find": {
-          url: urlBase + "/JdrUsers",
+          url: urlBase + "/Users",
           method: "GET",
           isArray: true,
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#findOne
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#findOne
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5316,17 +4917,17 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/JdrUsers/findOne",
+          url: urlBase + "/Users/findOne",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#destroyById
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#destroyById
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5349,13 +4950,13 @@ module.factory(
          * This method returns no data.
          */
         "destroyById": {
-          url: urlBase + "/JdrUsers/:id",
+          url: urlBase + "/Users/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#deleteById
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#deleteById
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5378,13 +4979,13 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/JdrUsers/:id",
+          url: urlBase + "/Users/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#removeById
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#removeById
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5407,13 +5008,13 @@ module.factory(
          * This method returns no data.
          */
         "removeById": {
-          url: urlBase + "/JdrUsers/:id",
+          url: urlBase + "/Users/:id",
           method: "DELETE",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#count
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#count
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5438,13 +5039,13 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/JdrUsers/count",
+          url: urlBase + "/Users/count",
           method: "GET",
         },
         /**
          * @ngdoc method
-         * @name lbServices.JdrUser#prototype$updateAttributes
-         * @methodOf lbServices.JdrUser
+         * @name lbServices.User#prototype$updateAttributes
+         * @methodOf lbServices.User
          *
          * @description
          *
@@ -5471,13 +5072,149 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `JdrUser` object.)
+         * This usually means the response is a `User` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/JdrUsers/:id",
+          url: urlBase + "/Users/:id",
           method: "PUT",
         },
+        /**
+         * @ngdoc method
+         * @name lbServices.User#prototype$__get__accessTokens
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Fetches accessTokens
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - 
+         *
+         * @param {Function(Array.<Object>, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
+         */
+        "prototype$__get__accessTokens": {
+          url: urlBase + "/Users/:id/accessTokens",
+          method: "GET",
+          isArray: true,
+        },
+        /**
+         * @ngdoc method
+         * @name lbServices.User#prototype$__create__accessTokens
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Creates accessTokens
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
+         */
+        "prototype$__create__accessTokens": {
+          url: urlBase + "/Users/:id/accessTokens",
+          method: "POST",
+        },
+        /**
+         * @ngdoc method
+         * @name lbServices.User#prototype$__delete__accessTokens
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Deletes accessTokens
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
+         */
+        "prototype$__delete__accessTokens": {
+          url: urlBase + "/Users/:id/accessTokens",
+          method: "DELETE",
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.User#getCurrent
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Get data of the currently logged user. Fail with HTTP result 401
+         * when there is no user logged in.
+         *
+         * @param {Function(Object, Object)=} successCb
+         *    Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *    `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         */
+        "getCurrent": {
+          url: urlBase + "/users/:id",
+          method: "GET",
+          params: {
+            id: function() {
+             var id = LoopBackAuth.currentUserId;
+             if (id == null) id = '__anonymous__';
+             return id;
+           }
+          },
+          __isGetCurrentUser__ : true
+        }
       }
     );
   }]);

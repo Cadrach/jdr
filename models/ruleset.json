@@ -3,12 +3,13 @@
     "options": {
         "strict": true,
         "plural": "Rulesets",
+        "defaultPermission": "DENY",
         "acls": [
             {
                 "accessType": "*",
                 "permission": "ALLOW",
                 "principalType": "ROLE",
-                "principalId": "$everyone"
+                "principalId": "$authenticated"
             }
         ]
     },

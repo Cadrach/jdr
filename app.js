@@ -89,6 +89,17 @@ app.use(loopback.urlNotFound());
 // The ultimate error handler.
 app.use(loopback.errorHandler());
 
+//ROUTING ADDITION - START
+//Registering template engine
+app.engine('jade', require('jade').__express);
+var ng = require('./routes/index.js');
+app.get('/', ng.index);
+//app.get('/game', ng.index);
+//app.get('/admin', ng.index);
+//app.get('/templates/:filename', routes.partials);
+
+//ROUTING ADDITION - END
+
 // Start the server
 app.listen(port, ip, function() {
     if(process.env.C9_PROJECT) {

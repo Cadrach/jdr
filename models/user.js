@@ -1,47 +1,21 @@
 /**
- * Module Dependencies
+ * DOC:
+ * Reference of parameters for ACL
+ * http://docs.strongloop.com/display/DOC/Model+definition+reference
+ *
  */
 
 var db = require('../data-sources/db');
-var config = require('./sheetModel.json');
-var FeatureGroup = require('./featureGroup');
-var Ruleset = require('./ruleset');
-var loopback = require('loopback');
+var app = require('loopback');
 
-/**
- * Ruleset Model
- */
+// define a User model
+var User = app.User.extend('User');
 
-var SheetModel = module.exports = db.createModel(
-  'SheetModel',
-  config.properties,
-  config.options
-);
+// attach to the memory connector
+User.attachTo(db);
 
-//Relations
-SheetModel.hasMany('groups', {model: FeatureGroup});
+// also attach the accessToken model to a data source
+User.accessToken.attachTo(db);
 
-////Full information
-//SheetModel.findOneFull = function(id, callback){
-//    SheetModel.find({
-//        id: id,
-//        include: 'groups'
-//    }, function(err, sheet){
-//        callback(err, sheet[0]);
-//    });
-//}
-//
-//
-////Remote methods
-//loopback.remoteMethod(
-//    SheetModel.findOneFull,
-//    {
-//        description: 'Returns full sheet informations',
-//        accepts: [
-//            {arg: 'id', type: 'String', required: true, description: 'The id of the sheet'}
-//        ],
-//        returns: [
-//            {arg: 'sheet', root: true}
-//        ]
-//    }
-//);
+// expose over the app's API
+module.exports = User;
