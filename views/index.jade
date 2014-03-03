@@ -12,6 +12,7 @@ html(lang="en", ng-app="application")
         link(rel="stylesheet", href="js/bower/angular-dialog-service/dialogs.min.js")
 
     body
+
         div(ng-view)
 
         //Angular Libs
@@ -34,17 +35,8 @@ html(lang="en", ng-app="application")
         script(src="js/application/services.js")
 
         //Controllers
-        script(src="js/application/controllers/login.js")
-        script(src="js/application/controllers/abstract/main.js")
-        script(src="js/application/controllers/admin/main.js")
-        script(src="js/application/controllers/admin/ruleset.js")
-        script(src="js/application/controllers/admin/sheetModel.js")
-        script(src="js/application/controllers/admin/featureModel.js")
-        script(src="js/application/controllers/admin/featureConfig.js")
-
-        script(src="js/application/controllers/game/main.js")
-
-
+        each controller in controllers
+            script(src="js/application/controllers/" + controller)
 
         //Directives
         script(src="js/application/directives/jdrUpdater.js")

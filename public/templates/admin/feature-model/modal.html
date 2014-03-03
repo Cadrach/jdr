@@ -3,7 +3,7 @@
         <h3>{{feature.name + ' - ' + featureModel.name}}</h3>
     </div>
 
-    <div class="modal-body" ng-include="featureModel.templateUrlConfig">
+    <div class="modal-body" ng-include="'templates/admin/feature-model/' + featureModel.template + '.html'">
 
     </div>
 

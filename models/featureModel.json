@@ -17,11 +17,7 @@
             "required": true,
             "length": 20
         },
-        "templateUrlConfig": {
-            "type": "String",
-            "length": 200
-        },
-        "templateUrlDisplay": {
+        "template": {
             "type": "String",
             "length": 200
         },

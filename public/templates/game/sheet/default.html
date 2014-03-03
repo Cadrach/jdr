@@ -5,7 +5,7 @@
             <div
                     class="list-group-item"
                     ng-repeat="feature in group.features|orderBy:'order'"
-                    ng-include="feature.featureModel.templateUrlDisplay || 'templates/game/feature-model/default.html'"></div>
+                    ng-include="'templates/game/feature-model/' + (feature.featureModel.template || 'default') + '.html'"></div>
         </div>
     </div>
 

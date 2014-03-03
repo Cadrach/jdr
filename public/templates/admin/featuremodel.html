@@ -4,10 +4,10 @@
     </div>
 
     <div class="panel-body">
-        <label>{{'TEMPLATE_URL_CONFIG'|translate}}</label>
-        <input class="form-control" type="text" ng-model="featureModel.templateUrlConfig" jdr-updater/>
-        <label>{{'TEMPLATE_URL_DISPLAY'|translate}}</label>
-        <input class="form-control" type="text" ng-model="featureModel.templateUrlDisplay" jdr-updater/>
+        <label>{{'TEMPLATE'|translate}}</label>
+        <input class="form-control" type="text" ng-model="featureModel.template" jdr-updater/>
+        <p class="help-block">templates/admin/feature-model/{{featureModel.template}}.html</p>
+        <p class="help-block">templates/game/feature-model/{{featureModel.template}}.html</p>
     </div>
 
 </div>
