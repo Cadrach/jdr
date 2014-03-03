@@ -10,7 +10,8 @@ var module = angular.module('application', [
         'pascalprecht.translate',
         'dialogs',
         'jdr'
-]).config(function($translateProvider, $routeProvider){
+])
+.config(function($translateProvider, $routeProvider){
     //    //Add header so that all Ajax calls are treated as such server side
     //    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     $translateProvider.translations('en', {
@@ -42,26 +43,23 @@ var module = angular.module('application', [
             redirectTo: '/admin'
         });
 
-}).run(function(promiseTracker, $location, AppAuth, User){
-    //Redirect to login if no User identified
-    AppAuth.ensureHasCurrentUser(User, function(){
-        $location.url('/login');
+})
+.run(function(promiseTracker, $location, AppAuth, User){
+
+    if($location.path() !== '/login')
+    {
+        //Redirect to login if no User identified
+        AppAuth.ensureHasCurrentUser(User, function(){
+            $location.url('/login');
+        });
+    }
+
+    //Register promise trackers
+    [
+        'login',
+        'updater'
+    ].forEach(function(type){
+        promiseTracker.register(type);
     });
-
-
-
-//    //Register promise trackers
-//    [
-//        'patient',
-//        'rdv',
-//        'correspondant',
-//        'salles',
-//        'tache',
-//        'updater'
-//    ].forEach(function(type){
-//        promiseTracker.register(type);
-//    });
-
-    //If not Auth, redirect to login
 
 });
