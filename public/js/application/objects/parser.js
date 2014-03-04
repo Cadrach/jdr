@@ -161,9 +161,19 @@ Calculation_Parser = Calculation.extend({
                 {
                     element = new Calculation_Value(element);
                 }
-                else if(this.sheet.getFeatureFromCode(element))
+                else if(match = element.match(/^([^\.]*)\.?(.*)$/))
                 {
-                    element = new Calculation_Value(this.sheet.getFeatureFromCode(element).getValue());
+                    var feature = this.sheet.getFeatureFromCode(match[1]);
+                    var value;
+                    if(match[2])
+                    {
+                        value = feature[match[2]]();
+                    }
+                    else
+                    {
+                        value = feature.getValue();
+                    }
+                    element = new Calculation_Value(value);
                 }
             }
 

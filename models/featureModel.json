@@ -23,7 +23,8 @@
         },
         "decoratorClass": {
             "type": "String",
-            "length": 200
+            "length": 200,
+            "default": "Decorator_Feature"
         },
         "description": {
             "type": "String",
