@@ -187,9 +187,9 @@
                     {
                         element = new Value(element);
                     }
-                    else if(this.sheet.shortCut[element])
+                    else if(this.sheet.getShortCut(element))
                     {
-                        element = new Value(this.sheet.shortCut[element].config.value);
+                        element = new Value(this.sheet.getShortCut(element));
                     }
                 }
 

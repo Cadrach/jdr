@@ -21,6 +21,10 @@
             "type": "String",
             "length": 200
         },
+        "decoratorClass": {
+            "type": "String",
+            "length": 200
+        },
         "description": {
             "type": "String",
             "length": 20

@@ -42,9 +42,15 @@ var walk = function(dir, done, prefix) {
     }, prefix);
 };
 
-var controllers = [];
+var data = {
+    controllers: [],
+    objects: []
+}
 walk(path.join(__dirname, '../public/js/application/controllers'), function(err, results){
-    controllers = results;
+    data.controllers = results;
+});
+walk(path.join(__dirname, '../public/js/application/objects'), function(err, results){
+    data.objects = results;
 });
 
 /*
@@ -52,7 +58,5 @@ walk(path.join(__dirname, '../public/js/application/controllers'), function(err,
  */
 
 exports.index = function(req, res){
-    res.render('index.jade', {
-        controllers: controllers
-    })
+    res.render('index.jade', data)
 };

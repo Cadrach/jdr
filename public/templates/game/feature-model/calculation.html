@@ -1,5 +1,5 @@
-<div ng-init="feature.config.value = shared.parser(feature.config.string, sheet).getValue()">
+<div>
     {{feature.name}}
     <br/>
-    <span ng-bind="feature.config.value"></span>
+    <span ng-bind="feature.getValue()"></span>
 </div>
