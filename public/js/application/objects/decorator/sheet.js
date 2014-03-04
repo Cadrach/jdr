@@ -4,9 +4,21 @@ var Decorator_Sheet = Decorator.extend({
         this._super(data);
 
         //Decorate features
+        this.shortcuts = {};
         this.sheetModel.groups.forEach(function(group){
             group.features.forEach(function(feature, key){
                 group.features[key] = new window[feature.featureModel.decoratorClass](feature, this);
+                if(feature.code)
+                {
+                    //If code already present, raise an error, cannot have duplicate
+                    if(this.shortcuts[feature.code])
+                    {
+                        throw "Feature code [" + feature.code + "] already used for this sheet.";
+                    }
+
+                    //Add a shortcut to the sheet for this feature, used by calculated features
+                    this.shortcuts[feature.code] = group.features[key];
+                }
             }, this);
         }, this);
 
@@ -42,7 +54,7 @@ var Decorator_Sheet = Decorator.extend({
 //        sheet.shortCut = shortCut;
     },
 
-    getShortCut: function(value){
-
+    getFeatureFromCode: function(code){
+        return this.shortcuts[code]
     }
 });
