@@ -1,4 +1,4 @@
-var Decorator_Feature_Calculation = Decorator.extend({
+var Decorator_Feature_Calculation = Decorator_Feature.extend({
     init: function(data, sheet){
         //Call parent function
         this._super(data);
@@ -8,9 +8,21 @@ var Decorator_Feature_Calculation = Decorator.extend({
     },
 
     /**
+     * Get Parser for the string
+     * @returns {Calculation_Parser|*}
+     */
+    getParser: function(){
+        if(! this.parser)
+        {
+            this.parser = new Calculation_Parser(this.config.string, this.sheet);
+        }
+        return this.parser;
+    },
+
+    /**
      * Returns feature value
      */
     getValue: function(){
-        return new Calculation_Parser(this.config.string, this.sheet).getValue();
+        return this.getParser().getValue();
     }
 });

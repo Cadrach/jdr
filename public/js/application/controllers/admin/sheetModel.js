@@ -70,6 +70,9 @@ function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $
             resolve: {
                 feature: function () {
                     return feature;
+                },
+                sheet: function(){
+                    return $scope.sheet;
                 }
             }
         });

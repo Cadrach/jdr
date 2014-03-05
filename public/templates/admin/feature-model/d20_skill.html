@@ -1,0 +1,15 @@
+<div>
+    <div class="col-sm-3">
+        <label>{{'BASED_ON'|translate}}</label>
+        <select
+                class="form-control"
+                ng-model="feature.config.basedOnFeature"
+                ng-options="v.code as v.code for v in sheet.groups[0].features"
+                jdr-updater="feature.config"></select>
+    </div>
+
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+
+    <pre>{{sheet.groups[0].features|json}}</pre>
+</div>

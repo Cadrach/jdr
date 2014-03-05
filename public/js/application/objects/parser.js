@@ -55,6 +55,36 @@ Calculation_Dice = Calculation.extend({
     }
 });
 
+Calculation_Feature = Calculation.extend({
+    init: function(feature, method){
+        if( !(feature instanceof Decorator_Feature))
+        {
+            throw "Requires a Decorator_Feature object as parameter";
+        }
+        if(method && typeof feature[method] !== 'function')
+        {
+            throw "No method '"+method+"' for feature '" + feature.code + '"';
+        }
+        this.feature = feature;
+        this.method = method;
+    },
+
+    getValue: function(){
+        if(this.method)
+        {
+            return Number(this.feature[this.method]());
+        }
+        else
+        {
+            return Number(this.feature.getValue());
+        }
+    },
+
+    render: function(){
+        return this.getValue();
+    }
+});
+
 Calculation_Parser = Calculation.extend({
     init: function(string, sheet){
         this._super();
@@ -164,16 +194,7 @@ Calculation_Parser = Calculation.extend({
                 else if(match = element.match(/^([^\.]*)\.?(.*)$/))
                 {
                     var feature = this.sheet.getFeatureFromCode(match[1]);
-                    var value;
-                    if(match[2])
-                    {
-                        value = feature[match[2]]();
-                    }
-                    else
-                    {
-                        value = feature.getValue();
-                    }
-                    element = new Calculation_Value(value);
+                    element = new Calculation_Feature(feature, match[2]);
                 }
             }
 
@@ -216,7 +237,7 @@ Calculation_Parser = Calculation.extend({
         }
 
         //Get final value
-        console.log(this.string, '=', this.render(), '=', blocks[0].getValue());
+//        console.log(this.string, '=', this.render(), '=', blocks[0].getValue());
         return blocks[0].getValue();
     },
 
