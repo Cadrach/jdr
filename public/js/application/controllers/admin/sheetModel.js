@@ -56,10 +56,18 @@ function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $
         var value = prompt($translate.instant('NEW_FEATURE'));
         if(value)
         {
-            group.features.push(Feature.save({
+            var data = {
                 featureGroupId: group.id,
                 name: value
-            }));
+            };
+
+            if(group.features.length)
+            {
+                //Select featureModel from group first line
+                data.featureModelId = group.features[0].featureModelId;
+            }
+
+            group.features.push(Feature.save(data));
         }
     }
 
