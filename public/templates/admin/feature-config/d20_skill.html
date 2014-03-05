@@ -4,7 +4,7 @@
         <select
                 class="form-control"
                 ng-model="feature.config.basedOnFeature"
-                ng-options="v.code as v.code for v in sheet.groups[0].features"
+                ng-options="v.code as v.code for v in sheet.groups[0].features|orderBy:'order'"
                 jdr-updater="feature.config"></select>
 
         <label>{{'NATIVE_SKILL'|translate}}</label>

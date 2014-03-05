@@ -73,7 +73,7 @@ function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $
 
     $scope.configFeature = function(feature){
         $modal.open({
-            templateUrl: 'templates/admin/feature-model/modal.html',
+            templateUrl: 'templates/admin/feature-config/modal.html',
             controller: controllerAdminFeatureConfig,
             resolve: {
                 feature: function () {

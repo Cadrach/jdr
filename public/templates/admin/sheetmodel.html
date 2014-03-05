@@ -22,7 +22,7 @@
                         <col width="75"/>
                         <col width="75"/>
                         <col width="75"/>
-                        <col width="150"/>
+                        <col width="125"/>
                         <col width="40"/>
                         <col width="40"/>
                     </colgroup>
@@ -41,7 +41,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tr ng-repeat="feature in group.features|orderBy:'order'">
+                    <tr ng-repeat="feature in group.features|orderBy:['order', 'name']">
                         <th><input class="form-control" type="text" ng-model="feature.name" jdr-updater/></th>
                         <td><input class="form-control" type="text" ng-model="feature.nameShort" jdr-updater/></td>
                         <td><input class="form-control" type="text" ng-model="feature.code" jdr-updater/></td>
@@ -51,7 +51,7 @@
                                     ng-options="v.id as v.name for v in featureModels" jdr-updater></select>
                         </td>
                         <td>
-                            <button class="btn btn-default" ng-click="configFeature(feature)">
+                            <button class="btn btn-default" ng-class="{'btn-warning': !feature.config}" ng-click="configFeature(feature)">
                                 <span class="glyphicon glyphicon-wrench"></span>
                             </button>
                         </td>
