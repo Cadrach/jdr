@@ -8,12 +8,28 @@
     </div>
 
     <div class="panel-body">
-        <div class="col-lg-6" ng-repeat="group in sheet.groups">
+        <div class="col-lg-6" ng-repeat="featureGroup in sheet.groups|orderBy:'order'">
             <h3>
-                {{group.name}}
-                <button class="btn btn-danger btn-sm pull-right" ng-click="removeGroup(group)">
+                {{featureGroup.name}}
+                <pre>{{featureGroup.customFeatureModels|json}}</pre>
+                <select
+                        class="form-control"
+                        multiple ng-multiple="true"
+                        ng-model="featureGroup.customFeatureModels"
+                        ng-options="v.id as v.name for v in featureModels"
+                        jdr-updater></select>
+
+                <button class="btn btn-danger btn-sm pull-right" ng-click="removeGroup(featureGroup)">
                     <span class="glyphicon glyphicon-minus"></span>
                 </button>
+
+                <input
+                        class="form-control pull-right"
+                        type="number"
+                        ng-model="featureGroup.order"
+                        placeholder="{{'ORDER'|translate}}"
+                        jdr-updater
+                        style="width:50px"/>
             </h3>
             <!--<div class="panel panel-default">-->
                 <table class="table table-bordered table-condensed table-striped">
@@ -35,13 +51,13 @@
                             <th>{{'MODEL'|translate}}</th>
                             <th>&nbsp;</th>
                             <th>
-                                <button class="btn btn-primary btn-sm pull-right" ng-click="addFeature(group)">
+                                <button class="btn btn-primary btn-sm pull-right" ng-click="addFeature(featureGroup)">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </button>
                             </th>
                         </tr>
                     </thead>
-                    <tr ng-repeat="feature in group.features|orderBy:['order', 'name']">
+                    <tr ng-repeat="feature in featureGroup.features|orderBy:['order', 'name']">
                         <th><input class="form-control" type="text" ng-model="feature.name" jdr-updater/></th>
                         <td><input class="form-control" type="text" ng-model="feature.nameShort" jdr-updater/></td>
                         <td><input class="form-control" type="text" ng-model="feature.code" jdr-updater/></td>

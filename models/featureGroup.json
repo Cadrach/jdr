@@ -17,6 +17,12 @@
             "required": true,
             "length": 20
         },
+        "order": {
+            "type": "Number"
+        },
+        "customFeatureModels": {
+            "type": "Array"
+        },
         "description": {
             "type": "String",
             "length": 20
