@@ -1,10 +1,22 @@
 
-<span class="pull-left visible-md">{{feature.name}}</span>
+<span class="pull-left visible-md">
+    {{feature.name}}
+    <br/>
+    <span class="badge">{{feature.config.basedOnFeature}}</span>
+</span>
 <span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
 
 <input disabled
        class="form-control pull-right"
        style="width: 50px"
-       ng-value="feature.score()"></span>
+       ng-value="feature.getValue()"/>
+
+<input
+        min="0"
+        class="form-control pull-right"
+        style="width: 60px"
+        type="number"
+        ng-model="sheet.config.features[feature.id].skillPoints"
+        jdr-updater="sheet.config"/>
 
 <div class="clearfix"></div>
