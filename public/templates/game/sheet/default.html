@@ -1,10 +1,20 @@
 <div>
-    <div class="col-sm-6" ng-repeat="group in sheet.sheetModel.groups">
-        <h4>{{group.name}}</h4>
+    <div class="col-sm-6" ng-repeat="group in sheet.sheetModel.groups|orderBy:['order','name']">
+        <h4>
+            {{group.name}}
+
+            <button
+                class="btn btn-primary btn-sm pull-right"
+                ng-if="group.customFeatureModels.length>0"
+                ng-click="addCustomFeatureModel()">
+                <span class="glyphicon glyphicon-plus"></span>
+                </button>
+
+        </h4>
         <div class="list-group">
             <div
                     class="list-group-item"
-                    ng-repeat="feature in group.features|orderBy:'order'"
+                    ng-repeat="feature in group.features|orderBy:['order','name']"
                     ng-include="'templates/game/feature-model/' + (feature.featureModel.template || 'default') + '.html'"></div>
         </div>
     </div>

@@ -2,8 +2,7 @@
 <span class="pull-left visible-md">
     {{feature.name}}
     <br/>
-    <span class="badge">{{feature.config.basedOnFeature}}</span>
-</span>
+    <span class="badge">{{feature.config.basedOnFeature}}</span></span>
 <span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
 
 <input disabled
@@ -18,5 +17,13 @@
         type="number"
         ng-model="sheet.config.features[feature.id].skillPoints"
         jdr-updater="sheet.config"/>
+
+<span
+        class="bg-danger"
+        ng-init="tooltip='MUST_HAVE_SP_TO_USE'|translate"
+        bs-tooltip="{title: tooltip}"
+        ng-show="!sheet.config.features[feature.id].skillPoints && !feature.config.isNativeSkill">
+    <span class="glyphicon glyphicon-remove"></span>
+</span>
 
 <div class="clearfix"></div>
