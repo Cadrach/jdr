@@ -9,6 +9,7 @@ html(lang="en", ng-app="application")
         title JDR
 
         link(rel="stylesheet", href="js/bower/bootstrap/dist/css/bootstrap.min.css")
+        link(rel="stylesheet", href="js/bower/fontawesome/css/font-awesome.min.css")
 
     body
 
@@ -49,4 +50,5 @@ html(lang="en", ng-app="application")
             script(src="js/application/controllers/" + controller)
 
         //Directives
-        script(src="js/application/directives/jdrUpdater.js")
+        each directive in directives
+            script(src="js/application/directives/" + directive)

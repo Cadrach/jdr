@@ -1,40 +1,46 @@
+<div class="pull-left">
 
-<span class="pull-left visible-md">
-    {{feature.name}}
-    <br/>
-    <span class="badge">{{feature.config.basedOnFeature}}</span></span>
-<span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
+    <i
+            class="fa fa-ban fa-lg text-danger"
+            ng-init="tooltip='MUST_HAVE_SP_TO_USE'|translate"
+            bs-tooltip="{title: tooltip}"
+            ng-show="!sheet.config.features[feature.id].skillPoints && !feature.config.isNativeSkill"></i>
 
-<input disabled
-       class="form-control pull-right"
-       style="width: 50px"
-       ng-value="feature.getValue()"/>
+    <span class="visible-md">
+        {{feature.name}}
+    </span>
 
-<input
-        min="0"
-        class="form-control pull-right"
-        style="width: 60px"
-        type="number"
-        ng-model="sheet.config.features[feature.id].skillPoints"
-        jdr-updater="sheet.config"/>
+    <span class="hidden-md">{{feature.nameShort||feature.name}}</span>
 
-<span
-        class="bg-danger"
-        ng-init="tooltip='MUST_HAVE_SP_TO_USE'|translate"
-        bs-tooltip="{title: tooltip}"
-        ng-show="!sheet.config.features[feature.id].skillPoints && !feature.config.isNativeSkill">
+</div>
 
-        <span class="glyphicon glyphicon-remove"></span>
-</span>
+<div class="pull-right form-inline">
 
+    <span class="badge">{{feature.config.basedOnFeature}}</span>
 
+    <!-- Skill Points -->
+    <input
+            min="0"
+            class="form-control input-sm"
+            style="width: 60px"
+            type="number"
+            ng-model="feature.getConfig().skillPoints"
+            jdr-updater="sheet.config"/>
 
-<button
-        class="btn btn-lg btn-danger"
-        type="button" title="{{'MODIFIERS'|translate}}"
-        data-html="true"
-        data-content-template="templates/game/modifier.html"
-        data-animation="am-flip-x"
-        bs-popover></button>
+    <!-- Value -->
+    <input disabled
+           class="form-control input-sm"
+           style="width: 50px"
+           ng-value="feature.getValue()"/>
+
+    <!-- Modifiers -->
+        <i class="fa fa-plus-circle fa-lg fa-fw text-success"
+           class="btn btn-success"
+           type="button" title="{{'MODIFIERS'|translate}}"
+           data-html="true"
+           data-content-template="templates/game/modifier.html"
+           data-animation="am-flip-x"
+           bs-popover></i>
+</div>
 
 <div class="clearfix"></div>

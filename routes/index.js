@@ -44,13 +44,17 @@ var walk = function(dir, done, prefix) {
 
 var data = {
     controllers: [],
-    objects: []
+    objects: [],
+    directives: []
 }
 walk(path.join(__dirname, '../public/js/application/controllers'), function(err, results){
     data.controllers = results;
 });
 walk(path.join(__dirname, '../public/js/application/objects'), function(err, results){
     data.objects = results;
+});
+walk(path.join(__dirname, '../public/js/application/directives'), function(err, results){
+    data.directives = results;
 });
 
 /*

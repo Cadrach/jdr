@@ -12,5 +12,13 @@ var Decorator_Feature = Decorator.extend({
      */
     getValue: function(){
         return this.sheet.config.features[this.id].value;
+    },
+
+    /**
+     * Return config
+     * @returns {*}
+     */
+    getConfig: function(){
+        return this.sheet.config.features[this.id];
     }
 });
