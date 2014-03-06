@@ -1,5 +1,5 @@
 
-function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $modal, SheetModel, FeatureGroup, FeatureModel, Feature) {
+function controllerAdminSheetModel($scope, $routeParams, $translate, $modal, SheetModel, FeatureGroup, FeatureModel, Feature) {
     "use strict";
 
     /**
@@ -42,10 +42,15 @@ function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $
      * Remove a group from the model
      */
     $scope.removeGroup = function(group){
-        $dialogs.confirm($translate.instant('CONFIRM')).result.then(function(){
+//        $dialogs.confirm($translate.instant('CONFIRM')).result.then(function(){
+//            $scope.sheet.groups.splice($scope.sheet.groups.indexOf(group), 1);
+//            FeatureGroup.deleteById({id: group.id});
+//        });
+        if(confirm('CONFIRM'))
+        {
             $scope.sheet.groups.splice($scope.sheet.groups.indexOf(group), 1);
             FeatureGroup.deleteById({id: group.id});
-        });
+        }
     }
 
     /**
@@ -72,18 +77,26 @@ function controllerAdminSheetModel($scope, $routeParams, $translate, $dialogs, $
     }
 
     $scope.configFeature = function(feature){
-        $modal.open({
-            templateUrl: 'templates/admin/feature-config/modal.html',
-            controller: controllerAdminFeatureConfig,
-            resolve: {
-                feature: function () {
-                    return feature;
-                },
-                sheet: function(){
-                    return $scope.sheet;
-                }
-            }
+//        $modal.open({
+//            templateUrl: 'templates/admin/feature-config/modal.html',
+//            controller: controllerAdminFeatureConfig,
+//            resolve: {
+//                feature: function () {
+//                    return feature;
+//                },
+//                sheet: function(){
+//                    return $scope.sheet;
+//                }
+//            }
+//        });
+        var scope = $scope.$new();
+        scope.feature = feature;
+        scope.featureModel = FeatureModel.findById({id: feature.featureModelId});
+        var modal = $modal({
+            template: 'templates/admin/feature-config/modal.html',
+            scope: scope
         });
+
     }
 }
 

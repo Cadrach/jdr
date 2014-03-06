@@ -1,0 +1,23 @@
+
+
+<div class="clearfix">&nbsp;</div>
+
+<ul class="list-group col-xs-2">
+<a
+class="list-group-item"
+ng-class="{active: hasRoute('sheet', sheet.id)}"
+ng-click="setRoute({rule: rule.id, sheet: sheet.id})"
+ng-repeat="sheet in rule.sheets">
+{{sheet.name}}
+</a>
+
+<a class="list-group-item" ng-click="addSheetModel()">
+<span class="glyphicon glyphicon-plus"></span>
+</a>
+</ul>
+
+<div
+class="col-xs-10"
+ng-controller="controllerAdminSheetModel"
+ng-include="'templates/admin/sheetmodel.html'">
+</div>

@@ -2,13 +2,16 @@
  * Module Definition
  */
 var module = angular.module('application', [
+//        'mgcrea.ngStrap',
+        'mgcrea.ngStrap.modal',
+        'mgcrea.ngStrap.tab',
         'ngRoute',
         'ngResource',
 //        'ngSanitize',
-        'ui.bootstrap',
+//        'ui.bootstrap',
         'ajoslin.promise-tracker',
         'pascalprecht.translate',
-        'dialogs',
+//        'dialogs',
         'jdr'
 ])
 .config(function($translateProvider, $routeProvider){
