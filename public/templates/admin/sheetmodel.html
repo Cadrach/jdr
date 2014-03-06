@@ -12,12 +12,14 @@
             <h3>
                 {{featureGroup.name}}
                 <pre>{{featureGroup.customFeatureModels|json}}</pre>
-                <select
+                <button
                         class="form-control"
-                        multiple ng-multiple="true"
+                        data-html="1" data-multiple="1"
                         ng-model="featureGroup.customFeatureModels"
                         ng-options="v.id as v.name for v in featureModels"
-                        jdr-updater></select>
+                        jdr-updater
+                        bs-select
+                        ></button>
 
                 <button class="btn btn-danger btn-sm pull-right" ng-click="removeGroup(featureGroup)">
                     <span class="glyphicon glyphicon-minus"></span>

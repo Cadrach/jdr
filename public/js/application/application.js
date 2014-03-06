@@ -2,9 +2,8 @@
  * Module Definition
  */
 var module = angular.module('application', [
-//        'mgcrea.ngStrap',
-        'mgcrea.ngStrap.modal',
-        'mgcrea.ngStrap.tab',
+        'ngAnimate',
+        'mgcrea.ngStrap',
         'ngRoute',
         'ngResource',
 //        'ngSanitize',
