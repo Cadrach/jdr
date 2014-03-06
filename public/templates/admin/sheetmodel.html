@@ -11,17 +11,8 @@
         <div class="col-lg-6" ng-repeat="featureGroup in sheet.groups|orderBy:'order'">
             <h3>
                 {{featureGroup.name}}
-                <pre>{{featureGroup.customFeatureModels|json}}</pre>
-                <button
-                        class="form-control"
-                        data-html="1" data-multiple="1"
-                        ng-model="featureGroup.customFeatureModels"
-                        ng-options="v.id as v.name for v in featureModels"
-                        jdr-updater
-                        bs-select
-                        ></button>
 
-                <button class="btn btn-danger btn-sm pull-right" ng-click="removeGroup(featureGroup)">
+                <button class="btn btn-danger pull-right" ng-click="removeGroup(featureGroup)">
                     <span class="glyphicon glyphicon-minus"></span>
                 </button>
 
@@ -32,6 +23,20 @@
                         placeholder="{{'ORDER'|translate}}"
                         jdr-updater
                         style="width:50px"/>
+
+                <button
+                        type="button"
+                        class="btn btn-default pull-right"
+                        ng-model="featureGroup.customFeatureModels"
+                        data-html="1"
+                        data-multiple="1"
+                        data-animation="am-flip-x"
+                        ng-options="v.id as v.name for v in featureModels"
+                        placeholder="{{'CUSTOM_FEATURE_MODELS'}}"
+                        bs-select
+                        jdr-updater
+                        >Action <span class="caret"></span>
+                </button>
             </h3>
             <!--<div class="panel panel-default">-->
                 <table class="table table-bordered table-condensed table-striped">

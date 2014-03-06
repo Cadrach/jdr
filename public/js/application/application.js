@@ -6,7 +6,7 @@ var module = angular.module('application', [
         'mgcrea.ngStrap',
         'ngRoute',
         'ngResource',
-//        'ngSanitize',
+        'ngSanitize',
 //        'ui.bootstrap',
         'ajoslin.promise-tracker',
         'pascalprecht.translate',

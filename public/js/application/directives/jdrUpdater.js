@@ -31,6 +31,7 @@ module.directive('jdrUpdater', function($parse, $http, $timeout, $injector, prom
                     var service = $injector.get(itemName.toProperCase());
                     var data = {};
                     data[attrName] = item[attrName];
+                    console.log('SAVING ', data);
                     service.prototype$updateAttributes({id: item.id}, data);
                 }
             };

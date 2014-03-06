@@ -21,7 +21,7 @@
             "type": "Number"
         },
         "customFeatureModels": {
-            "type": "Array"
+            "type": "Object"
         },
         "description": {
             "type": "String",
