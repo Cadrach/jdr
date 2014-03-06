@@ -77,24 +77,18 @@ function controllerAdminSheetModel($scope, $routeParams, $translate, $modal, She
     }
 
     $scope.configFeature = function(feature){
-//        $modal.open({
-//            templateUrl: 'templates/admin/feature-config/modal.html',
-//            controller: controllerAdminFeatureConfig,
-//            resolve: {
-//                feature: function () {
-//                    return feature;
-//                },
-//                sheet: function(){
-//                    return $scope.sheet;
-//                }
-//            }
-//        });
+
+        //Create new scope
         var scope = $scope.$new();
         scope.feature = feature;
         scope.featureModel = FeatureModel.findById({id: feature.featureModelId});
-        var modal = $modal({
-            template: 'templates/admin/feature-config/modal.html',
-            scope: scope
+
+        //Load modal when everything is ready
+        scope.featureModel.$promise.then(function(){
+            var modal = $modal({
+                template: 'templates/admin/feature-config/modal.html',
+                scope: scope
+            });
         });
 
     }
