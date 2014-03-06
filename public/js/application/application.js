@@ -4,6 +4,7 @@
 var module = angular.module('application', [
         'ngAnimate',
         'mgcrea.ngStrap',
+        'mgcrea.ngStrap.tooltip',
         'ngRoute',
         'ngResource',
         'ngSanitize',

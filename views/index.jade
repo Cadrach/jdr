@@ -19,6 +19,8 @@ html(lang="en", ng-app="application")
         each object in objects
             script(src="js/application/objects/" + object)
 
+        //Include jQuery first for jqlite overriding
+        script(src="js/bower/jquery/dist/jquery.min.js")
 
         //Angular Libs
         script(src="js/bower/angular/angular.js")
