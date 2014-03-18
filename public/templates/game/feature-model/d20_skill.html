@@ -1,39 +1,41 @@
-<div class="pull-left">
+<tr ng-class="{'bg-warning': !sheet.config.features[feature.id].skillPoints && !feature.config.isNativeSkill}">
+    <td>
+        <span class="badge">{{feature.config.basedOnFeature}}</span>
+    </td>
+    <th width="100%">
 
-    <i
-            class="fa fa-ban fa-lg text-danger"
-            ng-init="tooltip='MUST_HAVE_SP_TO_USE'|translate"
-            bs-tooltip="{title: tooltip}"
-            ng-show="!sheet.config.features[feature.id].skillPoints && !feature.config.isNativeSkill"></i>
 
-    <span class="visible-md">
-        {{feature.name}}
-    </span>
+        <span class="visible-md">
+            {{feature.name}}
+        </span>
 
-    <span class="hidden-md">{{feature.nameShort||feature.name}}</span>
+        <span class="hidden-md">{{feature.nameShort||feature.name}}</span>
 
-</div>
-
-<div class="pull-right form-inline">
-
-    <span class="badge">{{feature.config.basedOnFeature}}</span>
-
-    <!-- Skill Points -->
-    <input
-            min="0"
-            class="form-control input-sm"
-            style="width: 60px"
-            type="number"
-            ng-model="feature.getConfig().skillPoints"
-            jdr-updater="sheet.config"/>
-
-    <!-- Value -->
-    <input disabled
-           class="form-control input-sm"
-           style="width: 50px"
-           ng-value="feature.getValue()"/>
-
-    <!-- Modifiers -->
+        <i
+                class="fa fa-ban fa-lg text-danger"
+                ng-init="tooltip='MUST_HAVE_SP_TO_USE'|translate"
+                bs-tooltip="{title: tooltip}"
+                ng-show="!sheet.config.features[feature.id].skillPoints && !feature.config.isNativeSkill"></i>
+    </th>
+    <td>
+        <!-- Skill Points -->
+        <input
+                min="0"
+                class="form-control input-sm"
+                style="width: 60px"
+                type="number"
+                ng-model="feature.getConfig().skillPoints"
+                jdr-updater="sheet.config"/>
+    </td>
+    <td>
+        <!-- Value -->
+        <input disabled
+               class="form-control input-sm"
+               style="width: 50px"
+               ng-value="feature.getValue()"/>
+    </td>
+    <td>
+        <!-- Modifiers -->
         <i class="fa fa-plus-circle fa-lg fa-fw text-success"
            class="btn btn-success"
            type="button" title="{{'MODIFIERS'|translate}}"
@@ -41,6 +43,5 @@
            data-content-template="templates/game/modifier.html"
            data-animation="am-flip-x"
            bs-popover></i>
-</div>
-
-<div class="clearfix"></div>
+    </td>
+</tr>

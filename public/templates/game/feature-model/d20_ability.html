@@ -1,18 +1,21 @@
-
-<span class="pull-left visible-md">{{feature.name}}</span>
-<span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
-
-<input disabled
-       class="form-control pull-right"
-       style="width: 50px"
-       ng-value="feature.score()"/>
-
-<input
-        min="{{feature.config.valueMin}}"
-        class="form-control pull-right"
-        style="width: 60px"
-        type="number"
-        ng-model="feature.getConfig().value"
-        jdr-updater="sheet.config"/>
-
-<div class="clearfix"></div>
+<tr>
+    <th width="100%">
+        <span class="pull-left visible-md">{{feature.name}}</span>
+        <span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
+    </th>
+    <td>
+        <input
+                class="form-control"
+                min="{{feature.config.valueMin}}"
+                style="width: 60px"
+                type="number"
+                ng-model="feature.getConfig().value"
+                jdr-updater="sheet.config"/>
+    </td>
+    <td>
+        <input disabled
+               class="form-control"
+               style="width: 50px"
+               ng-value="feature.score()"/>
+    </td>
+</tr>

@@ -1,10 +1,17 @@
-
-<span class="pull-left visible-md">{{feature.name}}</span>
-<span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
-
-<input disabled
-       class="form-control pull-right"
-       style="width: 50px"
-       ng-value="feature.getValue()"></span>
-
-<div class="clearfix"></div>
+<tr>
+    <th>
+        <span class="pull-left visible-md">{{feature.name}}</span>
+        <span class="pull-left hidden-md">{{feature.nameShort||feature.name}}</span>
+    </th>
+    <td>
+        <input disabled
+               class="form-control pull-right"
+               style="width: 50px"
+               ng-value="feature.getValue()"></span>
+    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        CCC<jdr-modifier ng-model="feature.getConfig().modifiers"></jdr-modifier>
+    </td>
+</tr>
