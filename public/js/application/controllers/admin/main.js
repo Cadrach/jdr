@@ -25,6 +25,6 @@ function controllerAdminMain($injector, $scope, $translate, Ruleset, FeatureMode
         },
         {
             title: $translate.instant('SCENARIOS')
-        },
+        }
     ]
 }

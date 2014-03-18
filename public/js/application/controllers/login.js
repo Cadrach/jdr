@@ -6,6 +6,17 @@ function controllerLogin($scope, $location, $translate, promiseTracker, User) {
         messages: []
     };
 
+    $scope.tabs = [
+        {
+            title: $translate.instant('LOGIN'),
+            template: 'templates/login/login.html'
+        },
+        {
+            title: $translate.instant('REGISTER'),
+            template: 'templates/login/register.html'
+        }
+    ]
+
     //Track AJAX calls
     $scope.tracker = promiseTracker('login');
 
