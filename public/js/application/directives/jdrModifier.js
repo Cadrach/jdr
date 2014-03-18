@@ -1,4 +1,4 @@
-module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater){
+module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, jdrUpdater){
 
         function controller ($scope, $modal){
             /**
@@ -21,6 +21,18 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater)
                 $scope.refreshPopoverPosition();
             }
 
+            $rootScope.$on('jdrModifier-new-popover', function(){
+                console.log('TESTING')
+                if($scope.popover)
+                {
+                    console.log('RECEIVED, WILL CLOSE', $scope.popover);
+                    $timeout(function(){
+                        $scope.popover.destroy();
+                        $scope.popover = null;
+                    })
+                }
+            })
+
             /**
              * Remove an item
              */
@@ -37,8 +49,11 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater)
             $scope.popover = null;
             $scope.$popover = function(){
 
+                $scope.$emit('jdrModifier-new-popover');
+
                 if( ! $scope.popover)
                 {
+
                     $scope.popover = $popover($scope.element, {
                         title: 'TEST',
                         html: true,
