@@ -1,4 +1,4 @@
-module.directive('jdrModifier', function($modal, $parse){
+module.directive('jdrModifier', function($modal, $parse, jdrUpdater){
 
         function controller ($scope, $modal){
             /**
@@ -13,6 +13,9 @@ module.directive('jdrModifier', function($modal, $parse){
 
                 //Push new line to array
                 $scope.array.push({});
+
+                //Save to server
+                jdrUpdater.update($scope.updater, $scope);
             }
 
             /**
@@ -20,6 +23,9 @@ module.directive('jdrModifier', function($modal, $parse){
              */
             $scope.$delete = function(key){
                 $scope.array.splice(key, 1);
+
+                //Save to server
+                jdrUpdater.update($scope.updater, $scope);
             }
         }
 

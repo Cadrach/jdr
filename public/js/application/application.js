@@ -2,6 +2,7 @@
  * Module Definition
  */
 var module = angular.module('application', [
+        'jdrUpdater',
         'ngAnimate',
         'mgcrea.ngStrap',
         'mgcrea.ngStrap.tooltip',
