@@ -1,4 +1,4 @@
-module.directive('jdrModifier', function($modal, $parse, jdrUpdater){
+module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater){
 
         function controller ($scope, $modal){
             /**
@@ -27,9 +27,32 @@ module.directive('jdrModifier', function($modal, $parse, jdrUpdater){
                 //Save to server
                 jdrUpdater.update($scope.updater, $scope);
             }
+
+            $scope.popover = null;
+            $scope.$popover = function(){
+
+                if( ! $scope.popover)
+                {
+                    $scope.popover = $popover($scope.element, {
+                        title: 'TEST',
+                        html: true,
+                        placement: 'left',
+                        contentTemplate: 'templates/directives/jdr-modifier.html'
+                    });
+
+                    $scope.popover.$promise.then(function(popover){
+                        $timeout(function(){
+                            $scope.popover.show();
+                        })
+                    });
+                }
+
+            }
         }
 
         function link(scope, element, attrs) {
+
+            scope.element = element;
 
             //Pass updater to inputs below
             if(attrs.updater)
@@ -54,6 +77,7 @@ module.directive('jdrModifier', function($modal, $parse, jdrUpdater){
             transclude: true,
             link: link,
             controller: controller,
-            templateUrl: 'templates/directives/jdr-modifier.html'
+//            templateUrl: 'templates/directives/jdr-modifier.html',
+            template: '<button class="btn btn-success" ng-click="$popover()"><i class="fa fa-plus"></i></button>'
         }
 });
