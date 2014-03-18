@@ -16,6 +16,9 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater)
 
                 //Save to server
                 jdrUpdater.update($scope.updater, $scope);
+
+                //Refresh popover position
+                $scope.refreshPopoverPosition();
             }
 
             /**
@@ -26,6 +29,9 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater)
 
                 //Save to server
                 jdrUpdater.update($scope.updater, $scope);
+
+                //Refresh popover position
+                $scope.refreshPopoverPosition();
             }
 
             $scope.popover = null;
@@ -37,16 +43,26 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, jdrUpdater)
                         title: 'TEST',
                         html: true,
                         placement: 'left',
+                        scope: $scope,
                         contentTemplate: 'templates/directives/jdr-modifier.html'
                     });
 
                     $scope.popover.$promise.then(function(popover){
                         $timeout(function(){
                             $scope.popover.show();
+
+                            //Refresh popover position
+                            $scope.refreshPopoverPosition();
                         })
                     });
                 }
 
+            }
+
+            $scope.refreshPopoverPosition = function(){
+                $timeout(function(){
+                    $scope.popover.$applyPlacement();
+                });
             }
         }
 
