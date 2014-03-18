@@ -21,11 +21,12 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
                 $scope.refreshPopoverPosition();
             }
 
+            /**
+             * Observe opening at rootScope level to destroy any existing popover
+             */
             $rootScope.$on('jdrModifier-new-popover', function(){
-                console.log('TESTING')
                 if($scope.popover)
                 {
-                    console.log('RECEIVED, WILL CLOSE', $scope.popover);
                     $timeout(function(){
                         $scope.popover.destroy();
                         $scope.popover = null;
@@ -74,6 +75,9 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
 
             }
 
+            /**
+             * Reposition the popover
+             */
             $scope.refreshPopoverPosition = function(){
                 $timeout(function(){
                     $scope.popover.$applyPlacement();

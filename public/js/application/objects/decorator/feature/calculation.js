@@ -23,6 +23,6 @@ var Decorator_Feature_Calculation = Decorator_Feature.extend({
      * Returns feature value
      */
     getValue: function(){
-        return this.getParser().getValue();
+        return this.getParser().getValue() + this.getModifierSum();
     }
 });

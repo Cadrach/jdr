@@ -11,7 +11,19 @@ var Decorator_Feature = Decorator.extend({
      * Returns feature value
      */
     getValue: function(){
-        return this.sheet.config.features[this.id].value;
+        return this.sheet.config.features[this.id].value + this.getModifierSum();
+    },
+
+    getModifierSum: function(){
+        var total = 0;
+        if(this.getConfig().modifiers)
+        {
+            this.getConfig().modifiers.forEach(function(mod){
+                var n = Number(mod.value);
+                total+= isNaN(n) ? 0:n;
+            });
+        }
+        return total;
     },
 
     /**
