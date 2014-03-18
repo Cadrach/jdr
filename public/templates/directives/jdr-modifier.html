@@ -1,9 +1,29 @@
-BBB<table class="table">
-    <tr ng-repeat="line in lines">
-        <td>LINE</td>
-        <!--<td ng-repeat="column in columns">-->
-            <!--AAA-->
-            <!--&lt;!&ndash;<input type="text" ng-model="line[column]"/>&ndash;&gt;-->
-        <!--</td>-->
+<table class="table">
+    <colgroup>
+        <col/>
+        <col/>
+        <col width="30px"/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th ng-repeat="(key, value) in columns">{{value|translate}}</th>
+            <th>
+                <button class="btn btn-primary" ng-click="$add()">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tr ng-repeat="line in array">
+        <td ng-repeat="(key, value) in columns">
+            <input class="form-control" type="text" ng-model="line[key]" jdr-updater="{{updater}}"/>
+        </td>
+        <td>
+            <button class="btn btn-danger" ng-click="$delete($index)">
+                <i class="fa fa-minus"></i>
+            </button>
+        </td>
     </tr>
 </table>
+<!--<pre>{{array|json}}</pre>-->
+<!--<pre>{{columns|json}}</pre>-->

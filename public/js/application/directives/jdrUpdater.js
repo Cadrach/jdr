@@ -3,11 +3,12 @@ module.directive('jdrUpdater', function($parse, $http, $timeout, $injector, prom
         function link(scope, element, attrs, ngModel) {
 
             //Item name & value
-            var itemName = (attrs.jdrUpdater || attrs.ngModel).split('.').slice(0, -1).join('.');
+            var updaterString = (attrs.jdrUpdater || attrs.ngModel);
+            var itemName = updaterString.split('.').slice(0, -1).join('.');
             var lastValue = null;
 
             //Getter for the object containing the value passed to ngModel
-            var attrName = (attrs.jdrUpdater || attrs.ngModel).split('.').pop();
+            var attrName = updaterString.split('.').pop();
             var getterItem = $parse(itemName);
 
             //On focus, store value
@@ -28,7 +29,11 @@ module.directive('jdrUpdater', function($parse, $http, $timeout, $injector, prom
                         item = getterItem(scope.$parent);
                     }
 
-                    var service = $injector.get(itemName.toProperCase());
+                    try{
+                        var service = $injector.get(itemName.toProperCase());
+                    } catch(e) {
+                        throw 'Unable to read string "' + updaterString + '"' + "\n" + e;
+                    }
                     var data = {};
                     data[attrName] = item[attrName];
                     console.log('SAVING ', data);

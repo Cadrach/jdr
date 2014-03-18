@@ -1,21 +1,40 @@
-module.directive('jdrModifier', function($parse){
+module.directive('jdrModifier', function($modal, $parse){
 
-        function controller ($scope){
+        function controller ($scope, $modal){
+            /**
+             * Add an item
+             */
+            $scope.$add = function(){
+                //Initialize array if necessary
+                if( ! $scope.array)
+                {
+                    $scope.array = [];
+                }
 
+                //Push new line to array
+                $scope.array.push({});
+            }
+
+            /**
+             * Remove an item
+             */
+            $scope.$delete = function(key){
+                $scope.array.splice(key, 1);
+            }
         }
 
-        function link(scope, element, attrs, ngModel) {
+        function link(scope, element, attrs) {
 
-            scope.lines = $parse(attrs.ngModel)(scope.$parent);
-
-////            scope.lines = ngModel.$viewValue;
-//            console.log(attrs.ngModel)
-////            console.log(scope.$parent.game.ruleset.sheets)
-//            console.log(scope.lines)
-
-            if( ! scope.lines)
+            //Pass updater to inputs below
+            if(attrs.updater)
             {
-                scope.lines = [];
+                //Pass the updater config
+                var string = attrs.updater;
+                scope.updater = attrs.updater;
+
+                //Pass the updater item to the scope
+                var itemName = string.split('.').slice(0, 1).join();
+                scope[itemName] = scope.$parent[itemName];
             }
         }
 
@@ -23,8 +42,10 @@ module.directive('jdrModifier', function($parse){
             restrict: 'E',
             require: 'ngModel',
             scope: {
-                ngModel: '='
+                array: '=ngModel',
+                columns: '='
             },
+            transclude: true,
             link: link,
             controller: controller,
             templateUrl: 'templates/directives/jdr-modifier.html'

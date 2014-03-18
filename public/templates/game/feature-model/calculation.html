@@ -7,11 +7,11 @@
         <input disabled
                class="form-control pull-right"
                style="width: 50px"
-               ng-value="feature.getValue()"></span>
+               ng-value="feature.getValue()">
     </td>
 </tr>
 <tr>
     <td colspan="2">
-        CCC<jdr-modifier ng-model="feature.getConfig().modifiers"></jdr-modifier>
+        <jdr-modifier ng-model="feature.getConfig().modifiers" columns="{name: 'NAME', value: 'VALUE'}" updater="sheet.config"></jdr-modifier>
     </td>
 </tr>
