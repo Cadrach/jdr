@@ -1,4 +1,4 @@
-module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, jdrUpdater){
+module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, $parse, jdrUpdater){
 
         function controller ($scope, $modal){
             /**
@@ -60,7 +60,7 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
                         html: true,
                         placement: 'left',
                         scope: $scope,
-                        contentTemplate: 'templates/directives/jdr-modifier.html'
+                        template: 'templates/directives/jdr-modifier.html'
                     });
 
                     $scope.popover.$promise.then(function(popover){
@@ -100,14 +100,36 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
                 var itemName = string.split('.').slice(0, 1).join();
                 scope[itemName] = scope.$parent[itemName];
             }
+
+            if( ! attrs.columns)
+            {
+                //Default columns
+                scope.columns = [
+                    {
+                        name: 'name',
+                        label: 'NAME',
+                        type: 'text'
+                    },
+                    {
+                        name: 'value',
+                        label: 'VALUE',
+                        type: 'number',
+                        width: '75px'
+                    }
+                ];
+            }
+            else
+            {
+                //Use passed columns
+                scope.columns = $parse(attrs.columns)(scope);
+            }
         }
 
         return {
             restrict: 'E',
             require: 'ngModel',
             scope: {
-                array: '=ngModel',
-                columns: '='
+                array: '=ngModel'
             },
             transclude: true,
             link: link,

@@ -5,6 +5,6 @@ var Decorator_Feature_D20Skill = Decorator_Feature.extend({
 
     getValue: function(){
         var score = this.config.basedOnFeature ? Number(this.sheet.getFeatureFromCode(this.config.basedOnFeature).score()):0;
-        return score + this.getSkillPoints();
+        return score + this.getSkillPoints() + this.getModifierSum();
     }
 });

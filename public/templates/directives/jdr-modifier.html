@@ -1,29 +1,33 @@
-<table class="table">
-    <colgroup>
-        <col/>
-        <col/>
-        <col width="30px"/>
-    </colgroup>
-    <thead>
-        <tr>
-            <th ng-repeat="(key, value) in columns">{{value|translate}}</th>
-            <th>
-                <button class="btn btn-primary" ng-click="$add()">
-                    <i class="fa fa-plus"></i>
-                </button>
-            </th>
-        </tr>
-    </thead>
-    <tr ng-repeat="line in array">
-        <td ng-repeat="(key, value) in columns">
-            <input class="form-control" type="text" ng-model="line[key]" jdr-updater="{{updater}}"/>
-        </td>
-        <td>
-            <button class="btn btn-danger" ng-click="$delete($index)">
-                <i class="fa fa-minus"></i>
-            </button>
-        </td>
-    </tr>
-</table>
-        <pre>{{popover}}</pre>
-        <pre>{{columns}}</pre>
+<div class="popover" style="max-width:500px !important; width: 500px">
+    <div class="arrow"></div>
+    <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+    <div class="popover-content">
+        <table class="table table-condensed">
+            <colgroup>
+                <col/>
+                <col/>
+                <col width="30px"/>
+            </colgroup>
+            <thead>
+            <tr>
+                <th ng-repeat="column in columns" width="{{column.width}}">{{column.label|translate}}</th>
+                <th>
+                    <button class="btn btn-primary" ng-click="$add()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tr ng-repeat="line in array">
+                <td ng-repeat="column in columns">
+                    <input class="form-control" type="{{column.type?column.type:'text'}}" ng-model="line[column.name]" jdr-updater="{{updater}}"/>
+                </td>
+                <td>
+                    <button class="btn btn-danger" ng-click="$delete($index)">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
