@@ -1,6 +1,11 @@
-<div class="popover" style="max-width:500px !important; width: 500px">
+<div class="popover" style="max-width:500px !important; width: 300px">
     <div class="arrow"></div>
-    <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+    <h3 class="popover-title">
+        {{title|translate}}
+        <button class="btn btn-default btn-xs pull-right" ng-click="$close()">
+            <i class="fa fa-times"></i>
+        </button>
+    </h3>
     <div class="popover-content">
         <table class="table table-condensed">
             <colgroup>
@@ -12,7 +17,7 @@
             <tr>
                 <th ng-repeat="column in columns" width="{{column.width}}">{{column.label|translate}}</th>
                 <th>
-                    <button class="btn btn-primary" ng-click="$add()">
+                    <button class="btn btn-primary btn-sm" ng-click="$add()">
                         <i class="fa fa-plus"></i>
                     </button>
                 </th>
@@ -20,14 +25,15 @@
             </thead>
             <tr ng-repeat="line in array">
                 <td ng-repeat="column in columns">
-                    <input class="form-control" type="{{column.type?column.type:'text'}}" ng-model="line[column.name]" jdr-updater="{{updater}}"/>
+                    <input class="form-control input-sm" type="{{column.type?column.type:'text'}}" ng-model="line[column.name]" jdr-updater="{{updater}}"/>
                 </td>
                 <td>
-                    <button class="btn btn-danger" ng-click="$delete($index)">
+                    <button class="btn btn-danger btn-sm" ng-click="$delete($index)">
                         <i class="fa fa-minus"></i>
                     </button>
                 </td>
             </tr>
         </table>
+        <div class="alert alert-warning" ng-show="!array.length" ng-click="$add()">{{'NO_MODIFIER_CLICK_TO_ADD_ONE'|translate}}</div>
     </div>
 </div>

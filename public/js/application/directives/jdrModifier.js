@@ -1,6 +1,27 @@
-module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, $parse, jdrUpdater){
+module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, $parse, $tooltip, jdrUpdater){
 
         function controller ($scope, $modal){
+            //Scope vars
+            $scope.popover = null;
+
+            /**
+             * Destroy the popover
+             */
+            $scope.$close = function(){
+                if($scope.popover)
+                {
+                    $timeout(function(){
+                        $scope.popover.destroy();
+                        $scope.popover = null;
+                    })
+                }
+            }
+
+            /**
+             * Observe opening at rootScope level to destroy any existing popover
+             */
+            $rootScope.$on('jdrModifier-new-popover', $scope.$close)
+
             /**
              * Add an item
              */
@@ -22,19 +43,6 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
             }
 
             /**
-             * Observe opening at rootScope level to destroy any existing popover
-             */
-            $rootScope.$on('jdrModifier-new-popover', function(){
-                if($scope.popover)
-                {
-                    $timeout(function(){
-                        $scope.popover.destroy();
-                        $scope.popover = null;
-                    })
-                }
-            })
-
-            /**
              * Remove an item
              */
             $scope.$delete = function(key){
@@ -47,22 +55,25 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
                 $scope.refreshPopoverPosition();
             }
 
-            $scope.popover = null;
+            /**
+             * Open Popover
+             */
             $scope.$popover = function(){
 
+                //Announce that we open a popover, to close all others
                 $scope.$emit('jdrModifier-new-popover');
 
                 if( ! $scope.popover)
                 {
-
-                    $scope.popover = $popover($scope.element, {
-                        title: 'TEST',
+                    //Create popover
+                    $scope.popover = $popover($scope.element.children(), {
                         html: true,
-                        placement: 'left',
+                        placement: 'bottom-right',
                         scope: $scope,
                         template: 'templates/directives/jdr-modifier.html'
                     });
 
+                    //Use promise to show & place the popover (workaround when fetching template the first time)
                     $scope.popover.$promise.then(function(popover){
                         $timeout(function(){
                             $scope.popover.show();
@@ -87,6 +98,7 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
 
         function link(scope, element, attrs) {
 
+            //Element used by the controller to instanciate the popover
             scope.element = element;
 
             //Pass updater to inputs below
@@ -101,28 +113,32 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
                 scope[itemName] = scope.$parent[itemName];
             }
 
-            if( ! attrs.columns)
-            {
-                //Default columns
-                scope.columns = [
-                    {
-                        name: 'name',
-                        label: 'NAME',
-                        type: 'text'
-                    },
-                    {
-                        name: 'value',
-                        label: 'VALUE',
-                        type: 'number',
-                        width: '75px'
-                    }
-                ];
-            }
-            else
-            {
-                //Use passed columns
-                scope.columns = $parse(attrs.columns)(scope);
-            }
+            //Define columns
+            scope.columns = attrs.columns ? $parse(attrs.columns)(scope):[
+                {
+                    name: 'name',
+                    label: 'NAME',
+                    type: 'text'
+                },
+                {
+                    name: 'value',
+                    label: 'VALUE',
+                    type: 'number',
+                    width: '75px'
+                }
+            ];
+
+            //Define title
+            scope.title = attrs.title ? $parse(attrs.title)(scope):'EDIT_MODIFIERS';
+
+            //Create tooltip
+//            $tooltip(element, {
+//                title: scope.title,
+//                delay: {
+//                    show: 500,
+//                    hide: 0
+//                }
+//            });
         }
 
         return {
@@ -135,6 +151,9 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
             link: link,
             controller: controller,
 //            templateUrl: 'templates/directives/jdr-modifier.html',
-            template: '<button class="btn btn-success" ng-click="$popover()"><i class="fa fa-plus"></i></button>'
+            template: '<button class="btn" ng-click="$popover()" ng-class="{\'btn-success\': array.length>0, \'btn-default\': !array.length}">' +
+                '<i class="fa fa-pencil"></i> ' +
+//                '{{array.length?array.length:0}}' +
+                '</button>'
         }
 });

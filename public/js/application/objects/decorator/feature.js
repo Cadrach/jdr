@@ -14,6 +14,10 @@ var Decorator_Feature = Decorator.extend({
         return this.sheet.config.features[this.id].value + this.getModifierSum();
     },
 
+    /**
+     * Sum of modifier values
+     * @returns {number}
+     */
     getModifierSum: function(){
         var total = 0;
         if(this.getConfig().modifiers)

@@ -16,6 +16,15 @@
         <input disabled
                class="form-control"
                style="width: 50px"
+               ng-value="feature.getValue()"/>
+    </td>
+    <td>
+        <input disabled
+               class="form-control"
+               style="width: 50px"
                ng-value="feature.score()"/>
+    </td>
+    <td>
+        <jdr-modifier ng-model="feature.getConfig().modifiers" updater="sheet.config"></jdr-modifier>
     </td>
 </tr>
