@@ -10,18 +10,24 @@
                 style="width: 60px"
                 type="number"
                 ng-model="feature.getConfig().value"
+                data-title="{{'BASE_VALUE'|translate}}"
+                bs-tooltip
                 jdr-updater="sheet.config"/>
     </td>
     <td>
         <input disabled
                class="form-control"
                style="width: 50px"
+               data-title="{{'CURRENT_VALUE'|translate}}"
+               bs-tooltip
                ng-value="feature.getValue()"/>
     </td>
     <td>
         <input disabled
                class="form-control"
                style="width: 50px"
+               data-title="{{'D20_ABILITY_SCORE'|translate}}"
+               bs-tooltip
                ng-value="feature.score()"/>
     </td>
     <td>
