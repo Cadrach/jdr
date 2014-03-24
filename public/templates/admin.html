@@ -22,10 +22,13 @@
                 <td><a ng-click="setRoute('rule', rule.id)" class="btn btn-primary">{{'SELECT'|translate}}</a></td>
             </tr>
         </table>
-        </div>
+    </div>
 
     <div class="col-lg-3">
-        <h3>{{'FEATURE_MODELS'|translate}}</h3>
+        <h3>
+            {{'FEATURE_MODELS'|translate}}
+            <button class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></button>
+        </h3>
         <table class="table">
             <colgroup>
                 <col/>
@@ -42,37 +45,6 @@
 <!-- Ruleset Detail -->
 <div ng-controller="controllerAdminRuleset" ng-show="hasRoute('rule')">
     <h2>{{rule.name}}</h2>
-    <!--<tabset>-->
-        <!--&lt;!&ndash; Ruleset SheetModels &ndash;&gt;-->
-        <!--<tab heading="{{'SHEETS'|translate}}">-->
-
-            <!--<div class="clearfix">&nbsp;</div>-->
-
-            <!--<ul class="list-group col-xs-2">-->
-                <!--<a-->
-                   <!--class="list-group-item"-->
-                   <!--ng-class="{active: hasRoute('sheet', sheet.id)}"-->
-                   <!--ng-click="setRoute({rule: rule.id, sheet: sheet.id})"-->
-                   <!--ng-repeat="sheet in rule.sheets">-->
-                    <!--{{sheet.name}}-->
-                <!--</a>-->
-
-                <!--<a class="list-group-item" ng-click="addSheetModel()">-->
-                    <!--<span class="glyphicon glyphicon-plus"></span>-->
-                <!--</a>-->
-            <!--</ul>-->
-
-            <!--<div-->
-                <!--class="col-xs-10"-->
-                <!--ng-controller="controllerAdminSheetModel"-->
-                <!--ng-include="'templates/admin/sheetmodel.html'">-->
-            <!--</div>-->
-        <!--</tab>-->
-        <!--<tab heading="{{'GAMES'|translate}}">-->
-        <!--</tab>-->
-        <!--<tab heading="{{'CAMPAIGNS'|translate}}"></tab>-->
-        <!--<tab heading="{{'SCENARIOS'|translate}}"></tab>-->
-    <!--</tabset>-->
     <div bs-tabs="tabs"></div>
 </div>
 

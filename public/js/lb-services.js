@@ -1284,7 +1284,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2229,7 +2229,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2332,7 +2332,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3277,7 +3277,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3801,7 +3801,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -4325,7 +4325,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -5090,7 +5090,7 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `where` – `{object=}` - 
+         *  - `filter` – `{object=}` - 
          *
          * @param {Function(Array.<Object>, Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.

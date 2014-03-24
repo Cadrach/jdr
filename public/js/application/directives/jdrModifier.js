@@ -151,7 +151,7 @@ module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope,
             link: link,
             controller: controller,
 //            templateUrl: 'templates/directives/jdr-modifier.html',
-            template: '<button class="btn" ng-click="$popover()" ng-class="{\'btn-warning\': array.length>0, \'btn-default\': !array.length}">' +
+            template: '<button class="btn btn-sm" ng-click="$popover()" ng-class="{\'btn-warning\': array.length>0, \'btn-default\': !array.length}">' +
                 '<i class="fa fa-pencil"></i> ' +
 //                '{{array.length?array.length:0}}' +
                 '</button>'

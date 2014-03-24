@@ -32,7 +32,7 @@
                         data-multiple="1"
                         data-animation="am-flip-x"
                         ng-options="v.id as v.name for v in featureModels"
-                        placeholder="{{'CUSTOM_FEATURE_MODELS'}}"
+                        placeholder="{{'CUSTOM_FEATURE_MODELS'|translate}}"
                         bs-select
                         jdr-updater
                         >Action <span class="caret"></span>
@@ -82,7 +82,7 @@
                     </tr>
                 </table>
 
-                <!--<pre>{{group.features|json}}</pre>-->
+                <pre>{{group.features|json}}</pre>
             </div>
         </div>
 
