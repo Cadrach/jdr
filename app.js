@@ -1,7 +1,6 @@
 /**
  * App Dependencies.
  */
-
 var loopback = require('loopback')
     , app = module.exports = loopback()
     , fs = require('fs')
@@ -99,6 +98,24 @@ app.get('/', ng.index);
 //app.get('/templates/:filename', routes.partials);
 
 //ROUTING ADDITION - END
+
+/**
+ * Socket IO
+ * @type {*}
+ */
+var server = require('http').createServer(app)
+    , io = require('socket.io').listen(server);
+
+app.get('/', function (req, res) {
+    res.sendfile(__dirname + '/index.html');
+});
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('news', { hello: 'world' });
+    socket.on('my other event', function (data) {
+        console.log(data);
+    });
+});
 
 // Start the server
 app.listen(port, ip, function() {
