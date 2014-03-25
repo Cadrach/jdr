@@ -99,29 +99,25 @@ app.get('/', ng.index);
 
 //ROUTING ADDITION - END
 
+
+// Start the server
+var server = app.listen(port, ip, function() {
+    if(process.env.C9_PROJECT) {
+        // Customize the url for the Cloud9 environment
+        baseURL = 'https://' + process.env.C9_PROJECT + '-c9-' + process.env.C9_USER + '.c9.io';
+    }
+    console.error('StrongLoop Suite sample is now ready at ' + baseURL);
+});
+
 /**
  * Socket IO
  * @type {*}
  */
-var server = require('http').createServer(app)
-    , io = require('socket.io').listen(server);
-
-app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
-});
+var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function (socket) {
     socket.emit('news', { hello: 'world' });
     socket.on('my other event', function (data) {
         console.log(data);
     });
-});
-
-// Start the server
-app.listen(port, ip, function() {
-    if(process.env.C9_PROJECT) {
-        // Customize the url for the Cloud9 environment
-        baseURL = 'https://' + process.env.C9_PROJECT + '-c9-' + process.env.C9_USER + '.c9.io';
-    }
-    console.error('StrongLoop Suite sample is now ready at ' + baseURL);
 });
