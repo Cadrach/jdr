@@ -1,11 +1,15 @@
 
-function controllerGameMain($injector, $scope, $routeParams, $translate, Game, Sheet) {
+function controllerGameMain($injector, $scope, $routeParams, $translate, Game, Sheet, jdrSocket) {
     "use strict";
 
     //Controller Inheritance
     $injector.invoke(controllerAbstractMain, this, {
         $scope: $scope
     });
+
+    jdrSocket.on('news', function(data){
+        console.log('SOCKETIO', data);
+    })
 
     $scope.game = null;
     $scope.sheets = [];

@@ -1,8 +1,8 @@
 /**
  * Module Definition
  */
-var module = angular.module('application', [
-        'jdrUpdater',
+angular.module('application', [
+        'jdrUpdater', //updater
         'ngAnimate',
         'mgcrea.ngStrap',
         'mgcrea.ngStrap.tooltip',
@@ -10,10 +10,11 @@ var module = angular.module('application', [
         'ngResource',
         'ngSanitize',
 //        'ui.bootstrap',
-        'ajoslin.promise-tracker',
-        'pascalprecht.translate',
+        'ajoslin.promise-tracker', //promise-tracker
+        'pascalprecht.translate', //translate
+        'btford.socket-io', //Socket.io
 //        'dialogs',
-        'jdr'
+        'jdr' //generated Loopback angular services
 ])
 .config(function($translateProvider, $routeProvider){
     //    //Add header so that all Ajax calls are treated as such server side
@@ -66,4 +67,8 @@ var module = angular.module('application', [
         promiseTracker.register(type);
     });
 
-});
+})
+.factory('jdrSocket', function (socketFactory) {
+    return socketFactory();
+})
+;

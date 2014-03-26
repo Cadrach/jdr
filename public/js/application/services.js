@@ -1,4 +1,4 @@
-module.factory('AppAuth', function() {
+angular.module('application').factory('AppAuth', function() {
     return {
         currentUser: null,
 

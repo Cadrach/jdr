@@ -1,4 +1,4 @@
-module.directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, $parse, $tooltip, jdrUpdater){
+angular.module('application').directive('jdrModifier', function($modal, $popover, $timeout, $rootScope, $parse, $tooltip, jdrUpdater){
 
         function controller ($scope, $modal){
             //Scope vars
