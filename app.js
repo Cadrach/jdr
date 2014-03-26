@@ -56,7 +56,7 @@ var apiPath = '/api';
 //app.use(apiPath, loopback.rest());
 //AUTH
 app.use(loopback.cookieParser('secret'));
-app.use(loopback.token({model: app.models.JdrAccessToken}));
+app.use(loopback.token());
 app.use(apiPath, loopback.rest());
 
 // API explorer (if present)
