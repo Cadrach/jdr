@@ -115,9 +115,31 @@ var server = app.listen(port, ip, function() {
  */
 var io = require('socket.io').listen(server);
 
-io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
+//io.sockets.on('connection', function (socket) {
+//    socket.emit('news', { data: socket.handshake });
+//
+//    socket.on('gameConnect', function(gameId){
+//        //TODO: check user is in the game
+//        var room = 'game/' + gameId;
+//        socket.join(room);
+//        socket.broadcast.to(room).emit('userConnected', socket.handshake)
+//    });
+//});
+
+io.set('authorization', function (handshakeData, accept) {
+
+    if (handshakeData.query.authorization) {
+
+        sys.puts('SOCKET AUTHORIZED WITH TOKEN: ' + handshakeData.query.authorization);
+        handshakeData.authorization = handshakeData.query.authorization;
+
+    } else {
+
+        return accept('No cookie transmitted.', false);
+
+    }
+
+    accept(null, true);
 });
+
+io.set('log level', 1);

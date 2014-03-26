@@ -68,7 +68,27 @@ angular.module('application', [
     });
 
 })
-.factory('jdrSocket', function (socketFactory) {
-    return socketFactory();
+.factory('jdrSocket', function (socketFactory, LoopBackAuth) {
+    if( ! LoopBackAuth.accessTokenId)
+    {
+        throw 'Cannot connect to socket.io if not authentified'
+    }
+
+    //Create socket with tokenId
+    var socket = io.connect('/', {query: 'authorization=' + LoopBackAuth.accessTokenId});
+
+    //Use created socket
+    var factory = socketFactory({
+        ioSocket: socket
+    });
+
+    //On connection register the socket id
+    socket.on('connect', function(){
+        console.log('CONNECTED TO SOCKET', socket.socket.sessionid, socket);
+
+    });
+
+    //Return service
+    return factory;
 })
 ;
