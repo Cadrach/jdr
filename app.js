@@ -133,13 +133,19 @@ io.set('authorization', function (handshakeData, accept) {
         sys.puts('SOCKET AUTHORIZED WITH TOKEN: ' + handshakeData.query.authorization);
         handshakeData.authorization = handshakeData.query.authorization;
 
+        loopback.getModel('AccessToken').findById(handshakeData.authorization, function(err, data){
+            sys.puts('USER ADDED TO TOKEN: ' + data.userId);
+            handshakeData.userId = data.userId;
+            accept(null, true);
+        }, function(){
+            accept('Error fetching user with token', false);
+        })
+
     } else {
 
-        return accept('No cookie transmitted.', false);
+        return accept('No authorization transmitted.', false);
 
     }
-
-    accept(null, true);
 });
 
 io.set('log level', 1);
