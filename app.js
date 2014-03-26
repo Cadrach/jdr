@@ -115,26 +115,19 @@ var server = app.listen(port, ip, function() {
  */
 var io = require('socket.io').listen(server);
 
-//io.sockets.on('connection', function (socket) {
-//    socket.emit('news', { data: socket.handshake });
-//
-//    socket.on('gameConnect', function(gameId){
-//        //TODO: check user is in the game
-//        var room = 'game/' + gameId;
-//        socket.join(room);
-//        socket.broadcast.to(room).emit('userConnected', socket.handshake)
-//    });
-//});
-
+/**
+ * When connecting to socket.io, allows to link socket to user & token
+ */
 io.set('authorization', function (handshakeData, accept) {
 
+    //Check if we received auth information
     if (handshakeData.query.authorization) {
 
         sys.puts('SOCKET AUTHORIZED WITH TOKEN: ' + handshakeData.query.authorization);
         handshakeData.authorization = handshakeData.query.authorization;
 
         loopback.getModel('AccessToken').findById(handshakeData.authorization, function(err, data){
-            sys.puts('USER ADDED TO TOKEN: ' + data.userId);
+            sys.puts('USER ADDED TO SOCKET: ' + data.userId);
             handshakeData.userId = data.userId;
             accept(null, true);
         }, function(){
@@ -142,10 +135,20 @@ io.set('authorization', function (handshakeData, accept) {
         })
 
     } else {
-
         return accept('No authorization transmitted.', false);
-
     }
+});
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('news', { data: socket.handshake });
+
+    socket.on('gameConnect', function(gameId){
+        //TODO: check user is in the game
+        sys.puts('JOINING');
+        var room = 'game/' + gameId;
+        socket.join(room);
+        socket.broadcast.to(room).emit('gameUserConnected', socket.handshake.userId);
+    });
 });
 
 io.set('log level', 1);

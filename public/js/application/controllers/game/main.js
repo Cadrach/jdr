@@ -7,10 +7,6 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
         $scope: $scope
     });
 
-    jdrSocket.on('news', function(data){
-        console.log('SOCKETIO', data);
-    })
-
     $scope.game = null;
     $scope.sheets = [];
     $scope.sheet = null;
@@ -58,7 +54,21 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
                     sheets: {players: {}}
                 }
             }});
+
+            //Connect to the game room
+            jdrSocket.emit('gameConnect', gameId);
+
+            Game.getConnectedUsers({gameId: gameId}, function(data){
+                console.log(data);
+            })
         }
+    });
+
+    /**
+     * Alert when user connects to the game
+     */
+    jdrSocket.on('gameUserConnected', function(data){
+        console.log('User connected', data)
     });
 
     $scope.newSheet = function(sheetModel){

@@ -2183,6 +2183,40 @@ module.factory(
         },
         /**
          * @ngdoc method
+         * @name lbServices.Game#getConnectedUsers
+         * @methodOf lbServices.Game
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `users` – `{object=}` - 
+         */
+        "getConnectedUsers": {
+          url: urlBase + "/Games/getConnectedUsers",
+          method: "GET",
+        },
+        /**
+         * @ngdoc method
          * @name lbServices.Game#prototype$updateAttributes
          * @methodOf lbServices.Game
          *
