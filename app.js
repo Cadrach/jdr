@@ -10,7 +10,7 @@ var loopback = require('loopback')
 //  , request = require('request')
 //  , TaskEmitter = require('strong-task-emitter');
 
-//Instanciate server
+//Instanciate server, it is used by some modules down the line
 app.server = http.createServer(app);
 
 // Require models, make sure it happens before api explorer
