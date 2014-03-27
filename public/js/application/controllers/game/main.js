@@ -59,7 +59,7 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
             jdrSocket.emit('gameConnect', gameId);
 
             Game.getConnectedUsers({gameId: gameId}, function(data){
-                console.log(data);
+                console.log('CONNECTED USERS:', data.users);
             })
         }
     });

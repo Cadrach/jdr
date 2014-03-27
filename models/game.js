@@ -5,8 +5,9 @@ var Ruleset = require('./ruleset');
 var Sheet = require('./sheet');
 var Player = require('./player');
 
-var io = require('socket.io');
+
 var sys = require('sys');
+var app = require('../app');
 var loopback = require('loopback');
 
 //Model
@@ -28,10 +29,10 @@ Game.hasMany('players', {model: Player});
 
 Game.getConnectedUsers = function(gameId, callback){
     var connected = {};
-//    sys.puts(io.sockets);
-//    io.sockets.clients('game/' + gameId).forEach(function(socket){
-//        connected[socket.handshake.userId] = true;
-//    });
+    sys.puts('CONNECTED USER IO:', app.io.sockets.clients('game/' + gameId));
+    app.io.sockets.clients('game/' + gameId).forEach(function(socket){
+        connected[socket.handshake.userId] = true;
+    });
 
     callback(null, connected);
 }

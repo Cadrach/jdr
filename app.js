@@ -5,9 +5,18 @@ var loopback = require('loopback')
     , app = module.exports = loopback()
     , fs = require('fs')
     , path = require('path')
+    , http = require('http')
+    , sys = require('sys')
 //  , cors = require('cors')
 //  , request = require('request')
 //  , TaskEmitter = require('strong-task-emitter');
+
+//Instanciate server
+var server = http.createServer(app);
+
+//Launch socket.io
+var io = require('socket.io').listen(server);
+app.io = io;
 
 // Require models, make sure it happens before api explorer
 fs
@@ -28,9 +37,8 @@ loopback.ACL.attachTo(db);
 app.enableAuth();
 
 //Testing shared function
-var shared = require('./public/js/shared'),
-    sys = require('sys');
-sys.puts(shared.test());
+//var shared = require('./public/js/shared'),
+//sys.puts(shared.test());
 
 // Set up the HTTP listener ip & port
 var ip = process.env.IP || '0.0.0.0';
@@ -93,27 +101,16 @@ app.use(loopback.errorHandler());
 app.engine('jade', require('jade').__express);
 var ng = require('./routes/index.js');
 app.get('/', ng.index);
-//app.get('/game', ng.index);
-//app.get('/admin', ng.index);
-//app.get('/templates/:filename', routes.partials);
-
 //ROUTING ADDITION - END
 
-
 // Start the server
-var server = app.listen(port, ip, function() {
+server.listen(port, ip, function() {
     if(process.env.C9_PROJECT) {
         // Customize the url for the Cloud9 environment
         baseURL = 'https://' + process.env.C9_PROJECT + '-c9-' + process.env.C9_USER + '.c9.io';
     }
     console.error('StrongLoop Suite sample is now ready at ' + baseURL);
 });
-
-/**
- * Socket IO
- * @type {*}
- */
-var io = require('socket.io').listen(server);
 
 /**
  * When connecting to socket.io, allows to link socket to user & token
@@ -139,6 +136,9 @@ io.set('authorization', function (handshakeData, accept) {
     }
 });
 
+/**
+ * Connecting to a game
+ */
 io.sockets.on('connection', function (socket) {
     socket.emit('news', { data: socket.handshake });
 
