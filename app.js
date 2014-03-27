@@ -6,17 +6,12 @@ var loopback = require('loopback')
     , fs = require('fs')
     , path = require('path')
     , http = require('http')
-    , sys = require('sys')
 //  , cors = require('cors')
 //  , request = require('request')
 //  , TaskEmitter = require('strong-task-emitter');
 
 //Instanciate server
-var server = http.createServer(app);
-
-//Launch socket.io
-var io = require('socket.io').listen(server);
-app.io = io;
+app.server = http.createServer(app);
 
 // Require models, make sure it happens before api explorer
 fs
@@ -104,51 +99,10 @@ app.get('/', ng.index);
 //ROUTING ADDITION - END
 
 // Start the server
-server.listen(port, ip, function() {
+app.server.listen(port, ip, function() {
     if(process.env.C9_PROJECT) {
         // Customize the url for the Cloud9 environment
         baseURL = 'https://' + process.env.C9_PROJECT + '-c9-' + process.env.C9_USER + '.c9.io';
     }
     console.error('StrongLoop Suite sample is now ready at ' + baseURL);
 });
-
-/**
- * When connecting to socket.io, allows to link socket to user & token
- */
-io.set('authorization', function (handshakeData, accept) {
-
-    //Check if we received auth information
-    if (handshakeData.query.authorization) {
-
-        sys.puts('SOCKET AUTHORIZED WITH TOKEN: ' + handshakeData.query.authorization);
-        handshakeData.authorization = handshakeData.query.authorization;
-
-        loopback.getModel('AccessToken').findById(handshakeData.authorization, function(err, data){
-            sys.puts('USER ADDED TO SOCKET: ' + data.userId);
-            handshakeData.userId = data.userId;
-            accept(null, true);
-        }, function(){
-            accept('Error fetching user with token', false);
-        })
-
-    } else {
-        return accept('No authorization transmitted.', false);
-    }
-});
-
-/**
- * Connecting to a game
- */
-io.sockets.on('connection', function (socket) {
-    socket.emit('news', { data: socket.handshake });
-
-    socket.on('gameConnect', function(gameId){
-        //TODO: check user is in the game
-        sys.puts('JOINING');
-        var room = 'game/' + gameId;
-        socket.join(room);
-        socket.broadcast.to(room).emit('gameUserConnected', socket.handshake.userId);
-    });
-});
-
-io.set('log level', 1);

@@ -5,10 +5,7 @@ var Ruleset = require('./ruleset');
 var Sheet = require('./sheet');
 var Player = require('./player');
 
-
-var sys = require('sys');
-var stringify = require('stringify-object');
-var app = require('../app');
+var io = require('../socket');
 var loopback = require('loopback');
 
 //Model
@@ -27,14 +24,12 @@ Game.belongsTo(Ruleset, {
 Game.hasMany('sheets', {model: Sheet});
 Game.hasMany('players', {model: Player});
 
-
 Game.getConnectedUsers = function(gameId, callback){
     var connected = {};
-    app.io.sockets.clients('game/' + gameId).forEach(function(socket){
+    io.sockets.clients('game/' + gameId).forEach(function(socket){
         connected[socket.handshake.userId] = true;
     });
-    sys.puts('CONNECTED USER IO:', stringify(connected));
-
+    console.log('CONNECTED USERS', connected);
     callback(null, connected);
 }
 
