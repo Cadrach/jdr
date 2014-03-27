@@ -53,14 +53,15 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
                     ruleset: 'sheets',
                     sheets: {players: {}}
                 }
-            }});
+            }}, function(){
+                //On success, connect to the game room
+                jdrSocket.emit('gameConnect', gameId);
 
-            //Connect to the game room
-            jdrSocket.emit('gameConnect', gameId);
-
-            Game.getConnectedUsers({gameId: gameId}, function(data){
-                console.log('CONNECTED USERS:', data.users);
-            })
+                //And
+                Game.getConnectedUsers({gameId: gameId}, function(data){
+                    console.log('CONNECTED USERS:', data.users);
+                })
+            });
         }
     });
 

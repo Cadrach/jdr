@@ -14,7 +14,8 @@
         "strong-task-emitter": "~0.0.5",
         "request": "~2.33.0",
         "jade": "*",
-        "socket.io": "*"
+        "socket.io": "*",
+        "stringify-object":"*"
     },
     "optionalDependencies": {
         "loopback-explorer": "~1.1.0",

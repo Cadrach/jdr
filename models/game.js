@@ -7,6 +7,7 @@ var Player = require('./player');
 
 
 var sys = require('sys');
+var stringify = require('stringify-object');
 var app = require('../app');
 var loopback = require('loopback');
 
@@ -29,10 +30,10 @@ Game.hasMany('players', {model: Player});
 
 Game.getConnectedUsers = function(gameId, callback){
     var connected = {};
-    sys.puts('CONNECTED USER IO:', app.io.sockets.clients('game/' + gameId));
     app.io.sockets.clients('game/' + gameId).forEach(function(socket){
         connected[socket.handshake.userId] = true;
     });
+    sys.puts('CONNECTED USER IO:', stringify(connected));
 
     callback(null, connected);
 }
