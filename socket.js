@@ -32,19 +32,4 @@ io.set('authorization', function (handshakeData, accept) {
     }
 });
 
-/**
- * Connecting to a game
- */
-io.sockets.on('connection', function (socket) {
-    socket.emit('news', { data: socket.handshake });
-
-    socket.on('gameConnect', function(gameId){
-        //TODO: check user is in the game
-        console.log('JOINING', gameId, socket.handshake.userId);
-        var room = 'game/' + gameId;
-        socket.join(room);
-        socket.broadcast.to(room).emit('gameUserConnected', socket.handshake.userId);
-    });
-});
-
 io.set('log level', 1);

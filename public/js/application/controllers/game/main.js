@@ -55,7 +55,8 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
                 }
             }}, function(){
                 //On success, connect to the game room
-                jdrSocket.emit('gameConnect', gameId);
+                console.log(jdrSocket);
+                jdrSocket.of('/game').emit('connect', gameId);
 
                 //And
                 Game.getConnectedUsers({gameId: gameId}, function(data){
