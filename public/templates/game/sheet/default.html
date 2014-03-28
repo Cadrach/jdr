@@ -1,5 +1,4 @@
-<div>
-    <div class="col-sm-6" ng-repeat="group in sheet.sheetModel.groups|orderBy:['order','name']">
+    <div class="col-md-12 col-lg-6" ng-repeat="group in sheet.sheetModel.groups|orderBy:['order','name']">
         <h4>
             {{group.name}}
 
@@ -19,6 +18,3 @@
     </div>
 
     <div class="clearfix">&nbsp;</div>
-
-    <!--<pre>{{sheet|json}}</pre>-->
-</div>

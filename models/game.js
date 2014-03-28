@@ -28,17 +28,15 @@ Game.hasMany('players', {model: Player});
  * ************************ SOCKETS
  */
 io.of('/game').on('connection', function (socket) {
-    console.log('connecting');
-    socket.emit('news', { data: socket.handshake });
 
     //Connecting to a game
-    socket.on('connect', function(gameId){
+    socket.on('joinGame', function(gameId){
         //TODO: check user is in the game
-        console.log('JOINING', gameId, socket.handshake.userId);
-        var room = 'game/' + gameId;
-        socket.join(room);
-        socket.broadcast.to(room).emit('gameUserConnected', socket.handshake.userId);
+        console.log('JOINING GAME', gameId, 'USER', socket.handshake.userId);
+        socket.join(gameId);
+        socket.broadcast.to(gameId).emit('userConnected', socket.handshake.userId);
     });
+
 });
 
 /**
@@ -47,10 +45,10 @@ io.of('/game').on('connection', function (socket) {
 //Declare remote methods
 Game.getConnectedUsers = function(gameId, callback){
     var connected = {};
-    io.sockets.clients('game/' + gameId).forEach(function(socket){
+    io.of('/game').clients(gameId).forEach(function(socket){
         connected[socket.handshake.userId] = true;
     });
-    console.log('CONNECTED USERS', connected);
+    console.log('CONNECTED USERS',  gameId, connected);
     callback(null, connected);
 }
 

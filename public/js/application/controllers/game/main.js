@@ -1,5 +1,5 @@
 
-function controllerGameMain($injector, $scope, $routeParams, $translate, Game, Sheet, jdrSocket) {
+function controllerGameMain($injector, $scope, $routeParams, $translate, $timeout, Game, Sheet, jdrSocket) {
     "use strict";
 
     //Controller Inheritance
@@ -54,14 +54,17 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
                     sheets: {players: {}}
                 }
             }}, function(){
-                //On success, connect to the game room
-                console.log(jdrSocket);
-                jdrSocket.of('/game').emit('connect', gameId);
+                 //TODO: Use something else than a timeout to wait for socket to be connected
+//                $timeout(function(){
+                    console.log('SOCKET CONNECT')
+                    //On success, connect to the game room
+                    jdrSocket('/game').emit('joinGame', gameId);
 
-                //And
-                Game.getConnectedUsers({gameId: gameId}, function(data){
-                    console.log('CONNECTED USERS:', data.users);
-                })
+                    //And get connected users
+                    Game.getConnectedUsers({gameId: gameId}, function(data){
+                        console.log('CONNECTED USERS:', data.users);
+                    })
+//                })
             });
         }
     });
@@ -69,7 +72,7 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, Game, S
     /**
      * Alert when user connects to the game
      */
-    jdrSocket.on('gameUserConnected', function(data){
+    jdrSocket('/game').on('userConnected', function(data){
         console.log('User connected', data)
     });
 

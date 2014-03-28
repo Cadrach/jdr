@@ -49,7 +49,7 @@ angular.module('application', [
         });
 
 })
-.run(function(promiseTracker, $location, AppAuth, User){
+.run(function(promiseTracker, $location, jdrSocket, AppAuth, User){
 
     if($location.path() !== '/login')
     {
@@ -67,26 +67,59 @@ angular.module('application', [
         promiseTracker.register(type);
     });
 
+    //Init sockets, ensures connection is valid when required
+    [
+        '/',
+        '/game'
+    ].forEach(function(type){
+        jdrSocket(type);
+    });
+
 })
 .factory('jdrSocket', function (socketFactory, LoopBackAuth) {
-    if( ! LoopBackAuth.accessTokenId)
-    {
-        throw 'Cannot connect to socket.io if not authentified'
+
+    var sockets = {};
+
+    return function(namespace){
+        //Default namespace is global
+        namespace = namespace ? namespace:'/';
+
+        if( ! sockets[namespace])
+        {
+            console.log('GENERATE SOCKET ', namespace, LoopBackAuth.accessTokenId)
+            //Check authentification
+            if( ! LoopBackAuth.accessTokenId)
+            {
+                throw 'Cannot connect to socket.io if not authentified'
+            }
+
+            //Create socket with tokenId
+            var socket = io.connect(namespace, {query: 'authorization=' + LoopBackAuth.accessTokenId});
+
+            //Use created socket
+            var factory = socketFactory({
+                ioSocket: socket
+            });
+
+            //On connection register the socket id
+            factory.on('connect', function(){
+                console.log('CONNECTED TO SOCKET', socket.socket.sessionid, socket);
+            });
+
+            //On connection register the socket id
+            factory.on('connect', function(){
+                console.log('CONNECTED TO SOCKET', socket.socket.sessionid, socket);
+            })
+            factory.on('error', function(){
+                console.log('ERROR CONNECTING TO SOCKET', namespace, socket);
+            })
+
+            ;
+
+            sockets[namespace] = factory;
+        }
+        return sockets[namespace];
     }
-
-    //Create socket with tokenId
-    var socket = io.connect('/', {query: 'authorization=' + LoopBackAuth.accessTokenId});
-
-    //Use created socket
-    var factory = socketFactory({
-        ioSocket: socket
-    });
-
-    //On connection register the socket id
-    socket.on('connect', function(){
-        console.log('CONNECTED TO SOCKET', socket.socket.sessionid, socket);
-
-    });
 
     //Return service
     return factory;

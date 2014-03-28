@@ -6,49 +6,53 @@
         </button>
     </h1>
 
-    <!--<div class="col-lg-6">-->
-        <!--<h4>{{'BOARD'|translate}}</h4>-->
-    <!--</div>-->
-
-    <!--<div class="col-lg-4">-->
-        <!--<h4>{{'CLUES'|translate}}</h4>-->
-    <!--</div>-->
-
     <!-- SHEETS -->
-    <div class="col-lg-12">
-        <!-- SHEETS LIST -->
-        <h4>{{'SHEETS'|translate}}</h4>
-        <div class="col-sm-4">
-            <select class="form-control"
-                    ng-model="selectedSheet"
-                    ng-options="v as v.name for v in game.ruleset.sheets"></select>
-
-            <button class="btn btn-primary btn-block btn-sm" ng-click="newSheet(selectedSheet)">{{'NEW_SHEET'|translate}}</button>
-
-            <div class="clearfix">&nbsp;</div>
-
-            <ul class="list-group">
-                <a class="list-group-item"
-                   ng-class="{active: hasRoute('sheet', sheet.id)}"
-                   ng-repeat="sheet in game.sheets"
-                   ng-click="setRoute('sheet', sheet.id)">
-                    {{sheet.name}}
-                    <div class="pull-right badge">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                        {{sheet.players.length}}
-                    </div>
-                </a>
-            </ul>
+    <div class="col-sm-12 col-md-6 col-lg-6 pull-right">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{sheet.name}}</div>
+            <div class="panel-body"
+                 ng-hide="!sheet"
+                 ng-include="sheet.sheetModel.templateUrl || 'templates/game/sheet/default.html'"></div>
         </div>
+        <!-- SHEETS LIST -->
+        <!--<h4>{{'SHEETS'|translate}}</h4>-->
+        <!--<div class="col-sm-4">-->
+        <!--<select class="form-control"-->
+        <!--ng-model="selectedSheet"-->
+        <!--ng-options="v as v.name for v in game.ruleset.sheets"></select>-->
 
-        <!-- CURRENT SHEET DETAIL -->
-        <div class="col-sm-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{sheet.name}}</div>
-                <div class="panel-body"
-                     ng-hide="!sheet"
-                     ng-include="sheet.sheetModel.templateUrl || 'templates/game/sheet/default.html'"></div>
-            </div>
+        <!--<button class="btn btn-primary btn-block btn-sm" ng-click="newSheet(selectedSheet)">{{'NEW_SHEET'|translate}}</button>-->
+
+        <!--<div class="clearfix">&nbsp;</div>-->
+
+        <!--<ul class="list-group">-->
+        <!--<a class="list-group-item"-->
+        <!--ng-class="{active: hasRoute('sheet', sheet.id)}"-->
+        <!--ng-repeat="sheet in game.sheets"-->
+        <!--ng-click="setRoute('sheet', sheet.id)">-->
+        <!--{{sheet.name}}-->
+        <!--<div class="pull-right badge">-->
+        <!--<span class="glyphicon glyphicon-eye-open"></span>-->
+        <!--{{sheet.players.length}}-->
+        <!--</div>-->
+        <!--</a>-->
+        <!--</ul>-->
+        <!--</div>-->
+    </div>
+
+    <!-- CLUES/MAPS -->
+    <div class="col-sm-12 col-md-6 col-lg-6 pull-left">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{'CLUES/MAPS'|translate}}</div>
+            <div class="panel-body"></div>
+        </div>
+    </div>
+
+    <!-- BOARD -->
+    <div class="col-sm-12 col-md-6 col-lg-6 pull-left">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{'BOARD'|translate}}</div>
+            <div class="panel-body"></div>
         </div>
     </div>
 </div>
