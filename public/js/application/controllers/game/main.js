@@ -1,5 +1,5 @@
 
-function controllerGameMain($injector, $scope, $routeParams, $translate, $timeout, Game, Sheet, jdrSocket) {
+function controllerGameMain($injector, $scope, $routeParams, $translate, jdrSocket, promiseTracker, Game, Sheet) {
     "use strict";
 
     //Controller Inheritance
@@ -10,6 +10,7 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, $timeou
     $scope.game = null;
     $scope.sheets = [];
     $scope.sheet = null;
+    $scope.trackerSheet = promiseTracker('sheet');
 
     /**
      * When search changes, loadSheet
@@ -18,7 +19,7 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, $timeou
         var sheetId = $routeParams.sheet;
         if(sheetId && (!$scope.sheet || $scope.sheet.id != sheetId) )
         {
-            Sheet.findOne({filter: {
+            var request = Sheet.findOne({filter: {
                 where: {
                     id: sheetId,
                     gameId: $routeParams.gameId
@@ -36,6 +37,8 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, $timeou
                 //Apply sheet through promise to avoid a flashing due to empty sheet
                 $scope.sheet = new Decorator_Sheet(sheet);
             });
+
+            $scope.trackerSheet.addPromise(request.$promise);
         }
     });
 

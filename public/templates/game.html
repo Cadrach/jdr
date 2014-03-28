@@ -7,13 +7,26 @@
     </h1>
 
     <!-- SHEETS -->
-    <div class="col-sm-12 col-md-6 col-lg-6 pull-right">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{sheet.name}}</div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pull-right">
+        <ul class="nav nav-pills">
+            <li class=""
+                    ng-class="{active: hasRoute('sheet', s.id)}"
+                    ng-repeat="s in game.sheets">
+                <a ng-click="setRoute('sheet', s.id)">{{s.name}}</a>
+            </li>
+        </ul>
+
+        <div class="clearfix">&nbsp;</div>
+
+        <div ng-include="'templates/utils/progress-bar.html'" ng-show="trackerSheet.active()"></div>
+
+        <div class="panel panel-default" ng-hide="trackerSheet.active()">
+            <!--<div class="panel-heading">{{sheet.name}}</div>-->
             <div class="panel-body"
                  ng-hide="!sheet"
                  ng-include="sheet.sheetModel.templateUrl || 'templates/game/sheet/default.html'"></div>
         </div>
+
         <!-- SHEETS LIST -->
         <!--<h4>{{'SHEETS'|translate}}</h4>-->
         <!--<div class="col-sm-4">-->
@@ -25,34 +38,25 @@
 
         <!--<div class="clearfix">&nbsp;</div>-->
 
-        <!--<ul class="list-group">-->
-        <!--<a class="list-group-item"-->
-        <!--ng-class="{active: hasRoute('sheet', sheet.id)}"-->
-        <!--ng-repeat="sheet in game.sheets"-->
-        <!--ng-click="setRoute('sheet', sheet.id)">-->
-        <!--{{sheet.name}}-->
-        <!--<div class="pull-right badge">-->
-        <!--<span class="glyphicon glyphicon-eye-open"></span>-->
-        <!--{{sheet.players.length}}-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--</ul>-->
-        <!--</div>-->
     </div>
 
     <!-- CLUES/MAPS -->
-    <div class="col-sm-12 col-md-6 col-lg-6 pull-left">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pull-left">
         <div class="panel panel-default">
             <div class="panel-heading">{{'CLUES/MAPS'|translate}}</div>
-            <div class="panel-body"></div>
+            <div class="panel-body">
+                <div class="clearfix">&nbsp;</div>
+            </div>
         </div>
     </div>
 
     <!-- BOARD -->
-    <div class="col-sm-12 col-md-6 col-lg-6 pull-left">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pull-left">
         <div class="panel panel-default">
             <div class="panel-heading">{{'BOARD'|translate}}</div>
-            <div class="panel-body"></div>
+            <div class="panel-body">
+                <div class="clearfix">&nbsp;</div>
+            </div>
         </div>
     </div>
 </div>

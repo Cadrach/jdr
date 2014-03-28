@@ -62,6 +62,7 @@ angular.module('application', [
     //Register promise trackers
     [
         'login',
+        'sheet',
         'updater'
     ].forEach(function(type){
         promiseTracker.register(type);
