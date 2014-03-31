@@ -1,0 +1,24 @@
+{
+    "name": "Message",
+    "options": {
+        "plural": "Messages",
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "ALLOW",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "properties": {
+        "date": {
+            "type": "Date",
+            "required": true
+        },
+        "content": {
+            "type": "Object",
+            "default": {}
+        }
+    }
+}

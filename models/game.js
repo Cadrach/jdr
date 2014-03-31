@@ -3,6 +3,7 @@ var db = require('../data-sources/db');
 var config = require('./game.json');
 var Ruleset = require('./ruleset');
 var Sheet = require('./sheet');
+var Message = require('./message');
 var Player = require('./player');
 
 var io = require('../socket');
@@ -23,6 +24,7 @@ Game.belongsTo(Ruleset, {
 
 Game.hasMany('sheets', {model: Sheet});
 Game.hasMany('players', {model: Player});
+Game.hasMany('messages', {model: Message});
 
 /**
  * ************************ SOCKETS
@@ -52,6 +54,14 @@ Game.getConnectedUsers = function(gameId, callback){
     callback(null, connected);
 }
 
+Game.sendMessage = function(gameId, content, callback){
+    var message = Message.create({
+        date: new Date,
+        content: content,
+        gameId: gameId
+    }, callback);
+}
+
 //Link remote methods
 loopback.remoteMethod(
     Game.getConnectedUsers,
@@ -59,5 +69,13 @@ loopback.remoteMethod(
         accepts: {arg: 'gameId', type: 'string'},
         returns: {arg: 'users', type: 'object'},
         http: {path: '/getConnectedUsers', verb: 'get'}
+    }
+);
+loopback.remoteMethod(
+    Game.sendMessage,
+    {
+        accepts: [{arg: 'gameId', type: 'string'}, {arg: 'content', type: 'object'}],
+//        returns: {arg: 'users', type: 'object'},
+        http: {path: '/sendMessage', verb: 'get'}
     }
 );

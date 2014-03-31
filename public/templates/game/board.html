@@ -1,0 +1,5 @@
+<pre ng-repeat="message in game.messages|orderBy:'date'">
+    {{message|json}}
+</pre>
+
+<button class="btn btn-default" ng-click="send()">{{'Send'|translate}}</button>

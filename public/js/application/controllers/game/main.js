@@ -54,7 +54,8 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, jdrSock
                 where: {id: gameId},
                 include: {
                     ruleset: 'sheets',
-                    sheets: {players: {}}
+                    sheets: {players: {}},
+                    messages: {}
                 }
             }}, function(){
                  //TODO: Use something else than a timeout to wait for socket to be connected
