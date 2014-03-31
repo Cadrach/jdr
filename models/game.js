@@ -34,7 +34,7 @@ io.of('/game').on('connection', function (socket) {
     //Connecting to a game
     socket.on('joinGame', function(gameId){
         //TODO: check user is in the game
-        console.log('*** JOINING GAME ***', gameId, 'USER', socket.handshake.userId);
+        console.log('*** JOINING GAME ***', gameId, 'USER', socket.handshake.userId, 'SOCKET', socket.id);
         socket.join(gameId);
         socket.broadcast.to(gameId).emit('userConnected', socket.handshake.userId);
     });

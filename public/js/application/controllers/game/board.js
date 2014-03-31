@@ -17,6 +17,7 @@ function controllerGameBoard($scope, jdrSocket, Game) {
                     text: $scope.board.inputManual
                 }
             });
+            $scope.board.inputManual = '';
         }
     }
 
