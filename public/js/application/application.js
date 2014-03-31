@@ -104,18 +104,11 @@ angular.module('application', [
 
             //On connection register the socket id
             factory.on('connect', function(){
-                console.log('CONNECTED TO SOCKET', socket.socket.sessionid, socket);
-            });
-
-            //On connection register the socket id
-            factory.on('connect', function(){
-                console.log('CONNECTED TO SOCKET', socket.socket.sessionid, socket);
+                console.log('CONNECTED TO SOCKETNAMESPACE', socket.socket.sessionid, namespace, socket);
             })
             factory.on('error', function(){
                 console.log('ERROR CONNECTING TO SOCKET', namespace, socket);
-            })
-
-            ;
+            });
 
             sockets[namespace] = factory;
         }

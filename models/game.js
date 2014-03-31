@@ -34,7 +34,7 @@ io.of('/game').on('connection', function (socket) {
     //Connecting to a game
     socket.on('joinGame', function(gameId){
         //TODO: check user is in the game
-        console.log('JOINING GAME', gameId, 'USER', socket.handshake.userId);
+        console.log('*** JOINING GAME ***', gameId, 'USER', socket.handshake.userId);
         socket.join(gameId);
         socket.broadcast.to(gameId).emit('userConnected', socket.handshake.userId);
     });
@@ -44,10 +44,12 @@ io.of('/game').on('connection', function (socket) {
 /**
  * ************************ REMOTE METHODS
  */
+var ioGame = io.of('/game');
+
 //Declare remote methods
 Game.getConnectedUsers = function(gameId, callback){
     var connected = {};
-    io.of('/game').clients(gameId).forEach(function(socket){
+    ioGame.clients(gameId).forEach(function(socket){
         connected[socket.handshake.userId] = true;
     });
     console.log('CONNECTED USERS',  gameId, connected);
@@ -59,7 +61,14 @@ Game.sendMessage = function(gameId, content, callback){
         date: new Date,
         content: content,
         gameId: gameId
-    }, callback);
+    }, function(){
+        ioGame.in(gameId).emit('newMessage', message);
+        console.log('NEW MESSAGE', message);
+        ioGame.clients(gameId).forEach(function(socket){
+            console.log('SENT TO', socket.id);
+        });
+        callback();
+    });
 }
 
 //Link remote methods

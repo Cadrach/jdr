@@ -1,5 +1,9 @@
 <pre ng-repeat="message in game.messages|orderBy:'date'">
-    {{message|json}}
+    {{message.date}} - {{message.content.text}}
 </pre>
-
-<button class="btn btn-default" ng-click="send()">{{'Send'|translate}}</button>
+<input
+        class="form-control"
+        type="text"
+        ng-model="board.inputManual"
+        ng-keypress="$event.which === 13 ? send():null"
+        />
