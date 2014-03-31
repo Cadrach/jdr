@@ -1,6 +1,7 @@
-<pre ng-repeat="message in game.messages|orderBy:'date'">
-    {{message.date}} - {{message.content.text}}
-</pre>
+<div ng-repeat="message in game.messages|orderBy:'date'">
+    <div class="pull-left badge">{{message.date|date:'HH:mm'}}</div>
+    <div class="">&nbsp;{{message.content.text}}</div>
+</div>
 <input
         class="form-control"
         type="text"
