@@ -52,7 +52,9 @@
         <!-- BOARD -->
         <div class="panel panel-default">
             <div class="panel-heading">{{'BOARD'|translate}}</div>
-            <div class="panel-body" ng-include="'templates/game/board.html'" ng-controller="controllerGameBoard"></div>
+            <div class="panel-body">
+                <jdr-board ng-model="game"></jdr-board>
+            </div>
         </div>
     </div>
 </div>
