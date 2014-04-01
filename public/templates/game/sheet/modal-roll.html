@@ -1,0 +1,16 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>{{('Roll'|translate) + ' - ' + feature.name}}</h3>
+            </div>
+            <div class="modal-body"
+                 ng-if="feature.featureModel.templateRoll"
+                 ng-include="'templates/game/roll/' + feature.featureModel.templateRoll + '.html'"></div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="$hide()">{{'Roll'|translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

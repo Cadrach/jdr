@@ -9,6 +9,10 @@
         <p class="help-block">templates/admin/feature-model/{{featureModel.template}}.html</p>
         <p class="help-block">templates/game/feature-model/{{featureModel.template}}.html</p>
 
+        <label>{{'ROLL TEMPLATE'|translate}}</label>
+        <input class="form-control" type="text" ng-model="featureModel.templateRoll" jdr-updater/>
+        <p class="help-block">templates/game/roll/{{featureModel.templateRoll}}.html</p>
+
         <label>{{'DECORATOR_CLASS'|translate}}</label>
         <input class="form-control" type="text" ng-model="featureModel.decoratorClass" jdr-updater/>
     </div>

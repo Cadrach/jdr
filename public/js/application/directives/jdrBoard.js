@@ -18,6 +18,7 @@ angular.module('application').directive('jdrBoard', function(){
                         }
                     });
                     $scope.board.inputManual = '';
+                    $scope.scrollBottom(true);
                 }
             }
 
@@ -28,6 +29,7 @@ angular.module('application').directive('jdrBoard', function(){
                 //On success, connect to the game room
                 if($scope.game.id)
                 {
+                    console.log('LAUNCHING JOIN');
                     gameSocket.emit('joinGame', $scope.game.id);
                     $scope.scrollBottom(true);
                 }
@@ -57,13 +59,18 @@ angular.module('application').directive('jdrBoard', function(){
 
             //On connection try to join the chat
             gameSocket.on('connect', function(){
+                console.log('TRYING TO JOIN - CONNECT');
                 $scope.join();
             })
 
             //On game changes join the chat
-            $scope.$watch('$routeParams.gameId', function(){
+            $scope.$watch('$scope.game.id', function(){
+                console.log('TRYING TO JOIN - GAME ID');
                 $scope.join();
             });
+
+            //Try to join on launch
+            $scope.join();
         }
 
         function link(scope, element, attrs) {

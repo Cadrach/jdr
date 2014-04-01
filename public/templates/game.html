@@ -24,6 +24,7 @@
             <!--<div class="panel-heading">{{sheet.name}}</div>-->
             <div class="panel-body"
                  ng-hide="!sheet"
+                 ng-controller="controllerGameSheet"
                  ng-include="sheet.sheetModel.templateUrl || 'templates/game/sheet/default.html'"></div>
         </div>
 
