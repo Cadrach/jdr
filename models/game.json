@@ -2,12 +2,11 @@
     "name": "Game",
     "options": {
         "plural": "Games",
-        "acls": [
-            {
+        "acls": [{
                 "accessType": "*",
                 "permission": "ALLOW",
                 "principalType": "ROLE",
-                "principalId": "$everyone"
+                "principalId": "$related"
             }
         ]
     },

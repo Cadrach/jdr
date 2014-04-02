@@ -1,3 +1,10 @@
+
+//{
+//    "accessType": "*",
+//    "permission": "DENY",
+//    "principalType": "ROLE",
+//    "principalId": "$everyone"
+//},
 //Dependencies
 var db = require('../data-sources/db');
 var config = require('./game.json');
@@ -5,6 +12,7 @@ var Ruleset = require('./ruleset');
 var Sheet = require('./sheet');
 var Message = require('./message');
 var Player = require('./player');
+var User = require('./user');
 
 var io = require('../socket');
 var loopback = require('loopback');
@@ -23,7 +31,8 @@ Game.belongsTo(Ruleset, {
 });
 
 Game.hasMany('sheets', {model: Sheet});
-Game.hasMany('players', {model: Player});
+Game.hasAndBelongsToMany ('players', {model: User, foreignKey: 'playerUserId'});
+Game.hasAndBelongsToMany ('admins', {model: User, foreignKey: 'adminUserId'});
 Game.hasMany('messages', {model: Message});
 
 /**
@@ -70,6 +79,12 @@ Game.sendMessage = function(gameId, content, callback){
         callback();
     });
 }
+
+//Access rights
+Game.beforeRemote('**', function(ctx, message, next) {
+    console.log(ctx.methodString, 'was invoked remotely'); // users.prototype.save was invoked remotely
+    next();
+});
 
 //Link remote methods
 loopback.remoteMethod(

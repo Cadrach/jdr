@@ -23,3 +23,9 @@ Message.belongsTo(Player, {
     as: 'player',
     foreignKey: 'playerId'
 });
+
+//Access rights
+Message.beforeRemote('**', function(ctx, message, next) {
+    console.log(ctx.methodString, 'was invoked remotely'); // users.prototype.save was invoked remotely
+    next();
+});

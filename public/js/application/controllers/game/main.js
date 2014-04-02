@@ -1,5 +1,5 @@
 
-function controllerGameMain($injector, $scope, $routeParams, $translate, jdrSocket, promiseTracker, Game, Sheet) {
+function controllerGameMain($scope, $modal, $injector, $routeParams, $translate, jdrSocket, promiseTracker, Game, Sheet, User) {
     "use strict";
 
     var gameSocket = jdrSocket('/game');
@@ -31,6 +31,26 @@ function controllerGameMain($injector, $scope, $routeParams, $translate, jdrSock
             }});
         }
     });
+
+    /**
+     *
+     */
+    $scope.popupAddPlayer = function(){
+        var scope = $scope.$new();
+        scope.info = {
+            user: null,
+            search: ''
+        }
+        scope.$watch(scope.info.search, function(){
+            scope.info.user = User.findByUsername({username: scope.info.search})
+        });
+//        scope.
+
+        $modal({
+            template: 'templates/game/modal-add-player.html',
+            scope: $scope
+        });
+    }
 
     /**
      * Alert when user connects to the game

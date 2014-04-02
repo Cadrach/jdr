@@ -2492,6 +2492,109 @@ module.factory(
         },
         /**
          * @ngdoc method
+         * @name lbServices.Game#prototype$__get__admins
+         * @methodOf lbServices.Game
+         *
+         * @description
+         *
+         * Fetches admins
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {Function(Array.<Object>, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Game` object.)
+         * </em>
+         */
+        "prototype$__get__admins": {
+          url: urlBase + "/Games/:id/admins",
+          method: "GET",
+          isArray: true,
+        },
+        /**
+         * @ngdoc method
+         * @name lbServices.Game#prototype$__create__admins
+         * @methodOf lbServices.Game
+         *
+         * @description
+         *
+         * Creates admins
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Game` object.)
+         * </em>
+         */
+        "prototype$__create__admins": {
+          url: urlBase + "/Games/:id/admins",
+          method: "POST",
+        },
+        /**
+         * @ngdoc method
+         * @name lbServices.Game#prototype$__delete__admins
+         * @methodOf lbServices.Game
+         *
+         * @description
+         *
+         * Deletes admins
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Game` object.)
+         * </em>
+         */
+        "prototype$__delete__admins": {
+          url: urlBase + "/Games/:id/admins",
+          method: "DELETE",
+        },
+        /**
+         * @ngdoc method
          * @name lbServices.Game#prototype$__get__messages
          * @methodOf lbServices.Game
          *
@@ -5630,6 +5733,39 @@ module.factory(
          */
         "count": {
           url: urlBase + "/Users/count",
+          method: "GET",
+        },
+        /**
+         * @ngdoc method
+         * @name lbServices.User#findByUsername
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `username` – `{string=}` - 
+         *
+         * @param {Function(Object, Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {Function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @return {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `users` – `{object=}` - 
+         */
+        "findByUsername": {
+          url: urlBase + "/Users/findByUsername",
           method: "GET",
         },
         /**

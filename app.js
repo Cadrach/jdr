@@ -13,6 +13,13 @@ var loopback = require('loopback')
 //Instanciate server, it is used by some modules down the line
 app.server = http.createServer(app);
 
+// Setup LoopBack access-control
+var db = require('./data-sources/db');
+loopback.AccessToken.attachTo(db);
+loopback.Role.attachTo(db);
+loopback.ACL.attachTo(db);
+app.enableAuth();
+
 // Require models, make sure it happens before api explorer
 fs
     .readdirSync(path.join(__dirname, './models'))
@@ -23,13 +30,6 @@ fs
         // expose model over rest
         app.model(require('./models/' + m));
     });
-
-// Setup LoopBack access-control
-var db = require('./data-sources/db');
-loopback.AccessToken.attachTo(db);
-loopback.Role.attachTo(db);
-loopback.ACL.attachTo(db);
-app.enableAuth();
 
 //Testing shared function
 //var shared = require('./public/js/shared'),
