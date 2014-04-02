@@ -41,7 +41,7 @@ function controllerGameMain($scope, $modal, $injector, $routeParams, $translate,
             user: null,
             search: ''
         }
-        scope.$watch(scope.info.search, function(){
+        scope.$watch(function(){return scope.info.search}, function(){
             scope.info.user = User.findByUsername({username: scope.info.search})
         });
 //        scope.

@@ -1,10 +1,3 @@
-
-//{
-//    "accessType": "*",
-//    "permission": "DENY",
-//    "principalType": "ROLE",
-//    "principalId": "$everyone"
-//},
 //Dependencies
 var db = require('../data-sources/db');
 var config = require('./game.json');

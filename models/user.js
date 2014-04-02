@@ -22,7 +22,32 @@ User.accessToken.attachTo(db);
 
 
 User.findByUsername = function(username, callback){
-    console.log('FIND BY USERNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAME');
+    console.log('username', username);
+    if(username)
+    {
+        User.find({
+            where: {
+                username: {like: username}
+            },
+            fields: {
+                id: true,
+                username: true,
+                credentials: false
+            }
+        }, function(err, users){
+            var clean = [];
+            users.forEach(function(user){
+                clean.push({
+                    id: user.id,
+                    username: user.username
+                })
+            })
+            callback(err, clean);
+        });
+    }
+    else{
+        callback('Must provide a username or part of it.');
+    }
 }
 
 //Link remote methods
@@ -40,7 +65,10 @@ ACL.create( {
     permission: ACL.ALLOW,
     principalType: ACL.ROLE,
     principalId: '$everyone',
-    property: 'findByUsername'
+    model: 'User', // Name of the model
+    property: 'findByUsername' // Name of the property/method
+}, function(err){
+    console.log('hello there', err)
 });
 
 // expose over the app's API
