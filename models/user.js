@@ -4,7 +4,6 @@
  * http://docs.strongloop.com/display/DOC/Model+definition+reference
  *
  */
-
 var db = require('../data-sources/db');
 var loopback = require('loopback');
 var ACL = loopback.ACL;
@@ -20,9 +19,12 @@ User.attachTo(db);
 // also attach the accessToken model to a data source
 User.accessToken.attachTo(db);
 
-
+/**
+ * Find all user like username
+ * @param username
+ * @param callback
+ */
 User.findByUsername = function(username, callback){
-    console.log('username', username);
     if(username)
     {
         User.find({
@@ -60,6 +62,7 @@ loopback.remoteMethod(
     }
 );
 
+//Authorize remote access to findByUsername method
 ACL.create( {
     accessType: ACL.ALL,
     permission: ACL.ALLOW,
@@ -67,8 +70,6 @@ ACL.create( {
     principalId: '$everyone',
     model: 'User', // Name of the model
     property: 'findByUsername' // Name of the property/method
-}, function(err){
-    console.log('hello there', err)
 });
 
 // expose over the app's API
