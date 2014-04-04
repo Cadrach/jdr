@@ -3,7 +3,7 @@ var db = require('../data-sources/db');
 var config = require('./game.json');
 var Ruleset = require('./ruleset');
 var Sheet = require('./sheet');
-var Message = require('./message');
+var Message = require('./private/message');
 var Player = require('./player');
 var User = require('./user');
 
@@ -17,15 +17,17 @@ var Game = module.exports = db.createModel(
   config.options
 );
 
+//Declare participant now only once Game is exported
+var Participant = require('./private/participant');
+
+
 //Relations
 Game.belongsTo(Ruleset, {
     as: 'ruleset',
     foreignKey: 'rulesetId'
 });
-
 Game.hasMany('sheets', {model: Sheet});
-Game.hasAndBelongsToMany ('players', {model: User, foreignKey: 'playerUserId'});
-Game.hasAndBelongsToMany ('admins', {model: User, foreignKey: 'adminUserId'});
+Game.hasMany('participants', {model: Participant});
 Game.hasMany('messages', {model: Message});
 
 /**

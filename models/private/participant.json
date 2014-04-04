@@ -1,0 +1,21 @@
+{
+    "name": "Participant",
+    "options": {
+        "plural": "Participants",
+        "acls": [
+            {
+                "accessType": "*",
+                "permission": "ALLOW",
+                "principalType": "ROLE",
+                "principalId": "$everyone"
+            }
+        ]
+    },
+    "properties": {
+        "type": {
+            "type": "String",
+            "required": true,
+            "default": "Player"
+        }
+    }
+}

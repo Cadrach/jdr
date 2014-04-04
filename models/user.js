@@ -62,6 +62,9 @@ loopback.remoteMethod(
     }
 );
 
+//Clear code defined Users ACL
+ACL.destroyAll({model: 'User', principalType: ACL.ROLE, principalId: '$everyone'});
+
 //Authorize remote access to findByUsername method
 ACL.create( {
     accessType: ACL.ALL,

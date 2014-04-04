@@ -26,7 +26,8 @@ function controllerGameMain($scope, $modal, $injector, $routeParams, $translate,
                 include: {
                     ruleset: 'sheets',
                     sheets: {players: {}},
-                    messages: {}
+                    messages: {},
+                    participants: {user: {}}
                 }
             }});
         }
@@ -35,19 +36,9 @@ function controllerGameMain($scope, $modal, $injector, $routeParams, $translate,
     /**
      *
      */
-    $scope.popupAddPlayer = function(){
-        var scope = $scope.$new();
-        scope.info = {
-            user: null,
-            search: ''
-        }
-        scope.$watch(function(){return scope.info.search}, function(){
-            scope.info.user = User.findByUsername({username: scope.info.search})
-        });
-//        scope.
-
+    $scope.modalAddPlayer = function(){
         $modal({
-            template: 'templates/game/modal-add-player.html',
+            template: 'templates/game/modal/add-player.html',
             scope: $scope
         });
     }
