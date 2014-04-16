@@ -60,11 +60,12 @@ Game.getConnectedUsers = function(gameId, callback){
     callback(null, connected);
 }
 
-Game.sendMessage = function(gameId, content, callback){
+Game.sendMessage = function(gameId, content, userId, callback){
     var message = Message.create({
         date: new Date,
         content: content,
-        gameId: gameId
+        gameId: gameId,
+        userId: userId
     }, function(){
         ioGame.in(gameId).emit('newMessage', message);
         console.log('NEW MESSAGE', message);
@@ -93,7 +94,13 @@ loopback.remoteMethod(
 loopback.remoteMethod(
     Game.sendMessage,
     {
-        accepts: [{arg: 'gameId', type: 'string'}, {arg: 'content', type: 'object'}],
+        accepts: [
+            {arg: 'gameId', type: 'string'},
+            {arg: 'content', type: 'object'},
+            {arg: 'userId', type: 'string', http: function(ctx){
+                return ctx.req.accessToken.userId
+            }}
+        ],
 //        returns: {arg: 'users', type: 'object'},
         http: {path: '/sendMessage', verb: 'get'}
     }
