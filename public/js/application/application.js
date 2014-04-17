@@ -26,6 +26,13 @@ angular.module('application', [
         'NAME_NEW_GROUP_FOR_SHEETMODEL': 'Specify the name of the new group added to the sheet',
         'CONFIRM': 'Are you sure?'
     });
+    $translateProvider.translations('fr', {
+
+    });
+    $translateProvider.translations('de', {
+
+    });
+
     $translateProvider.preferredLanguage('en');
 
     $routeProvider.

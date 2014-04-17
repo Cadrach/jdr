@@ -1,0 +1,25 @@
+<div class="input-group">
+    <span class="input-group-btn">
+        <button
+                class="btn"
+                ng-class="{'btn-primary': $info.current == lng, 'btn-default':  $info.current != lng, 'btn-warning': !$item[lng] && $info.current != lng}"
+                ng-repeat="lng in $languages"
+                ng-click="$info.current=lng">
+            {{lng}}</button>
+    </span>
+
+    <input
+            class="form-control"
+            ng-repeat="lng in $languages"
+            type="text"
+            ng-model="$item[lng]"
+            ng-show="$info.current == lng"/>
+
+    <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="copy($info.current)">
+            <i class="fa fa-files-o"></i>
+        </button>
+    </span>
+</div>
+
+{{$item}}
