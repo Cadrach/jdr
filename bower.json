@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "angular": "~1.2.13",
-    "angular-socket-io": "~0.3.0",
+    "angular-socket-io": "*",
     "Class.js": "1.0.0",
     "angular-bootstrap": "~0.10.0",
     "angular-translate": "*",
@@ -30,8 +30,8 @@
     "angular-dialog-service": "~3.1.0",
     "angular-strap": "~2.0.0",
     "angular-animate": "~1.2.14",
-    "angular-socket-io": "*",
-    "bootstrap-additions": "~0.2.2"
+    "bootstrap-additions": "~0.2.2",
+    "angular-motion": "~0.3.2"
   },
   "resolutions": {
     "bootstrap": "~3.1.1"
