@@ -6,6 +6,7 @@ var Sheet = require('./sheet');
 var Message = require('./private/message');
 var Player = require('./player');
 var User = require('./user');
+var util = require('util');
 
 var io = require('../socket');
 var loopback = require('loopback');
@@ -51,6 +52,11 @@ io.of('/game').on('connection', function (socket) {
 var ioGame = io.of('/game');
 
 //Declare remote methods
+/**
+ * Returns users connected to the game chat
+ * @param gameId
+ * @param callback
+ */
 Game.getConnectedUsers = function(gameId, callback){
     var connected = {};
     ioGame.clients(gameId).forEach(function(socket){
@@ -60,27 +66,48 @@ Game.getConnectedUsers = function(gameId, callback){
     callback(null, connected);
 }
 
+/**
+ * Send a message on the game chat
+ * @param gameId
+ * @param content
+ * @param userId
+ * @param callback
+ */
 Game.sendMessage = function(gameId, content, userId, callback){
-    var message = Message.create({
+    Message.create({
         date: new Date,
         content: content,
         gameId: gameId,
         userId: userId
-    }, function(){
-        ioGame.in(gameId).emit('newMessage', message);
-        console.log('NEW MESSAGE', message);
-        ioGame.clients(gameId).forEach(function(socket){
-            console.log('SENT TO', socket.id);
-        });
-        callback();
+    }, function(err, message){
+        User.findById(userId, function(err, user){
+            if(err || !user)
+            {
+                callback(err, false);
+            }
+            else
+            {
+
+                //Cloning message otherwise cannot add the user property
+                var m = JSON.parse(JSON.stringify(message));
+                m.user = {username: user.username};
+
+                //Emit message to all connected users
+                ioGame.in(gameId).emit('newMessage', m);
+
+                //Debug message + list of socket sent to
+                console.log('NEW MESSAGE', m);
+                ioGame.clients(gameId).forEach(function(socket){
+                    console.log('SENT TO', socket.id);
+                });
+
+                callback();
+            }
+        }, function(){
+            callback('Error fetching user with token', false);
+        })
     });
 }
-
-//Access rights
-Game.beforeRemote('**', function(ctx, message, next) {
-    console.log(ctx.methodString, 'was invoked remotely'); // users.prototype.save was invoked remotely
-    next();
-});
 
 //Link remote methods
 loopback.remoteMethod(
@@ -101,7 +128,12 @@ loopback.remoteMethod(
                 return ctx.req.accessToken.userId
             }}
         ],
-//        returns: {arg: 'users', type: 'object'},
         http: {path: '/sendMessage', verb: 'get'}
     }
 );
+
+//Access rights
+Game.beforeRemote('**', function(ctx, message, next) {
+    console.log(ctx.methodString, 'was invoked remotely'); // users.prototype.save was invoked remotely
+    next();
+});

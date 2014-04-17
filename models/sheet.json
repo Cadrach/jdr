@@ -5,9 +5,9 @@
         "acls": [
             {
                 "accessType": "*",
-                "permission": "ALLOW",
+                "permission": "DENY",
                 "principalType": "ROLE",
-                "principalId": "$everyone"
+                "principalId": "$unauthenticated"
             }
         ]
     },

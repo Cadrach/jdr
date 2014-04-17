@@ -91,6 +91,7 @@ angular.module('application', [
             //Check authentification
             if( ! LoopBackAuth.accessTokenId)
             {
+                return null;
                 throw 'Cannot connect to socket.io if not authentified'
             }
 

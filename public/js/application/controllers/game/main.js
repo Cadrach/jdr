@@ -26,7 +26,7 @@ function controllerGameMain($scope, $modal, $injector, $routeParams, $translate,
                 include: {
                     ruleset: 'sheets',
                     sheets: {players: {}},
-                    messages: {},
+                    messages: {user: {}},
                     participants: {user: {}}
                 }
             }});

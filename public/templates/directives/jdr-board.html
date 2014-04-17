@@ -1,6 +1,6 @@
 <div class="message-list" style="overflow-x:hidden; overflow-y:scroll; height:300px">
     <div class="message" ng-repeat="message in game.messages|orderBy:'date'">
-        <div class="pull-left badge">{{message.date|date:'HH:mm'}}</div>
+        <div class="pull-left badge">{{message.date|date:'HH:mm'}} - {{message.user.username}}</div>
         <div class="">&nbsp;{{message.content.text}}</div>
     </div>
 </div>
